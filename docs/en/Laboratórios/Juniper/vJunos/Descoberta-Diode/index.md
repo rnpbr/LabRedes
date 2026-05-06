@@ -12,12 +12,12 @@ This lab simulates a network with 3 routers configured with OSPF and SNMP, integ
 
 The objective of this lab is to demonstrate, in a practical way, the process of automated import of network devices and their respective configurations into Netbox, using the diode-plugin, diode-server, and orb-agent.
 
-![Topology.svg](/img/labs_imgs/Diagrama_fluxo_diode.svg)
+![Topology.svg](../../../../../img/labs_imgs/Diagrama_fluxo_diode.svg)
 
 ### :material-lan: 1.2 **Lab Topology**
 Below is the topology in image format, representing the routers, servers, and their connections.
 
-![Topology.svg](/img/labs_imgs/Topologia_discovery_lab_diode.svg)
+![Topology.svg](../../../../../img/labs_imgs/Topologia_discovery_lab_diode.svg)
 
 The routers are configured with the following technologies:
 

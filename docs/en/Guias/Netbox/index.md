@@ -48,7 +48,7 @@ To change the version:
   ```yaml
   image: netboxcommunity/netbox:<version>
   ```
-* Consult the compatible versions at: [Netbox Docker Releases](https://github.com/netbox-community/netbox-docker/releases)
+* Consult the compatible versions at: <a target="_blank" href="https://github.com/netbox-community/netbox-docker/releases">Netbox Docker Releases</a>
 
 > **Caution:** Changes between very distant versions may require adjustments to the database or configurations.
 
@@ -99,7 +99,7 @@ Follow the instructions to define **user, email, and password**.
 
 ### 1.8 Access the Web Interface
 
-* Local URL: [http://localhost:8000](http://localhost:8000)
+* Local URL: <a target="_blank" href="http://localhost:8000">http://localhost:8000</a>
 * From another host: `http://<SERVER_IP>:8000`
 
 > Replace the port if you changed it in step 5.
@@ -113,7 +113,7 @@ Follow the instructions to define **user, email, and password**.
 
 ## 2. Access
 
-After completing the installation of NetBox in Docker, you can access it via a web browser. By default, NetBox will be available locally at [http://localhost:8000/](http://localhost:8000/). However, if you want to access NetBox securely through an SSH tunnel, follow the steps below:
+After completing the installation of NetBox in Docker, you can access it via a web browser. By default, NetBox will be available locally at <a target="_blank" href="http://localhost:8000/">http://localhost:8000/</a>. However, if you want to access NetBox securely through an SSH tunnel, follow the steps below:
 
 ### 2.1 Access via SSH Tunnel
 
@@ -196,7 +196,7 @@ The import of CSV files must follow the established numbering and contain the in
 1. **Log in as superuser**: Access NetBox with admin credentials.
 2. **Find the import option**: Check the section related to the data you want to import, and look for an import **icon** as we see in Figure 1 below:
 
-    ![**Figure 1**: By clicking the import icon, you can upload the CSV file.](/img/netbox_imgs/import.png)
+    ![**Figure 1**: By clicking the import icon, you can upload the CSV file.](../../../img/netbox_imgs/import.png)
     **Figure 1**: By clicking the import icon, you can upload the CSV file.
 
 3. **Select the CSV file**: Upload the CSV file with the prepared data, each CSV must contain the fields as described in Subsection 3.1.
@@ -213,17 +213,17 @@ Then edit the `side*` and `interface*` information
 
     **Note**: The steps must be done for every existing Circuit ID.
 
-![**Figure 2**: click on the circuit (arrow on the left), then select the Circuirt ID (detached and indicated with the arrow) to perform the configuration.](/img/netbox_imgs/circuitID.png)
+![**Figure 2**: click on the circuit (arrow on the left), then select the Circuirt ID (detached and indicated with the arrow) to perform the configuration.](../../../img/netbox_imgs/circuitID.png)
 **Figure 2**: click on the circuit (arrow on the left), then select the Circuirt ID (detached and indicated with the arrow) to perform the configuration.
 
 - After clicking on one of the circuits, the circuit settings are similar to that presented in Figure 3. The terminations must be edited by clicking on the `Edit` icon as highlighted in the image below. When you click on the icon, Netbox forwards to the Cables part in Connections, as shown in Figure 4.
 
-![Figure 3: screen of a Circuit ID. The editions of each Temination must be carried out by clicking on `Edit` (highlighted with the arrow).](/img/netbox_imgs/circuitEdit.png)
+![Figure 3: screen of a Circuit ID. The editions of each Temination must be carried out by clicking on `Edit` (highlighted with the arrow).](../../../img/netbox_imgs/circuitEdit.png)
 **Figure 3:** screen of a Circuit ID. The editions of each Temination must be carried out by clicking on `Edit` (highlighted with the arrow).
 
 - Figure 4 presents the creation of the connection cables, the numbering of the cables follows only the creation order. The `Side*` and `Interface*` items must be filled in to complete the configuration of step 7.
 
-![Figure 4: connection cable configuration screen for the connection between devices.](/img/netbox_imgs/circuitCable.png)
+![Figure 4: connection cable configuration screen for the connection between devices.](../../../img/netbox_imgs/circuitCable.png)
 **Figure 4:** connection cable configuration screen for the connection between devices.
 
 <aside>

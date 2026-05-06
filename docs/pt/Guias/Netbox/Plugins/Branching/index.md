@@ -3,7 +3,7 @@
 O plugin Branching para o NetBox é uma solução que possibilita a criação de ramificações (branches) dos dados armazenados no sistema, permitindo que diferentes equipes ou ambientes de trabalho façam alterações, testes e validações sem impactar diretamente a base principal. Com ele, o NetBox ganha flexibilidade para gerenciar cenários de versionamento, experimentação e colaboração, facilitando a comparação de configurações, o controle de mudanças e a consolidação das atualizações na infraestrutura documentada.
 
 ## :simple-git: Repositório do Plugin
-Copie o link abaixo ou clique a seguir para acessar o [Repositório do Github](https://github.com/netboxlabs/netbox-branching)
+Copie o link abaixo ou clique a seguir para acessar o <a target="_blank" href="https://github.com/netboxlabs/netbox-branching">Repositório do Github</a>
 
 ```
 https://github.com/netboxlabs/netbox-branching

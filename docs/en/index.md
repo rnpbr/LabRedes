@@ -19,7 +19,7 @@ With these tools, the project aims to simplify the creation, management, and doc
 
 **Containerlab** is a powerful tool for creating and managing virtualized network labs using Docker containers. With it, you can test and simulate complex network topologies in a controlled environment. The tool supports various network devices, allowing the configuration of **multivendor** networks, which is ideal for testing interactions between different vendors in the same lab.
 Below is a list of the main vendors supported by Containerlab:
-![Vendors](/img/vendors.svg)
+![Vendors](../img/vendors.svg)
 
 ---
 
@@ -27,7 +27,7 @@ Below is a list of the main vendors supported by Containerlab:
 
 The flowchart illustrates the **Netreplica** workflow in the context of a network simulation environment, integrated with **Containerlab**:
 
-![Workflow Netreplica](/img/tools_imgs/workflow-netreplica.gif)
+![Workflow Netreplica](../img/tools_imgs/workflow-netreplica.gif)
 
 ---
 

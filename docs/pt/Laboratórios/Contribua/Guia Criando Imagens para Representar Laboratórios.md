@@ -1,14 +1,14 @@
 # Guia : Criando Imagens para Representar Laboratórios
 
-Este guia ensina como criar imagens representando topologias de rede para os laboratórios, utilizando o template do [Draw.io](http://draw.io/) fornecido no repositório. As imagens devem seguir a identidade visual do projeto e ser salvas no formato **SVG** dentro da pasta correta.
+Este guia ensina como criar imagens representando topologias de rede para os laboratórios, utilizando o template do <a target="_blank" href="http://draw.io/">Draw.io</a> fornecido no repositório. As imagens devem seguir a identidade visual do projeto e ser salvas no formato **SVG** dentro da pasta correta.
 
 ---
 
 ### 1. **Abrindo o Template**
 
-Na raiz do repositório `docs/Templates`, você encontrará um template do [**Draw.io**](http://draw.io/). que pode vê-lo abaixo Abra o arquivo e verá que ele já contém todos os componentes necessários para criar topologias de rede, incluindo:
+Na raiz do repositório `docs/Templates`, você encontrará um template do <a target="_blank" href="http://draw.io/">**Draw.io**</a>. que pode vê-lo abaixo Abra o arquivo e verá que ele já contém todos os componentes necessários para criar topologias de rede, incluindo:
 
-![Template do Draw.io](/img/Template_redes_abertas.svg)
+![Template do Draw.io](../../../img/Template_redes_abertas.svg)
 
 - **Cards de Aplicações**: Representam ativos ou protocolos como **Grafana** e **OpenConfig**.
 - **Componentes de Rede**: Ícones de **roteadores**, **switches** e **servidores**.
@@ -51,7 +51,7 @@ Quando o mouse passar sobre o quadrado, o IP será exibido como uma dica de ferr
 
 Após finalizar a topologia, salve a imagem no formato **SVG**:
 
-1. **Salve como SVG**: No [**Draw.io**](http://draw.io/), vá em **Arquivo > Exportar Como > svg**.
+1. **Salve como SVG**: No <a target="_blank" href="http://draw.io/">**Draw.io**</a>, vá em **Arquivo > Exportar Como > svg**.
 2. **Pasta de Destino**: Salve a imagem na pasta `docs/img/labs_imgs/`.
 
 !!! warning "Atenção"

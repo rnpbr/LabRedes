@@ -3,7 +3,7 @@
 The Napalm plugin for NetBox allows you to integrate real-time data collection functionalities directly from network devices configured in the system. With it, you can obtain up-to-date information such as operational status, neighbors (LLDP/CDP), and equipment configurations, enriching the visualization and management of assets in NetBox. This integration makes the tool more dynamic, bringing the documentation closer to the current reality of the network.
 
 ## :simple-git: Plugin Repository
-Copy the link below or click to access the [Github Repository](https://github.com/netbox-community/netbox-napalm-plugin)
+Copy the link below or click to access the <a target="_blank" href="https://github.com/netbox-community/netbox-napalm-plugin">Github Repository</a>
 
 ```
 https://github.com/netbox-community/netbox-napalm-plugin
@@ -217,8 +217,8 @@ Access your Netbox and follow the instructions below.
 1. In the side menu, go to **Plugin** → **Napalm**.
 2. Click the **Add** button.
 3. `Platform`: Select a platform (e.g., **junos**)
-4. `NAPALM driver`: Here is the name of the driver used by Napalm to collect data from devices. To see the available drivers, go to [Supported Devices](https://napalm.readthedocs.io/en/latest/support/#general-support-matrix). In this case, we will use **junos**.
-5. `NAPALM arguments`(Optional): Arguments passed when initializing the NAPALM driver. Arguments at: [Optional Arguments](https://napalm.readthedocs.io/en/latest/support/#optional-arguments). In our case, we will not fill it in.
+4. `NAPALM driver`: Here is the name of the driver used by Napalm to collect data from devices. To see the available drivers, go to <a target="_blank" href="https://napalm.readthedocs.io/en/latest/support/#general-support-matrix">Supported Devices</a>. In this case, we will use **junos**.
+5. `NAPALM arguments`(Optional): Arguments passed when initializing the NAPALM driver. Arguments at: <a target="_blank" href="https://napalm.readthedocs.io/en/latest/support/#optional-arguments">Optional Arguments</a>. In our case, we will not fill it in.
 6. Click **Create**.
 
 Ready! now we have the Platform Config created for accessing our devices!
@@ -354,7 +354,7 @@ The Status tab, enabled through the integration of NetBox with the NAPALM plugin
 
     - `Temperature, Fans, Power (PSUs)`: Status of sensors and power supplies (if the equipment provides this data)
 
-![Status Tab Image](/img/netbox_imgs/napalmStatusPage.png)
+![Status Tab Image](../../../../../img/netbox_imgs/napalmStatusPage.png)
 
 :simple-target: **Purpose**:
 
@@ -369,7 +369,7 @@ This functionality displays the layer 2 neighbors detected through the LLDP (Lin
 
 - If an interface exists on the actual device but has not been created in NetBox, the neighbors discovered by it will not be displayed.
 
-![LLDP Neighbors Tab Image](/img/netbox_imgs/napalmLldpNeighborsPage.png)
+![LLDP Neighbors Tab Image](../../../../../img/netbox_imgs/napalmLldpNeighborsPage.png)
 
 :simple-target: **Purpose**:
 
@@ -386,7 +386,7 @@ The Config tab allows direct viewing of the network device's configurations, ext
 
 - `Candidate Config` (when supported by the operating system): Configuration being edited that has not yet been applied. Present on equipment that works with configuration staging (e.g., Juniper).
 
-![Config Tab Image](/img/netbox_imgs/napalmConfigPage.png)
+![Config Tab Image](../../../../../img/netbox_imgs/napalmConfigPage.png)
 
 :simple-target: **Purpose**:
 

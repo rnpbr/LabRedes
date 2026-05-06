@@ -2,13 +2,13 @@
 
 ## Contextualização
 
-Este laboratório apresenta uma implementação de automação de rede orientada a eventos (*event-driven*), utilizando o [NetBox](https://netbox.dev/) como fonte de verdade (*source of truth*) e o protocolo [NETCONF](https://datatracker.ietf.org/doc/html/rfc6241) para aplicar configurações nos equipamentos.
+Este laboratório apresenta uma implementação de automação de rede orientada a eventos (*event-driven*), utilizando o <a target="_blank" href="https://netbox.dev/">NetBox</a> como fonte de verdade (*source of truth*) e o protocolo <a target="_blank" href="https://datatracker.ietf.org/doc/html/rfc6241">NETCONF</a> para aplicar configurações nos equipamentos.
 
-O operador declara o estado desejado da rede no NetBox (interfaces, IPs, descrições) e o sistema se encarrega de convergir os equipamentos para esse estado — seja em resposta a um merge de branch (trigger por evento) ou por reconciliação periódica (closed-loop). O lab cobre duas plataformas — **Cisco IOS-XR** e **Huawei VRP** — ambas usando modelos [OpenConfig](https://www.openconfig.net/).
+O operador declara o estado desejado da rede no NetBox (interfaces, IPs, descrições) e o sistema se encarrega de convergir os equipamentos para esse estado — seja em resposta a um merge de branch (trigger por evento) ou por reconciliação periódica (closed-loop). O lab cobre duas plataformas — **Cisco IOS-XR** e **Huawei VRP** — ambas usando modelos <a target="_blank" href="https://www.openconfig.net/">OpenConfig</a>.
 
-A contribuição deste trabalho é modesta em escopo, mas aborda um aspecto específico que encontra pouca documentação detalhada, especialmente em português: a utilização do [plugin de branching do NetBox](https://netboxlabs.com/docs/extensions/branching/) para otimizar o escopo de reconciliação.
+A contribuição deste trabalho é modesta em escopo, mas aborda um aspecto específico que encontra pouca documentação detalhada, especialmente em português: a utilização do <a target="_blank" href="https://netboxlabs.com/docs/extensions/branching/">plugin de branching do NetBox</a> para otimizar o escopo de reconciliação.
 
-O passo a passo completo do laboratório, incluindo instruções de instalação e exercícios, está disponível no [repositório do projeto](https://git.rnp.br/redes-abertas/automacao-event-driven).
+O passo a passo completo do laboratório, incluindo instruções de instalação e exercícios, está disponível no <a target="_blank" href="https://git.rnp.br/redes-abertas/automacao-event-driven">repositório do projeto</a>.
 
 ### O que este laboratório demonstra
 
@@ -55,13 +55,13 @@ O fluxo pode ser resumido em três etapas:
 
 Este laboratório não pretende ser uma referência completa sobre automação de redes. Para uma visão mais abrangente do tema, recomendamos os seguintes recursos:
 
-- **[GTER54 - Do GIT ao Router](https://www.youtube.com/watch?v=GivlY-gEa2s)** (NIC.br) - Apresentação que aborda o fluxo de automação desde o versionamento até a aplicação em equipamentos de rede.
+- **<a target="_blank" href="https://www.youtube.com/watch?v=GivlY-gEa2s">GTER54 - Do GIT ao Router</a>** (NIC.br) - Apresentação que aborda o fluxo de automação desde o versionamento até a aplicação em equipamentos de rede.
 
-- **[Event-Driven Network Automation na Prática](https://www.youtube.com/watch?v=lvzD1feI95k)** (NIC.br) - Demonstração prática de automação orientada a eventos em ambientes de rede.
+- **<a target="_blank" href="https://www.youtube.com/watch?v=lvzD1feI95k">Event-Driven Network Automation na Prática</a>** (NIC.br) - Demonstração prática de automação orientada a eventos em ambientes de rede.
 
-- **[Event-Driven Network Automation with NetBox and Ansible](https://netboxlabs.com/blog/event-driven-network-automation-netbox-ansible-automation-platform/)** (NetBox Labs) - Artigo que apresenta uma implementação que integra NetBox, webhooks e Ansible Automation Platform para automação event-driven.
+- **<a target="_blank" href="https://netboxlabs.com/blog/event-driven-network-automation-netbox-ansible-automation-platform/">Event-Driven Network Automation with NetBox and Ansible</a>** (NetBox Labs) - Artigo que apresenta uma implementação que integra NetBox, webhooks e Ansible Automation Platform para automação event-driven.
 
-- **[Closed-Loop Network Automation - Zero to Hero workshop](https://netboxlabs.com/blog/autocon-4-workshop-self-paced-learning-netbox/)** (NetBox Labs) - Laboratório onde é implementada uma pilha de automação de rede de malha fechada (closed-loop) totalmente funcional, incluindo loops de feedback de observabilidade e descoberta de rede.
+- **<a target="_blank" href="https://netboxlabs.com/blog/autocon-4-workshop-self-paced-learning-netbox/">Closed-Loop Network Automation - Zero to Hero workshop</a>** (NetBox Labs) - Laboratório onde é implementada uma pilha de automação de rede de malha fechada (closed-loop) totalmente funcional, incluindo loops de feedback de observabilidade e descoberta de rede.
 
 ## Arquiteturas de Configuração: Loops vs. Eventos
 
@@ -105,9 +105,9 @@ A combinação de automação orientada a eventos com reconciliação periódica
 
 #### O modelo do Kubernetes
 
-O exemplo mais proeminente é o próprio Kubernetes. Os *controllers* do Kubernetes são projetados como ***level-based***, não ***edge-based*** — uma distinção importante documentada no [código fonte do controller-runtime](https://github.com/kubernetes-sigs/controller-runtime/blob/main/pkg/reconcile/reconcile.go):
+O exemplo mais proeminente é o próprio Kubernetes. Os *controllers* do Kubernetes são projetados como ***level-based***, não ***edge-based*** — uma distinção importante documentada no <a target="_blank" href="https://github.com/kubernetes-sigs/controller-runtime/blob/main/pkg/reconcile/reconcile.go">código fonte do controller-runtime</a>:
 
-A [documentação do Kubebuilder](https://book-v1.book.kubebuilder.io/basics/what_is_a_controller.html) explica que a arquitetura level-based foi escolhida para facilitar self-healing e reconciliação periódica. Diferentemente de um sistema edge-based (que responderia a cada evento individual), o modelo level-based permite que eventos sejam agregados e que valores intermediários ou obsoletos sejam ignorados, trabalhando diretamente com o estado desejado atual. 
+A <a target="_blank" href="https://book-v1.book.kubebuilder.io/basics/what_is_a_controller.html">documentação do Kubebuilder</a> explica que a arquitetura level-based foi escolhida para facilitar self-healing e reconciliação periódica. Diferentemente de um sistema edge-based (que responderia a cada evento individual), o modelo level-based permite que eventos sejam agregados e que valores intermediários ou obsoletos sejam ignorados, trabalhando diretamente com o estado desejado atual. 
 
 #### Por que combinar as duas abordagens
 
@@ -142,7 +142,7 @@ A solução adotada neste laboratório é usar o diff do branching para reduzir 
 
 ### O papel do plugin de branching
 
-O [plugin de branching do NetBox](https://netboxlabs.com/docs/extensions/branching/) oferece recursos que facilitam essa otimização:
+O <a target="_blank" href="https://netboxlabs.com/docs/extensions/branching/">plugin de branching do NetBox</a> oferece recursos que facilitam essa otimização:
 
 - **Agrupamento de mudanças**: múltiplas alterações em uma branch resultam em um único evento de merge
 - **Identificação de objetos afetados**: a API permite consultar quais objetos foram modificados na branch

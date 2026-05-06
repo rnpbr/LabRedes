@@ -76,6 +76,6 @@ Lembre-se de que o NetReplica é uma ferramenta poderosa para replicação e an�
 
 ## **Fontes**
 
-1. NetReplica (NRX) GitHub Repository. Disponível em: **[https://github.com/netreplica/nrx](https://github.com/netreplica/nrx)**
-2. NetReplica Templates GitHub Repository. Disponível em: **[https://github.com/netreplica/templates](https://github.com/netreplica/templates)**
-3. ContainerLab Manual - Kinds. Disponível em: **[https://containerlab.dev/manual/kinds/](https://containerlab.dev/manual/kinds/)**
+1. NetReplica (NRX) GitHub Repository. Disponível em: **<a target="_blank" href="https://github.com/netreplica/nrx">https://github.com/netreplica/nrx</a>**
+2. NetReplica Templates GitHub Repository. Disponível em: **<a target="_blank" href="https://github.com/netreplica/templates">https://github.com/netreplica/templates</a>**
+3. ContainerLab Manual - Kinds. Disponível em: **<a target="_blank" href="https://containerlab.dev/manual/kinds/">https://containerlab.dev/manual/kinds/</a>**

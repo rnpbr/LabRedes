@@ -1,14 +1,14 @@
 # Guide: Creating Images to Represent Labs
 
-This guide teaches how to create images representing network topologies for labs, using the [Draw.io](http://draw.io/) template provided in the repository. The images must follow the project's visual identity and be saved in **SVG** format within the correct folder.
+This guide teaches how to create images representing network topologies for labs, using the <a target="_blank" href="http://draw.io/">Draw.io</a> template provided in the repository. The images must follow the project's visual identity and be saved in **SVG** format within the correct folder.
 
 ---
 
 ### 1. **Opening the Template**
 
-In the root of the repository `docs/Templates`, you will find a [**Draw.io**](http://draw.io/) template, which you can see below. Open the file, and you will see that it already contains all the components needed to create network topologies, including:
+In the root of the repository `docs/Templates`, you will find a <a target="_blank" href="http://draw.io/">**Draw.io**</a> template, which you can see below. Open the file, and you will see that it already contains all the components needed to create network topologies, including:
 
-![Draw.io Template](/img/Template_redes_abertas.svg)
+![Draw.io Template](../../../img/Template_redes_abertas.svg)
 
 - **Application Cards**: Represent assets or protocols such as **Grafana** and **OpenConfig**.
 - **Network Components**: Icons of **routers**, **switches,** and **servers**.
@@ -51,7 +51,7 @@ When the mouse hovers over the square, the IP will be displayed as a tooltip.
 
 After finalizing the topology, save the image in **SVG** format:
 
-1. **Save as SVG**: In [**Draw.io**](http://draw.io/), go to **File > Export As > svg**.
+1. **Save as SVG**: In <a target="_blank" href="http://draw.io/">**Draw.io**</a>, go to **File > Export As > svg**.
 2. **Destination Folder**: Save the image in the `docs/img/labs_imgs/` folder.
 
 !!! warning "Attention"
@@ -64,4 +64,4 @@ After finalizing the topology, save the image in **SVG** format:
 After saving the image, update the documentation's Markdown file, including the topology image:
 
 ```markdown
-![Network Topology Diagram](../../labs_imgs/nome-do-lab/nome-da-imagem.svg)
+<!-- Example: ![Network Topology Diagram](../../labs_imgs/<lab-name>/<image-name>.svg) -->

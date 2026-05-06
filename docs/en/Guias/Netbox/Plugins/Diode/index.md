@@ -3,7 +3,7 @@
 The Diode plugin for NetBox is a powerful solution for those looking to automate the discovery and ingestion of network device data. With it, NetBox dynamically receives information through agents or custom scripts, which perform the collection, processing, and insertion of data directly into the system. This functionality facilitates integration with complex environments and promotes continuous and automated documentation of the network infrastructure.
 
 ## :simple-git: **Plugin Repository**
-Copy the link below or click to access the [Github Repository](https://github.com/netboxlabs/diode/tree/develop)
+Copy the link below or click to access the <a target="_blank" href="https://github.com/netboxlabs/diode/tree/develop">Github Repository</a>
 
 ```
 https://github.com/netboxlabs/diode/tree/develop
@@ -27,5 +27,3 @@ Diode is composed of three main components, which work together to perform autom
 
 ## :fontawesome-solid-building-columns: **2. Architecture**
 To facilitate understanding of how Diode works, the diagram below illustrates the architecture of its main components and how they communicate with each other:
-
-[foto do diagrama](/img/netbox_imgs/diodeDiagram.svg)

@@ -4,10 +4,10 @@ O Diode Client é responsável por enviar os dados coletados para o Diode Server
 
 Existem diferentes formas de utilizar o Client. Nesta documentação, será apresentado o uso do Orb Agent, desenvolvido pela NetBox Labs. Esse agente não só realiza a descoberta automatizada de redes e dispositivos, como também oferece funcionalidades de observabilidade sobre os equipamentos monitorados.
 
-Alternativamente, conforme descrito na [documentação oficial do NetBox](https://docs.netboxlabs.com/netbox-extensions/diode/diode-client/), o Diode Client também pode ser utilizado como um SDK Python, ideal para integrar scripts personalizados que coletam e enviam dados para o Diode Server.
+Alternativamente, conforme descrito na <a target="_blank" href="https://docs.netboxlabs.com/netbox-extensions/diode/diode-client/">documentação oficial do NetBox</a>, o Diode Client também pode ser utilizado como um SDK Python, ideal para integrar scripts personalizados que coletam e enviam dados para o Diode Server.
 
 ## :simple-git: **Repositório do Plugin**
-Copie o link abaixo ou clique a seguir para acessar o [Repositório do Github](https://github.com/netboxlabs/orb-agent)
+Copie o link abaixo ou clique a seguir para acessar o <a target="_blank" href="https://github.com/netboxlabs/orb-agent">Repositório do Github</a>
 
 ```
 https://github.com/netboxlabs/orb-agent
@@ -101,7 +101,7 @@ source .env
 No Orb-Agent, as configurações são definidas por meio do arquivo `agent.yaml`. É nesse arquivo que configuramos a conexão com o **Diode Server**, especificamos o local de importação de variáveis ou credenciais de acesso e definimos os tipos de descoberta que o agente deverá executar.
 
 #### :fontawesome-solid-gear: **2.3.1. Config Manager**
-A seção `config_manager` define como o Orb-Agent deve obter suas informações de configuração. O gerenciador de configuração é responsável por processar esses dados, recuperar as políticas definidas e repassá-las ao backend apropriado. Veja outros métodos na [documentação](https://github.com/netboxlabs/orb-agent?tab=readme-ov-file#config-manager)
+A seção `config_manager` define como o Orb-Agent deve obter suas informações de configuração. O gerenciador de configuração é responsável por processar esses dados, recuperar as políticas definidas e repassá-las ao backend apropriado. Veja outros métodos na <a target="_blank" href="https://github.com/netboxlabs/orb-agent?tab=readme-ov-file#config-manager">documentação</a>
 
 ```bash
 orb:
@@ -111,7 +111,7 @@ orb:
 ```
 
 #### :material-key-wireless: **2.3.2. Secrets Manager**
-A seção secrets_manager define como o Orb-Agent deve obter e injetar segredos (como senhas e tokens) nas políticas. Esse gerenciador pode se conectar a repositórios externos de segredos, como o HashiCorp Vault, para buscar informações sensíveis de forma segura, evitando que elas sejam escritas diretamente nos arquivos de configuração. Veja outros métodos na [documentação](https://github.com/netboxlabs/orb-agent?tab=readme-ov-file#secrets-manager)
+A seção secrets_manager define como o Orb-Agent deve obter e injetar segredos (como senhas e tokens) nas políticas. Esse gerenciador pode se conectar a repositórios externos de segredos, como o HashiCorp Vault, para buscar informações sensíveis de forma segura, evitando que elas sejam escritas diretamente nos arquivos de configuração. Veja outros métodos na <a target="_blank" href="https://github.com/netboxlabs/orb-agent?tab=readme-ov-file#secrets-manager">documentação</a>
 
 ```bash
 orb:
@@ -183,11 +183,11 @@ orb:
 
 Links:
 
-- [Device Discovery](https://github.com/netboxlabs/orb-agent/blob/develop/docs/backends/device_discovery.md)
+- <a target="_blank" href="https://github.com/netboxlabs/orb-agent/blob/develop/docs/backends/device_discovery.md">Device Discovery</a>
 
-- [Network Discovery](https://github.com/netboxlabs/orb-agent/blob/develop/docs/backends/network_discovery.md)
+- <a target="_blank" href="https://github.com/netboxlabs/orb-agent/blob/develop/docs/backends/network_discovery.md">Network Discovery</a>
 
-- [Worker](https://github.com/netboxlabs/orb-agent/blob/develop/docs/backends/worker.md)
+- <a target="_blank" href="https://github.com/netboxlabs/orb-agent/blob/develop/docs/backends/worker.md">Worker</a>
 
 ### :octicons-repo-template-16: **3. `agent.template.yaml`**
 Depois de entender um pouco da estrutura do Orb-Agent, vamos para um exemplo prático com um template simples que pode ser utlizado para mapear a rede docker `br-lab` e alguns dispositivos nela. Nesse arquivo vamo utilizar os backends: `network_discovery` e `device_discovery`.

@@ -6,8 +6,8 @@ In this guide, we will cover the setup of the **ELK** stack (Elasticsearch, Logs
 
 ## :simple-elastic: 2. What is ELK?
 
-![Flow_Fleet_Elasticsearch.png](/img/tools_imgs/flow_fleet_elasticsearch.png)
-Source: [Elastic Documentation](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html)
+![Flow_Fleet_Elasticsearch.png](../../../img/tools_imgs/flow_fleet_elasticsearch.png)
+Source: <a target="_blank" href="https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html">Elastic Documentation</a>
 
 The image above illustrates the data flow and integration of the ELK Stack components for centralized monitoring and real-time analysis.
 

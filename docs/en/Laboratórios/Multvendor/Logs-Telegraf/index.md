@@ -12,7 +12,7 @@ The objective of the lab is to simulate the export of logs from three routers fr
 
 ### :material-lan: 1.2 Lab Topology
 
-![Lab Topology](/img/labs_imgs/Topologia_Logs_Telegraf.svg)
+![Lab Topology](../../../../img/labs_imgs/Topologia_Logs_Telegraf.svg)
 
 **Topology Description**
 

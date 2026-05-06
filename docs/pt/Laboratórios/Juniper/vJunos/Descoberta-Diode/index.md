@@ -12,13 +12,13 @@ Este laboratório simula uma rede com 3 roteadores configurados com OSPF e SNMP,
 
 O objetivo deste laboratório é demonstrar, de forma prática, o processo de importação automatizada de dispositivos de rede e suas respectivas configurações para o Netbox, utilizando o diodo-plugin, o diode-server e o orb-agent.
 
-![Topologia.svg](/img/labs_imgs/Diagrama_fluxo_diode.svg)
+![Topologia.svg](../../../../../img/labs_imgs/Diagrama_fluxo_diode.svg)
 
 
 ### :material-lan: 1.2 **Topologia do Lab**
 Abaixo a topologia em formato imagem, representando os roteadores, servidores e suas conexões.
 
-![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab_diode.svg)
+![Topologia.svg](../../../../../img/labs_imgs/Topologia_discovery_lab_diode.svg)
 
 Os roteadores estão configurados com as seguintes tecnologias:
 

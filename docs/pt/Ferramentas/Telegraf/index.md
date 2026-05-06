@@ -131,4 +131,4 @@ Use as credenciais configuradas no InfluxDB para acessar e configurar consultas.
 - **Criar Dashboards personalizados no Grafana**: Explore as métricas para criar visualizações específicas para suas necessidades.
 - **Adicionar Fontes de Dados ao Telegraf**: Amplie o uso configurando o Telegraf para coletar métricas de outras fontes de interesse no laboratório.
 
-Para mais informações sobre o Telegraf, consulte a [documentação oficial do Telegraf](https://github.com/influxdata/telegraf).
+Para mais informações sobre o Telegraf, consulte a <a target="_blank" href="https://github.com/influxdata/telegraf">documentação oficial do Telegraf</a>.

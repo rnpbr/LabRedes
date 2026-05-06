@@ -4,11 +4,11 @@
 
 This project was developed using the following tools:
 
-* [poetry](https://python-poetry.org/) for dependency management
-* [taskpy](https://github.com/taskipy/taskipy) for task automation
-* [mkdocs](https://www.mkdocs.org/) for documentation
-* [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) for documentation theme
-* [commitizen](https://commitizen-tools.github.io/commitizen/) for standardizing commit messages
+* <a target="_blank" href="https://python-poetry.org/">poetry</a> for dependency management
+* <a target="_blank" href="https://github.com/taskipy/taskipy">taskpy</a> for task automation
+* <a target="_blank" href="https://www.mkdocs.org/">mkdocs</a> for documentation
+* <a target="_blank" href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a> for documentation theme
+* <a target="_blank" href="https://commitizen-tools.github.io/commitizen/">commitizen</a> for standardizing commit messages
 
 ## :fontawesome-solid-user-gear: How to Contribute
 
@@ -24,7 +24,7 @@ git clone https://git.rnp.br/redes-abertas/docs.git
 
 2. Install project dependencies:
 
-First, install pipx to install poetry, documentation [here](https://pypa.github.io/pipx/)
+First, install pipx to install poetry, documentation <a target="_blank" href="https://pypa.github.io/pipx/">here</a>
 
 Now, install poetry, which is the project's dependency manager:
 
@@ -199,7 +199,7 @@ With this, the translation of your documentation will always be synchronized wit
 #### :material-code-tags-check: Documentation
 
 The project documentation is written in Markdown and is located in the docs folder, following the structure of existing folders, subfolders and files.
-where all standardization is recommended by [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/), so to view the documentation locally, run the following command:
+where all standardization is recommended by <a target="_blank" href="https://www.mkdocs.org/">mkdocs</a> and <a target="_blank" href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a>, so to view the documentation locally, run the following command:
 
 ```bash
 poetry run task docs
@@ -235,7 +235,7 @@ Now just fill in the requested information and the commit will be made in a stan
 
 ## I didn't find what I need here
 
-If you haven't found what you need, you can open an [issue in the project](https://git.rnp.br/redes-abertas/docs/-/issues) reporting what you can't do or what needs to be better documented.
+If you haven't found what you need, you can open an <a target="_blank" href="https://git.rnp.br/redes-abertas/docs/-/issues">issue in the project</a> reporting what you can't do or what needs to be better documented.
 
 ## Continuous Improvement
 

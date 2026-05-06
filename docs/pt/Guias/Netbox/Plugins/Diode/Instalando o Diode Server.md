@@ -5,7 +5,7 @@ O Diode Server é o componente central da arquitetura do Diode. Ele é responsá
 Esse servidor atua como um intermediário inteligente, garantindo que os dados inseridos estejam corretos, completos e sincronizados com os registros existentes.
 
 ## :simple-git: **Repositório do Plugin**
-Copie o link abaixo ou clique a seguir para acessar o [Repositório do Github](https://github.com/netboxlabs/diode-netbox-plugin)
+Copie o link abaixo ou clique a seguir para acessar o <a target="_blank" href="https://github.com/netboxlabs/diode-netbox-plugin">Repositório do Github</a>
 
 ```
 https://github.com/netboxlabs/diode-netbox-plugin

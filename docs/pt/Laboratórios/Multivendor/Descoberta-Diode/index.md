@@ -12,13 +12,13 @@ Este laboratório simula uma rede com 3 roteadores de diferentes fabricantes (Ju
 
 O objetivo deste laboratório é demonstrar, de forma prática, o processo de descoberta e importação automatizada de dispositivos de rede multivendor, abrangendo diferentes modelos e fabricantes, e suas respectivas configurações para o Netbox, utilizando o diodo-plugin, o diode-server e o orb-agent.
 
-![Topologia.svg](/img/labs_imgs/Diagrama_fluxo_diode_multivendor.svg)
+![Topologia.svg](../../../../img/labs_imgs/Diagrama_fluxo_diode_multivendor.svg)
 
 
 ### :material-lan: 1.2 **Topologia do Lab**
 Abaixo está a topologia mostrando os três roteadores — Juniper, Cisco e Huawei — além dos servidores envolvidos na arquitetura.
 
-![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab_diode_multivendor.svg)
+![Topologia.svg](../../../../img/labs_imgs/Topologia_discovery_lab_diode_multivendor.svg)
 
 Os roteadores estão configurados com as seguintes tecnologias:
 

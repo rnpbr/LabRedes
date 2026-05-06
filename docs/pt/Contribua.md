@@ -4,11 +4,11 @@
 
 Este projeto foi desenvolvido com as seguintes ferramentas:
 
-* [poetry](https://python-poetry.org/) para gerenciamento de dependências
-* [taskpy](https://github.com/taskipy/taskipy) para automação de tarefas
-* [mkdocs](https://www.mkdocs.org/) para documentação
-* [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) para tema de documentação
-* [commitizen](https://commitizen-tools.github.io/commitizen/) para padronização de mensagens de commit
+* <a target="_blank" href="https://python-poetry.org/">poetry</a> para gerenciamento de dependências
+* <a target="_blank" href="https://github.com/taskipy/taskipy">taskpy</a> para automação de tarefas
+* <a target="_blank" href="https://www.mkdocs.org/">mkdocs</a> para documentação
+* <a target="_blank" href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a> para tema de documentação
+* <a target="_blank" href="https://commitizen-tools.github.io/commitizen/">commitizen</a> para padronização de mensagens de commit
 
 
 ## :fontawesome-solid-user-gear: Como contribuir
@@ -26,7 +26,7 @@ git clone https://git.rnp.br/redes-abertas/docs.git
 
 2. Instale as dependências do projeto:
 
-primeiramente, instale o pipx para instalar o poetry documentação [aqui](https://pypa.github.io/pipx/)
+primeiramente, instale o pipx para instalar o poetry documentação <a target="_blank" href="https://pypa.github.io/pipx/">aqui</a>
 
 Agora, instale o poetry, que é o gerenciador de dependências do projeto:
 
@@ -212,7 +212,7 @@ Com isso, a tradução da sua documentação estará sempre sincronizada com o i
 #### :material-code-tags-check: Documentação
 
 A documentação do projeto é escrita em Markdown e está localizada na pasta docs, seguindo a estrutura de pastas, subpastas e arquivos existentes.
-onde toda a padronização e a recomendada pelo [mkdocs](https://www.mkdocs.org/) e [mkdocs-material](https://squidfunk.github.io/mkdocs-material/), logo para visualizar a documentação localmente, execute o seguinte comando:
+onde toda a padronização e a recomendada pelo <a target="_blank" href="https://www.mkdocs.org/">mkdocs</a> e <a target="_blank" href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a>, logo para visualizar a documentação localmente, execute o seguinte comando:
 
 ```bash
 poetry run task docs
@@ -249,7 +249,7 @@ Agora é só preencher as informações solicitadas e o commit será feito de fo
 
 ## Não achei o que preciso aqui
 
-Caso não tenha encontrado o que precisa, você pode abrir uma [issue no projeto](https://git.rnp.br/redes-abertas/docs/-/issues) relatando o que não consegue fazer ou o que precisa ser melhor documentado
+Caso não tenha encontrado o que precisa, você pode abrir uma <a target="_blank" href="https://git.rnp.br/redes-abertas/docs/-/issues">issue no projeto</a> relatando o que não consegue fazer ou o que precisa ser melhor documentado
 
 ## Melhoria contínua
 

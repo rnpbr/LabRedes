@@ -24,7 +24,7 @@ e permite a utilização de diversas ferramentas de análise com maior eficiênc
 ### :fontawesome-solid-diagram-project: **Diagrama da Rede de Monitoramento**
 
 Abaixo está um exemplo visual que mostra como a rede de monitoramento `br-lab` está configurada, conectando diferentes laboratórios e dispositivos para um ambiente de testes unificado e eficiente.
-![br-lab_diagram.svg](/img/tools_imgs/br-lab_diagram.svg)
+![br-lab_diagram.svg](../../img/tools_imgs/br-lab_diagram.svg)
 ---
 
 ## :material-tools:  **2. Criando a Rede Docker**

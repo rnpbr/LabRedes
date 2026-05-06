@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-**Edgeshark** is an innovative solution designed to facilitate the capture and analysis of network traffic in containerized environments. It consists of two main containerized services, [Ghostwire](https://github.com/siemens/ghostwire) and [Packetflix](https://github.com/siemens/packetflix), which work together to monitor network traffic within Docker containers. In addition, it offers an optional plugin for Wireshark, called [csharg external capture plugin](https://github.com/siemens/cshargextcap), which allows remote live capture of network traffic.
+**Edgeshark** is an innovative solution designed to facilitate the capture and analysis of network traffic in containerized environments. It consists of two main containerized services, <a target="_blank" href="https://github.com/siemens/ghostwire">Ghostwire</a> and <a target="_blank" href="https://github.com/siemens/packetflix">Packetflix</a>, which work together to monitor network traffic within Docker containers. In addition, it offers an optional plugin for Wireshark, called <a target="_blank" href="https://github.com/siemens/cshargextcap">csharg external capture plugin</a>, which allows remote live capture of network traffic.
 
 ## 2. Installing Edgeshark
 
@@ -29,7 +29,7 @@ Edgeshark offers multi-architecture Docker images for the `linux/amd64` and `lin
     
        3. **Access the interface:**
     
-          After deployment, visit [http://localhost:5001](http://localhost:5001/) in your browser to explore the virtual network of your container host.
+          After deployment, visit <a target="_blank" href="http://localhost:5001/">http://localhost:5001</a> in your browser to explore the virtual network of your container host.
     
     
     !!! note "NOTE"
@@ -54,7 +54,7 @@ Edgeshark offers multi-architecture Docker images for the `linux/amd64` and `lin
     
     2. **Access the interface:**
 
-        Visit [http://localhost:5001](http://localhost:5001/) in your browser to explore the virtual network of your container host.
+        Visit <a target="_blank" href="http://localhost:5001/">http://localhost:5001</a> in your browser to explore the virtual network of your container host.
     
     
     !!! warning "WARNING"
@@ -89,15 +89,15 @@ Edgeshark offers multi-architecture Docker images for the `linux/amd64` and `lin
 
 ### 2.1 Optional Plugin for Packet Capture
 
-If you need to capture live network traffic inside the containers, you need to install the external [cshargextcap](https://github.com/siemens/cshargextcap) plugin for Wireshark.
+If you need to capture live network traffic inside the containers, you need to install the external <a target="_blank" href="https://github.com/siemens/cshargextcap">cshargextcap</a> plugin for Wireshark.
 
 === "Windows 64bit"
 
     1. **Check Wireshark:**  
-       Make sure you have a recent version of [Wireshark (64 bits)](https://wireshark.org) installed. The minimum recommended version is 3.0.2.
+       Make sure you have a recent version of <a target="_blank" href="https://wireshark.org">Wireshark (64 bits)</a> installed. The minimum recommended version is 3.0.2.
     
     2. **Install the plugin:**  
-        Download and run the latest plugin installer, available [here](https://github.com/siemens/cshargextcap/releases/latest).
+        Download and run the latest plugin installer, available <a target="_blank" href="https://github.com/siemens/cshargextcap/releases/latest">here</a>.
     
     3. **Start the capture:**  
         In the Edgeshark web interface, click on one of the Wireshark buttons to start a capture session.

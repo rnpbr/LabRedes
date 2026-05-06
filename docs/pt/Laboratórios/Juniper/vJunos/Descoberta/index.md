@@ -16,7 +16,7 @@ O objetivo deste laboratório é importar os dispositivos de rede e suas configu
 ### :material-lan: 1.2 **Topologia do Lab**
 Abaixo a topologia em formato imagem, representando os roteadores, servidores e suas conexões.
 
-![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab.svg)
+![Topologia.svg](../../../../../img/labs_imgs/Topologia_discovery_lab.svg)
 
 Os roteadores estão configurados com as seguintes tecnologias:
 

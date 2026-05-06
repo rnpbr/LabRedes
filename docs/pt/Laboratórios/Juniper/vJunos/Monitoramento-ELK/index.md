@@ -13,7 +13,7 @@ O laboratório `elk-lab` tem como principal objetivo simular o envio e análise 
 
 ### :material-lan: 1.2 Topologia do Lab
 
-![Topologia do Lab](/img/labs_imgs/Topologia_ELK.svg)
+![Topologia do Lab](../../../../../img/labs_imgs/Topologia_ELK.svg)
 
 **Descrição da Topologia**
 

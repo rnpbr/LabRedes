@@ -12,13 +12,13 @@ This lab simulates a network with 3 routers from different vendors (Juniper, Cis
 
 The objective of this lab is to practically demonstrate the process of automated discovery and import of multivendor network devices, encompassing different models and manufacturers, and their respective configurations into Netbox, using the diode-plugin, diode-server, and orb-agent.
 
-![Topologia.svg](/img/labs_imgs/Diagrama_fluxo_diode_multivendor.svg)
+![Topologia.svg](../../../../img/labs_imgs/Diagrama_fluxo_diode_multivendor.svg)
 
 
 ### :material-lan: 1.2 **Lab Topology**
 Below is the topology showing the three routers — Juniper, Cisco, and Huawei — in addition to the servers involved in the architecture.
 
-![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab_diode_multivendor.svg)
+![Topologia.svg](../../../../img/labs_imgs/Topologia_discovery_lab_diode_multivendor.svg)
 
 The routers are configured with the following technologies:
 

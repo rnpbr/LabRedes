@@ -69,11 +69,11 @@ Para criar uma nova regra:
 
 #### 📸 Configuração Geral da Regra:
 ---
-![Discovery Rule](/img/tools_imgs/zabbix_discovery_rule.png)
+![Discovery Rule](../../../img/tools_imgs/zabbix_discovery_rule.png)
 
 #### 📸 Configuração dos Checks SNMP:
 ---
-  ![Discovery Check](/img/tools_imgs/zabbix_discovery_check.png)
+  ![Discovery Check](../../../img/tools_imgs/zabbix_discovery_check.png)
 ---
 
 Claro! Aqui está o trecho aprimorado no estilo acadêmico e técnico, com formatação clara, explicações completas e a inclusão da seção de imagens de exemplo para facilitar o entendimento visual:
@@ -138,11 +138,11 @@ Adicione as seguintes operações:
 
 #### 📸 Tela da aba "Action"
 
-![Ação de Descoberta - Aba Action](/img/tools_imgs/zabbix_actions.png)
+![Ação de Descoberta - Aba Action](../../../img/tools_imgs/zabbix_actions.png)
 
 #### 📸 Tela da aba "Operations"
 
-![Ação de Descoberta - Aba Operations](/img/tools_imgs/zabbix_actions_operations.png)
+![Ação de Descoberta - Aba Operations](../../../img/tools_imgs/zabbix_actions_operations.png)
 
 ---
 

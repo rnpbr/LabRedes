@@ -2,13 +2,13 @@
 
 ## Context
 
-This lab presents an implementation of event-driven network automation, using [NetBox](https://netbox.dev/) as the source of truth and the [NETCONF](https://datatracker.ietf.org/doc/html/rfc6241) protocol to apply configurations to devices.
+This lab presents an implementation of event-driven network automation, using <a target="_blank" href="https://netbox.dev/">NetBox</a> as the source of truth and the <a target="_blank" href="https://datatracker.ietf.org/doc/html/rfc6241">NETCONF</a> protocol to apply configurations to devices.
 
-The operator declares the desired network state in NetBox (interfaces, IPs, descriptions), and the system is responsible for converging devices to that state, either in response to a branch merge (event-triggered) or through periodic reconciliation (closed-loop). The lab covers two platforms - **Cisco IOS-XR** and **Huawei VRP** - both using [OpenConfig](https://www.openconfig.net/) models.
+The operator declares the desired network state in NetBox (interfaces, IPs, descriptions), and the system is responsible for converging devices to that state, either in response to a branch merge (event-triggered) or through periodic reconciliation (closed-loop). The lab covers two platforms - **Cisco IOS-XR** and **Huawei VRP** - both using <a target="_blank" href="https://www.openconfig.net/">OpenConfig</a> models.
 
-The contribution of this work is modest in scope, but it addresses a specific aspect with little detailed documentation, especially in Portuguese: using the [NetBox branching plugin](https://netboxlabs.com/docs/extensions/branching/) to optimize reconciliation scope.
+The contribution of this work is modest in scope, but it addresses a specific aspect with little detailed documentation, especially in Portuguese: using the <a target="_blank" href="https://netboxlabs.com/docs/extensions/branching/">NetBox branching plugin</a> to optimize reconciliation scope.
 
-The complete lab walkthrough, including installation instructions and exercises, is available in the [project repository](https://git.rnp.br/redes-abertas/automacao-event-driven).
+The complete lab walkthrough, including installation instructions and exercises, is available in the <a target="_blank" href="https://git.rnp.br/redes-abertas/automacao-event-driven">project repository</a>.
 
 ### What this lab demonstrates
 
@@ -55,13 +55,13 @@ The flow can be summarized in three steps:
 
 This lab is not intended to be a complete reference on network automation. For a broader view of the topic, we recommend the following resources:
 
-- **[GTER54 - Do GIT ao Router](https://www.youtube.com/watch?v=GivlY-gEa2s)** (NIC.br) - Presentation covering the automation flow from version control to deployment on network devices.
+- **<a target="_blank" href="https://www.youtube.com/watch?v=GivlY-gEa2s">GTER54 - Do GIT ao Router</a>** (NIC.br) - Presentation covering the automation flow from version control to deployment on network devices.
 
-- **[Event-Driven Network Automation na Pratica](https://www.youtube.com/watch?v=lvzD1feI95k)** (NIC.br) - Practical demonstration of event-driven automation in network environments.
+- **<a target="_blank" href="https://www.youtube.com/watch?v=lvzD1feI95k">Event-Driven Network Automation na Pratica</a>** (NIC.br) - Practical demonstration of event-driven automation in network environments.
 
-- **[Event-Driven Network Automation with NetBox and Ansible](https://netboxlabs.com/blog/event-driven-network-automation-netbox-ansible-automation-platform/)** (NetBox Labs) - Article presenting an implementation that integrates NetBox, webhooks, and Ansible Automation Platform for event-driven automation.
+- **<a target="_blank" href="https://netboxlabs.com/blog/event-driven-network-automation-netbox-ansible-automation-platform/">Event-Driven Network Automation with NetBox and Ansible</a>** (NetBox Labs) - Article presenting an implementation that integrates NetBox, webhooks, and Ansible Automation Platform for event-driven automation.
 
-- **[Closed-Loop Network Automation - Zero to Hero workshop](https://netboxlabs.com/blog/autocon-4-workshop-self-paced-learning-netbox/)** (NetBox Labs) - Lab where a fully functional closed-loop network automation stack is implemented, including observability and network-discovery feedback loops.
+- **<a target="_blank" href="https://netboxlabs.com/blog/autocon-4-workshop-self-paced-learning-netbox/">Closed-Loop Network Automation - Zero to Hero workshop</a>** (NetBox Labs) - Lab where a fully functional closed-loop network automation stack is implemented, including observability and network-discovery feedback loops.
 
 ## Configuration Architectures: Loops vs. Events
 
@@ -105,9 +105,9 @@ Combining event-driven automation with periodic reconciliation is a well-establi
 
 #### The Kubernetes model
 
-The most prominent example is Kubernetes itself. Kubernetes controllers are designed to be ***level-based***, not ***edge-based*** - an important distinction documented in the [controller-runtime source code](https://github.com/kubernetes-sigs/controller-runtime/blob/main/pkg/reconcile/reconcile.go):
+The most prominent example is Kubernetes itself. Kubernetes controllers are designed to be ***level-based***, not ***edge-based*** - an important distinction documented in the <a target="_blank" href="https://github.com/kubernetes-sigs/controller-runtime/blob/main/pkg/reconcile/reconcile.go">controller-runtime source code</a>:
 
-The [Kubebuilder documentation](https://book-v1.book.kubebuilder.io/basics/what_is_a_controller.html) explains that the level-based architecture was chosen to enable self-healing and periodic reconciliation. Unlike an edge-based system (which would react to each individual event), the level-based model allows events to be aggregated and intermediate or stale values to be ignored, working directly from the current desired state.
+The <a target="_blank" href="https://book-v1.book.kubebuilder.io/basics/what_is_a_controller.html">Kubebuilder documentation</a> explains that the level-based architecture was chosen to enable self-healing and periodic reconciliation. Unlike an edge-based system (which would react to each individual event), the level-based model allows events to be aggregated and intermediate or stale values to be ignored, working directly from the current desired state.
 
 #### Why combine both approaches
 
@@ -142,7 +142,7 @@ The solution adopted in this lab is to use the branching diff to reduce scope wi
 
 ### The role of the branching plugin
 
-The [NetBox branching plugin](https://netboxlabs.com/docs/extensions/branching/) provides features that make this optimization easier:
+The <a target="_blank" href="https://netboxlabs.com/docs/extensions/branching/">NetBox branching plugin</a> provides features that make this optimization easier:
 
 - **Change grouping**: multiple changes in a branch result in a single merge event
 - **Affected-object identification**: the API allows querying which objects were modified in the branch

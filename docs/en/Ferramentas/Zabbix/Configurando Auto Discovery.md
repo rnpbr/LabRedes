@@ -69,11 +69,11 @@ To create a new rule:
 
 #### 📸 General Rule Configuration:
 ---
-![Discovery Rule](/img/tools_imgs/zabbix_discovery_rule.png)
+![Discovery Rule](../../../img/tools_imgs/zabbix_discovery_rule.png)
 
 #### 📸 SNMP Check Configuration:
 ---
-  ![Discovery Check](/img/tools_imgs/zabbix_discovery_check.png)
+  ![Discovery Check](../../../img/tools_imgs/zabbix_discovery_check.png)
 ---
 
 !!! info "Note"
@@ -136,11 +136,11 @@ Add the following operations:
 
 #### 📸 "Action" Tab Screen
 
-![Discovery Action - Action Tab](/img/tools_imgs/zabbix_actions.png)
+![Discovery Action - Action Tab](../../../img/tools_imgs/zabbix_actions.png)
 
 #### 📸 "Operations" Tab Screen
 
-![Discovery Action - Operations Tab](/img/tools_imgs/zabbix_actions_operations.png)
+![Discovery Action - Operations Tab](../../../img/tools_imgs/zabbix_actions_operations.png)
 
 ---
 

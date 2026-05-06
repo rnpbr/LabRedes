@@ -5,8 +5,8 @@ Este guia descreve os passos necessários para configurar e executar o NetReplic
 
 ## Pré-requisitos
 
-- Docker instalado em sua máquina: [Instruções de Instalação](https://docs.docker.com/get-docker/)
-- Docker Compose instalado em sua máquina: [Instruções de Instalação](https://docs.docker.com/compose/install/)
+- Docker instalado em sua máquina: <a target="_blank" href="https://docs.docker.com/get-docker/">Instruções de Instalação</a>
+- Docker Compose instalado em sua máquina: <a target="_blank" href="https://docs.docker.com/compose/install/">Instruções de Instalação</a>
 
 ## Passo 1: Preparação do Ambiente
 

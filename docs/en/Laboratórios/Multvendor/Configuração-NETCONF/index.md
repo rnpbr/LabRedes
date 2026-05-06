@@ -16,7 +16,7 @@ ssh://git@git.rnp.br:2022/redes-abertas/schema-driven-cfg.git
 In this section, we will use `containerlab` to deploy a simple network topology defined in the `simple-lab.yaml` file.
 
 1.  **Image Generation (if necessary):**
-    The images of the virtual routers (vSRX for Juniper and NE40E for Huawei) need to be available locally. Use `vrnetlab` to build these images. Refer to the [`vrnetlab` documentation](https://containerlab.dev/manual/vrnetlab/#vrnetlab) for detailed instructions on how to generate the `VSRX 20.1R1.13` and `Huawei NE40E V800R011C00SPC607B607` images. The Cisco XRd image does not need to be generated this way, as it is already a container, just follow the instructions on the containerlab website.
+    The images of the virtual routers (vSRX for Juniper and NE40E for Huawei) need to be available locally. Use `vrnetlab` to build these images. Refer to the <a target="_blank" href="https://containerlab.dev/manual/vrnetlab/#vrnetlab">`vrnetlab` documentation</a> for detailed instructions on how to generate the `VSRX 20.1R1.13` and `Huawei NE40E V800R011C00SPC607B607` images. The Cisco XRd image does not need to be generated this way, as it is already a container, just follow the instructions on the containerlab website.
 
 2.  **Topology Deployment:**
     With the images ready, run the following command to start the lab:
@@ -159,7 +159,7 @@ python huawei_get_schema.py <host> <username> <password> [output_dir]
 
 For Juniper devices (Junos OS), it is recommended to obtain the YANG models directly from the equipment's CLI and transfer them to your local machine.
 
-Refer to the [official Juniper documentation](https://www.juniper.net/documentation/us/en/software/junos/netconf/topics/task/netconf-yang-module-obtaining-and-importing.html) for detailed guidance.
+Refer to the <a target="_blank" href="https://www.juniper.net/documentation/us/en/software/junos/netconf/topics/task/netconf-yang-module-obtaining-and-importing.html">official Juniper documentation</a> for detailed guidance.
 
 ## Obtaining YANG Models from Cisco Devices
 

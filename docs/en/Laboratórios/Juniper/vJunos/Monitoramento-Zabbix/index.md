@@ -12,7 +12,7 @@ The “zabbix-rnp-lab” laboratory demonstrates the simulation of the connectio
 
 ### :material-lan: 1.2 Lab Topology
 
-![Lab Topology](/img/labs_imgs/Topologia_Zabbix.svg)
+![Lab Topology](../../../../../img/labs_imgs/Topologia_Zabbix.svg)
 
 
 The topology of this lab consists of two routers interconnected by a point-to-point /31 network, allowing direct communication between them. The routers are configured with OSPF to ensure dynamic routing between the interfaces. Network monitoring is done through an external network called br-lab, where the routers are connected by virtual interfaces. Through this configuration, Zabbix is able to monitor network connectivity and performance.

@@ -12,7 +12,7 @@ O laboratório “zabbix-rnp-lab” demonstra a simulação da conexão entre do
 
 ### :material-lan: 1.2 Topologia do Lab
 
-![Topologia do Lab](/img/labs_imgs/Topologia_Zabbix.svg)
+![Topologia do Lab](../../../../../img/labs_imgs/Topologia_Zabbix.svg)
 
 
 A topologia deste laboratório é composta por dois roteadores interligados por uma rede ponto a ponto /31, permitindo a comunicação direta entre eles. Os roteadores estão configurados com OSPF para garantir o roteamento dinâmico entre as interfaces. O monitoramento da rede é feito por meio de uma rede externa chamada br-lab, onde os roteadores estão conectados por interfaces virtuais. Através dessa configuração, o Zabbix é capaz de monitorar a conectividade e o desempenho da rede, 

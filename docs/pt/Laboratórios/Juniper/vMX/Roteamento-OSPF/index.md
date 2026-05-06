@@ -8,7 +8,7 @@ Este laboratório simula uma rede com 3 roteadores em uma topologia em anel, con
 
 A topologia consiste em três roteadores (PB, PE, JPA) conectados em um anel. Cada roteador está configurado com interfaces de rede e endereços IP, além de protocolos OSPF para roteamento e SNMP para monitoramento, como podemos ver na imagem a seguir.
 
-![Topologia.png](/img/labs_imgs/Topologia_ospf_lab.png)
+![Topologia.png](../../../../../img/labs_imgs/Topologia_ospf_lab.png)
 
 Os roteadores estão configurados com as seguintes tecnologias:
 
@@ -28,7 +28,7 @@ Caso o seu ambiente não esteja configurado, siga os passos [Guia de Configuraç
 
    
 ### :material-application-import: 2.2 Importando Template no Netbox:
-O Containerlab utiliza [startup-config](https://containerlab.dev/manual/nodes/#remote-startup-config ) para importar configurações aos equipamentos, essas definidas em templates dentro do Netbox.
+O Containerlab utiliza <a target="_blank" href="https://containerlab.dev/manual/nodes/#remote-startup-config ">startup-config</a> para importar configurações aos equipamentos, essas definidas em templates dentro do Netbox.
 
 1. :material-git: **No Netbox, crie um Data source e adicione o repositório do git abaixo:** 
 ```bash

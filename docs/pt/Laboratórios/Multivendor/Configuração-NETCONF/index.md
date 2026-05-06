@@ -16,7 +16,7 @@ ssh://git@git.rnp.br:2022/redes-abertas/schema-driven-cfg.git
 Nesta seção, utilizaremos o `containerlab` para implantar uma topologia de rede simples definida no arquivo `simple-lab.yaml`.
 
 1.  **Geração de Imagens (se necessário):**
-    As imagens dos roteadores virtuais (vSRX para Juniper e NE40E para Huawei) precisam estar disponíveis localmente. Utilize o `vrnetlab` para construir essas imagens. Consulte a [documentação do `vrnetlab`](https://containerlab.dev/manual/vrnetlab/#vrnetlab) para instruções detalhadas sobre como gerar as imagens `VSRX 20.1R1.13` e `Huawei NE40E V800R011C00SPC607B607`. A imagem Cisco XRd não precisa ser gerada dessa maneira, pois já é um container, basta seguir as instruções no site do containerlab.
+    As imagens dos roteadores virtuais (vSRX para Juniper e NE40E para Huawei) precisam estar disponíveis localmente. Utilize o `vrnetlab` para construir essas imagens. Consulte a <a target="_blank" href="https://containerlab.dev/manual/vrnetlab/#vrnetlab">documentação do `vrnetlab`</a> para instruções detalhadas sobre como gerar as imagens `VSRX 20.1R1.13` e `Huawei NE40E V800R011C00SPC607B607`. A imagem Cisco XRd não precisa ser gerada dessa maneira, pois já é um container, basta seguir as instruções no site do containerlab.
 
 2.  **Implantação da Topologia:**
     Com as imagens prontas, execute o seguinte comando para iniciar o laboratório:
@@ -161,7 +161,7 @@ python huawei_get_schema.py <host> <username> <password> [output_dir]
 
 Para dispositivos Juniper (Junos OS), recomenda-se obter os modelos YANG diretamente pela CLI do equipamento e transferi-los para sua máquina local.
 
-Consulte a [documentação oficial da Juniper](https://www.juniper.net/documentation/us/en/software/junos/netconf/topics/task/netconf-yang-module-obtaining-and-importing.html) para orientações detalhadas.
+Consulte a <a target="_blank" href="https://www.juniper.net/documentation/us/en/software/junos/netconf/topics/task/netconf-yang-module-obtaining-and-importing.html">documentação oficial da Juniper</a> para orientações detalhadas.
 
 ## Obtendo o modelo YANG de dispositivos Cisco
 

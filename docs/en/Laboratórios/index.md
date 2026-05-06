@@ -11,12 +11,12 @@ Before you start using Containerlab, make sure you have the following prerequisi
 ### Docker
 
 - Docker is used by Containerlab to create and run the containers that make up the virtualized network.
-- **Link**: [Official Docker Documentation](https://www.docker.com/get-started/).
+- **Link**: <a target="_blank" href="https://www.docker.com/get-started/">Official Docker Documentation</a>.
 
 ### Containerlab
 
 - Install Containerlab according to the instructions provided in the official documentation.
-- **Link**: [Official Containerlab Documentation](https://containerlab.dev/install/).
+- **Link**: <a target="_blank" href="https://containerlab.dev/install/">Official Containerlab Documentation</a>.
 
 ---
 

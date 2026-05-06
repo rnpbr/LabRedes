@@ -24,7 +24,7 @@ and allows the use of various analysis tools more efficiently.
 ### :fontawesome-solid-diagram-project: **Monitoring Network Diagram**
 
 Below is a visual example that shows how the `br-lab` monitoring network is configured, connecting different laboratories and devices for a unified and efficient testing environment.
-![br-lab_diagram.svg](/img/tools_imgs/br-lab_diagram.svg)
+![br-lab_diagram.svg](../../img/tools_imgs/br-lab_diagram.svg)
 ---
 
 ## :material-tools:  **2. Creating the Docker Network**

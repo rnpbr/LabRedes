@@ -12,7 +12,7 @@ O objetivo do laboratório é simular a exportação de logs de três roteadores
 
 ### :material-lan: 1.2 Topologia do Lab
 
-![Topologia do Lab](/img/labs_imgs/Topologia_Logs_Telegraf.svg)
+![Topologia do Lab](../../../../img/labs_imgs/Topologia_Logs_Telegraf.svg)
 
 **Descrição da Topologia**
 

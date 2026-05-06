@@ -62,7 +62,7 @@ If you intend to run VSCode on a **remote host** (e.g., server or test VM):
 
 This is useful in lab or production environments where hardware resources for containers are not available on your personal machine.
 
-![SSH Mode](/img/vscode/2-ssh-mode.png)
+![SSH Mode](../../../img/vscode/2-ssh-mode.png)
 
 ---
 
@@ -75,7 +75,7 @@ This extension adds a side panel where you can:
 * Visualize topologies graphically.
 * Monitor node logs and status.
 
-![Install](/img/vscode/1-install.png)
+![Install](../../../img/vscode/1-install.png)
 
 ---
 
@@ -94,7 +94,7 @@ To install:
   ```
 * Press Enter.
 
-![EdgeShark](/img/vscode/1.1-edgeshark.png)
+![EdgeShark](../../../img/vscode/1.1-edgeshark.png)
 
 ---
 
@@ -122,7 +122,7 @@ This command downloads an installation script, executes it, and creates the fold
 
 After completion, the lab will appear in the **Local Labs** tab. Simply right-click on the lab and choose **Deploy**.
 
-![Deploy](/img/vscode/6-Deploy.gif)
+![Deploy](../../../img/vscode/6-Deploy.gif)
 
 ---
 
@@ -145,7 +145,7 @@ This replaces time-consuming manual edits in YAML, giving greater agility to the
 
 Each node in the topology can be inspected directly in VSCode. It is possible to open **real-time logs**, which helps in diagnosing failures and validating the operation of services.
 
-![Logs](/img/vscode/7-Logs.gif)
+![Logs](../../../img/vscode/7-Logs.gif)
 
 ---
 
@@ -154,7 +154,7 @@ Each node in the topology can be inspected directly in VSCode. It is possible to
 With **EdgeShark**, it is possible to capture packets from specific interfaces within the topology.
 This functionality is equivalent to using Wireshark in a real environment, making it ideal for protocol analysis and troubleshooting.
 
-![SSH Wireshark](/img/vscode/8-ssh-wireshark.gif)
+![SSH Wireshark](../../../img/vscode/8-ssh-wireshark.gif)
 
 ---
 
@@ -162,7 +162,7 @@ This functionality is equivalent to using Wireshark in a real environment, makin
 
 The **Link Impairment** feature allows you to add adverse conditions to the simulated network:
 
-![Link Imparciment](/img/vscode/9-Link-imparciment.gif)
+![Link Imparciment](../../../img/vscode/9-Link-imparciment.gif)
 
 * **Delay (ms)** – response time.
 * **Jitter** – delay variation.
@@ -187,7 +187,7 @@ In the management tab, we find additional functionalities:
 7. **Graph (TopoView)** – opens the topology in the graphic viewer.
 8. **Edit topology** – manual editing of the `.clab` topology.
 
-![Lab Options](/img/vscode/10-lab-options.png)
+![Lab Options](../../../img/vscode/10-lab-options.png)
 
 These functions complement the lifecycle of a network lab, from creation to disposal and documentation.
 

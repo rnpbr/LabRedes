@@ -8,7 +8,7 @@ Contributing to the documentation of labs in **Containerlab** is a straightforwa
 
 ### Creating Images to Represent Labs
 
-In the documentation, it's important for labs to have images representing the lab's network topology. To do this, follow the [Guide to Creating Images to Represent Labs](Guide to Creating Images to Represent Labs.md).
+In the documentation, it's important for labs to have images representing the lab's network topology.
 
 ### Steps to Document a Lab
 

@@ -9,8 +9,8 @@ monitoramento de sistemas.
 
 ## :simple-elastic: 2. O que é ELK?
 
-![Flow_Fleet_Elasticsearch.png](/img/tools_imgs/flow_fleet_elasticsearch.png)
-Fonte: [Elastic Documentation](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html)
+![Flow_Fleet_Elasticsearch.png](../../../img/tools_imgs/flow_fleet_elasticsearch.png)
+Fonte: <a target="_blank" href="https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html">Elastic Documentation</a>
 
 
 A imagem acima ilustra o fluxo de dados e a integração dos componentes do ELK Stack para monitoramento centralizado e análise em tempo real.

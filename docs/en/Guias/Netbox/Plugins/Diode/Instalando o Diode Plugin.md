@@ -3,7 +3,7 @@
 The Diode Plugin is an essential component to enable automated data ingestion into NetBox. It provides direct integration with the NetBox ORM and manages API keys, allowing the Diode server to send structured data securely and validated. With this plugin, NetBox receives real-time inventory updates, facilitating the discovery, documentation, and continuous synchronization of the network infrastructure.
 
 ## :simple-git: **Plugin Repository**
-Copy the link below or click to access the [Github Repository](https://github.com/netboxlabs/diode-netbox-plugin)
+Copy the link below or click to access the <a target="_blank" href="https://github.com/netboxlabs/diode-netbox-plugin">Github Repository</a>
 
 ```
 https://github.com/netboxlabs/diode-netbox-plugin

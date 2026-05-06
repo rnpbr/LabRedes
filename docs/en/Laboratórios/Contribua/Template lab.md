@@ -11,7 +11,7 @@ This template serves as an **example** for creating lab implementation guides in
 Clearly describe the objective of the lab, explaining what will be demonstrated or tested. Be brief, but include the main functionalities that the user will explore.
 
 This part should contain an image showing the lab topology.
-[Lab Topology](/img/labs_imgs/Topologia_ospf_lab.png)
+[Lab Topology](../../../img/labs_imgs/Topologia_ospf_lab.png)
 
 **Example: The "ospf-lab" demonstrates the configuration and testing of OSPF (Open Shortest Path First) routing in a network composed of multiple routers. The main focus is to verify the establishment of OSPF adjacency and routing between the network devices.**
 

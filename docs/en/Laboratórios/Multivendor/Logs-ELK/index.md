@@ -14,7 +14,7 @@ The visualization and analysis of logs occur through Kibana, enabling a modern a
 
 ### :material-lan: 1.2 Lab Topology
 
-![Lab Topology](/img/labs_imgs/Topologia_Logs_ELK.svg)
+![Lab Topology](../../../../img/labs_imgs/Topologia_Logs_ELK.svg)
 
 **Topology Description**
 
@@ -197,7 +197,7 @@ commit
 
 At the end of the deployment you will see the logs in Kibana like this:
 
-![Lab example in production](/img/labs_imgs/example/Exemplo_Logs_ELK.png)
+![Lab example in production](../../../../img/labs_imgs/example/Exemplo_Logs_ELK.png)
 
 ### 7.1 Elastic Agent
 

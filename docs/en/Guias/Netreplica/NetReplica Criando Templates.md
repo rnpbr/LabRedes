@@ -76,6 +76,6 @@ Remember that NetReplica is a powerful tool for replicating and analyzing networ
 
 ## **Sources**
 
-1. NetReplica (NRX) GitHub Repository. Available at: **[https://github.com/netreplica/nrx](https://github.com/netreplica/nrx)**
-2. NetReplica Templates GitHub Repository. Available at: **[https://github.com/netreplica/templates](https://github.com/netreplica/templates)**
-3. ContainerLab Manual - Kinds. Available at: **[https://containerlab.dev/manual/kinds/](https://containerlab.dev/manual/kinds/)**
+1. NetReplica (NRX) GitHub Repository. Available at: **<a target="_blank" href="https://github.com/netreplica/nrx">https://github.com/netreplica/nrx</a>**
+2. NetReplica Templates GitHub Repository. Available at: **<a target="_blank" href="https://github.com/netreplica/templates">https://github.com/netreplica/templates</a>**
+3. ContainerLab Manual - Kinds. Available at: **<a target="_blank" href="https://containerlab.dev/manual/kinds/">https://containerlab.dev/manual/kinds/</a>**

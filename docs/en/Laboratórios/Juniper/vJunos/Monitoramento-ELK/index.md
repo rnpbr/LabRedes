@@ -12,7 +12,7 @@ The main objective of the `elk-lab` is to simulate the sending and analysis of I
 
 ### :material-lan: 1.2 Lab Topology
 
-![Lab Topology](/img/labs_imgs/Topologia_ELK.svg)
+![Lab Topology](../../../../../img/labs_imgs/Topologia_ELK.svg)
 
 **Topology Description**
 

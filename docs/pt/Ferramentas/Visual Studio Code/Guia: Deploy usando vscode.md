@@ -62,7 +62,7 @@ Se você pretende executar o VSCode em um **host remoto** (ex.: servidor ou VM d
 
 Isso é útil em ambientes de laboratório ou produção onde os recursos de hardware para containers não estão disponíveis na sua máquina pessoal.
 
-![SSH Mode](/img/vscode/2-ssh-mode.png)
+![SSH Mode](../../../img/vscode/2-ssh-mode.png)
 
 ---
 
@@ -75,7 +75,7 @@ Essa extensão adiciona um painel lateral onde é possível:
 * Visualizar topologias de forma gráfica.
 * Monitorar logs e status dos nós.
 
-![Install](/img/vscode/1-install.png)
+![Install](../../../img/vscode/1-install.png)
 
 ---
 
@@ -94,7 +94,7 @@ Para instalar:
   ```
 * Pressione Enter.
 
-![EdgeShark](/img/vscode/1.1-edgeshark.png)
+![EdgeShark](../../../img/vscode/1.1-edgeshark.png)
 
 ---
 
@@ -122,7 +122,7 @@ Esse comando baixa um script de instalação, executa-o e cria a pasta com o lab
 
 Após a conclusão, o laboratório aparecerá na aba **Local Labs**. Basta clicar com o botão direito no laboratório e escolher **Deploy**.
 
-![Deploy](/img/vscode/6-Deploy.gif)
+![Deploy](../../../img/vscode/6-Deploy.gif)
 
 ---
 
@@ -145,7 +145,7 @@ Isso substitui edições manuais demoradas em YAML, dando maior agilidade ao pro
 
 Cada nó da topologia pode ser inspecionado diretamente no VSCode. É possível abrir **logs em tempo real**, o que ajuda no diagnóstico de falhas e validação de funcionamento de serviços.
 
-![Logs](/img/vscode/7-Logs.gif)
+![Logs](../../../img/vscode/7-Logs.gif)
 
 ---
 
@@ -154,7 +154,7 @@ Cada nó da topologia pode ser inspecionado diretamente no VSCode. É possível 
 Com o **EdgeShark**, é possível capturar pacotes de interfaces específicas dentro da topologia.
 Essa funcionalidade é equivalente ao uso do Wireshark em um ambiente real, sendo ideal para análise de protocolos e troubleshooting.
 
-![SSH Wireshark](/img/vscode/8-ssh-wireshark.gif)
+![SSH Wireshark](../../../img/vscode/8-ssh-wireshark.gif)
 
 ---
 
@@ -162,7 +162,7 @@ Essa funcionalidade é equivalente ao uso do Wireshark em um ambiente real, send
 
 O recurso **Link Impairment** permite adicionar condições adversas à rede simulada:
 
-![Link Imparciment](/img/vscode/9-Link-imparciment.gif)
+![Link Imparciment](../../../img/vscode/9-Link-imparciment.gif)
 
 * **Delay (ms)** – tempo de resposta.
 * **Jitter** – variação do delay.
@@ -188,7 +188,7 @@ Na aba de gerenciamento, encontramos funcionalidades adicionais:
 7. **Graph (TopoView)** – abre a topologia no visualizador gráfico.
 8. **Edit topology** – edição manual da topologia `.clab`.
 
-![Lab Options](/img/vscode/10-lab-options.png)
+![Lab Options](../../../img/vscode/10-lab-options.png)
 
 Essas funções complementam o ciclo de vida de um laboratório de rede, desde a criação até o descarte e documentação.
 

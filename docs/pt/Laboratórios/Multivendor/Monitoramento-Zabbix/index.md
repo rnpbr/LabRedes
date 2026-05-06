@@ -12,7 +12,7 @@ O laboratório “Multvendor Monitoramento Zabbix” demonstra a simulação da 
 
 ### :material-lan: 1.2 Topologia do Lab
 
-![Topologia do Lab](/img/labs_imgs/Topologia_Multvendor_Zabbix.svg)
+![Topologia do Lab](../../../../img/labs_imgs/Topologia_Multvendor_Zabbix.svg)
 
 A topologia deste laboratório é composta por três roteadores interconectados em topologia em anel, permitindo comunicação direta entre os dispositivos. Cada roteador está configurado com OSPF, garantindo o roteamento dinâmico entre as interfaces. O monitoramento é realizado a partir de uma rede externa denominada br-lab, à qual os roteadores estão conectados por interfaces virtuais. Essa configuração possibilita que o Zabbix monitore a conectividade e o desempenho da rede em tempo real, utilizando SNMP como protocolo de coleta de métricas.
 

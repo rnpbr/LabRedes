@@ -12,7 +12,7 @@ The "Multivendor Zabbix Monitoring" lab demonstrates the simulation of the inter
 
 ### :material-lan: 1.2 Lab Topology
 
-![Lab Topology](/img/labs_imgs/Topologia_Multvendor_Zabbix.svg)
+![Lab Topology](../../../../img/labs_imgs/Topologia_Multvendor_Zabbix.svg)
 
 The topology of this lab consists of three routers interconnected in a ring topology, allowing direct communication between the devices. Each router is configured with OSPF, ensuring dynamic routing between interfaces. Monitoring is performed from an external network called br-lab, to which the routers are connected by virtual interfaces. This configuration allows Zabbix to monitor the connectivity and performance of the network in real-time, using SNMP as the metric collection protocol.
 

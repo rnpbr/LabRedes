@@ -15,7 +15,7 @@ The objective of this lab is to import network devices and their configurations 
 ### :material-lan: 1.2 **Lab Topology**
 Below is the topology in image format, representing the routers, servers, and their connections.
 
-![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab.svg)
+![Topologia.svg](../../../../../img/labs_imgs/Topologia_discovery_lab.svg)
 
 The routers are configured with the following technologies:
 

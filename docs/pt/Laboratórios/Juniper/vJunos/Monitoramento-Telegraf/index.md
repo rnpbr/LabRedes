@@ -12,7 +12,7 @@ O laboratório `telegraf-lab` tem como principal objetivo simular o monitorament
 
 ### :material-lan: 1.2 Topologia do Lab
 
-![Topologia do Lab](/img/labs_imgs/Topologia_Telegraf.svg)
+![Topologia do Lab](../../../../../img/labs_imgs/Topologia_Telegraf.svg)
 
 **Descrição da Topologia**
 

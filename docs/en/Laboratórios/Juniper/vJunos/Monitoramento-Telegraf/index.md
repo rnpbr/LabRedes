@@ -12,7 +12,7 @@ The `telegraf-lab` laboratory aims to simulate traffic monitoring of a topology 
 
 ### :material-lan: 1.2 Lab Topology
 
-![Lab Topology](/img/labs_imgs/Topologia_Telegraf.svg)
+![Lab Topology](../../../../../img/labs_imgs/Topologia_Telegraf.svg)
 
 **Topology Description**
 

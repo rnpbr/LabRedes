@@ -4,8 +4,8 @@ This guide describes the necessary steps to configure and run NetReplica in a Do
 
 ## Prerequisites
 
-- Docker installed on your machine: [Installation Instructions](https://docs.docker.com/get-docker/)
-- Docker Compose installed on your machine: [Installation Instructions](https://docs.docker.com/compose/install/)
+- Docker installed on your machine: <a target="_blank" href="https://docs.docker.com/get-docker/">Installation Instructions</a>
+- Docker Compose installed on your machine: <a target="_blank" href="https://docs.docker.com/compose/install/">Installation Instructions</a>
 
 ## Step 1: Environment Preparation
 
