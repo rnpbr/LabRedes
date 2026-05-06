@@ -85,7 +85,7 @@ COPY ./configuration/local_settings.py /opt/netbox/netbox/netbox/local_settings.
 ### :material-docker: 2.4 docker-compose.override.yml
 As the name implies, this file contains the configurations that will override `docker-compose.yml`.
 
-If you haven't configured the `br-lab` network yet. Access: [Configuring the Docker Network](../../../../Laboratórios/Juniper/vJunos/Descoberta/index.md/#41-configuring-the-docker-network)
+If you haven't configured the `br-lab` network yet. Access: [Configuring the Docker Network](../../../../Laboratórios/Juniper/vJunos/Descoberta/index.md/#41-configurando-a-rede-docker)
 
 1. Create the file and access it with an editor:
 ```bash
