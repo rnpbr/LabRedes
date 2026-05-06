@@ -1,8 +1,8 @@
-# Descoberta Diode Multivendor
+# Juniper Vjuniper Descoberta
 
 ## :material-bookmark: **Introdução**
 
-Este laboratório simula uma rede com 3 roteadores de diferentes fabricantes (Juniper, Cisco e Huawei) configurados com OSPF e SNMP, integrando os componentes do Diode (plugin, server e agent) e o Netbox para importação e gerenciamento automatizado de dispositivos.
+Este laboratório simula uma rede com 3 roteadores configurados com OSPF e SNMP, integrando os componentes do Diode (plugin, server e agent) e o Netbox para importação e gerenciamento automatizado de dispositivos.
 
 ---
 
@@ -10,36 +10,35 @@ Este laboratório simula uma rede com 3 roteadores de diferentes fabricantes (Ju
 
 ### :octicons-goal-16: 1.1 **Objetivo do Lab**
 
-O objetivo deste laboratório é demonstrar, de forma prática, o processo de descoberta e importação automatizada de dispositivos de rede multivendor, abrangendo diferentes modelos e fabricantes, e suas respectivas configurações para o Netbox, utilizando o diodo-plugin, o diode-server e o orb-agent.
+O objetivo deste laboratório é demonstrar, de forma prática, o processo de importação automatizada de dispositivos de rede e suas respectivas configurações para o Netbox, utilizando o diodo-plugin, o diode-server e o orb-agent.
 
-![Topologia.svg](/img/labs_imgs/Diagrama_fluxo_diode_multivendor.svg)
+![Topologia.svg](/img/labs_imgs/Diagrama_fluxo_diode.svg)
 
 
 ### :material-lan: 1.2 **Topologia do Lab**
-Abaixo está a topologia mostrando os três roteadores — Juniper, Cisco e Huawei — além dos servidores envolvidos na arquitetura.
+Abaixo a topologia em formato imagem, representando os roteadores, servidores e suas conexões.
 
-![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab_diode_multivendor.svg)
+![Topologia.svg](/img/labs_imgs/Topologia_discovery_lab_diode.svg)
 
 Os roteadores estão configurados com as seguintes tecnologias:
 
-- **OSPF (Open Shortest Path First)**: Utilizado para roteamento dinâmico, permitindo que dispositivos (independentemente do fabricante) troquem informações sobre rotas e topologia.
-- **SNMP (Simple Network Management Protocol)**: Usado para coleta de telemetria e descoberta, garantindo compatibilidade com dispositivos Juniper, Cisco e Huawei.
+- **OSPF (Open Shortest Path First)**: Utilizado para roteamento dinâmico na rede, permitindo que os roteadores troquem informações sobre rotas e atualizações de topologia.
+- **SNMP (Simple Network Management Protocol)**: Utilizado para monitoramento e gerenciamento da rede, permitindo o acesso a informações de telemetria dos dispositivos.
 ---
 
 ## :octicons-search-16: **2. Aplicações**
 
 ### Exemplos de Aplicações
 
-Este laboratório demonstra uma arquitetura realista de descoberta automática de dispositivos em ambientes onde coexistem múltiplos fabricantes.
+Este laboratório é voltado à experimentação prática com descoberta e importação automática de dispositivos em redes IP, integrando o Diode e o Netbox.
 
 #### Possíveis Aplicações:
 
-- **Automação da descoberta multivendor:** Detecção automática de dispositivos Juniper, Cisco e Huawei e registro de seus inventários no Netbox.
-- **Padronização de inventário heterogêneo:** Criação de uma base unificada de dispositivos independentemente do fornecedor.
+- **Automação da descoberta de rede:** Identificação automática de dispositivos e registro no Netbox.
+- **Capacitação em NetDevOps e gestão de inventário:** Treino em integração de ferramentas de documentação de rede via API.
 - **Criação de repositório centralizado de dispositivos:** Construção de uma base confiável de dados da rede em tempo real.
-- **Estudo prático de SNMP em ambientes híbridos:** Comparação na prática entre diferentes MIBs e padrões dos fabricantes.
-- **Integração Diode + Netbox em cenários reais:** Prática de coleta e integração de dados de rede.
-
+- **Estudo da integração Diode + Netbox via API:** Demonstra como o agente coleta, o servidor processa e o plugin registra no inventário.
+- **Ensino de descoberta SNMP e gerenciamento centralizado:** Prática de coleta e integração de dados de rede.
 
 ---
 
@@ -101,13 +100,13 @@ Execute o script abaixo para baixar e configurar o laboratório automaticamente:
 === "Linux/Mac"
 
     ```bash
-    curl -L -o get.sh "https://git.rnp.br/redes-abertas/labs/-/raw/main/discovery-lab-diode-multivendor/get.sh?ref_type=heads&inline=false" && sh get.sh && cd discovery-lab
+    curl -L -o get.sh "https://git.rnp.br/redes-abertas/labs/-/raw/main/discovery-lab-diode/get.sh?ref_type=heads&inline=false" && sh get.sh && cd discovery-lab
     ```
 
 === "Windows"
 
     ```bat
-    curl -L -o get.bat "https://git.rnp.br/redes-abertas/labs/-/raw/main/discovery-lab-diode-multivendor/get.bat?ref_type=heads&inline=false" && call get.bat && cd discovery-lab
+    curl -L -o get.bat "https://git.rnp.br/redes-abertas/labs/-/raw/main/discovery-lab-diode/get.bat?ref_type=heads&inline=false" && call get.bat && cd discovery-lab
     ```
 
 !!! tip "Dica"
@@ -120,8 +119,7 @@ Execute o script abaixo para baixar e configurar o laboratório automaticamente:
 
 ### :material-router-wireless: 5.1 Subindo os Roteadores com Containerlab
 
-Aqui, os três dispositivos Juniper/Cisco/Huawei serão inicializados.
-O tempo de boot pode variar conforme o fabricante.
+Inicie a topologia com o comando:
 
 ```bash
 sudo clab deploy -t clab/discovery-lab.clab.yaml
@@ -218,7 +216,7 @@ RUN /usr/local/bin/uv pip install -r /opt/netbox/plugin_requirements.txt
 #### :material-docker: **5.3.4. docker-compose.override.yml**
 Como o nome implica, esse arquivo contaim as configurações que vão sobrescrever o `docker-compose.yml`.
 
-Caso você ainda não tenha configurado a rede `br-lab`. Acesse: [Configurando a Rede Docker](../../../../Laboratórios/Juniper/vJunos/Descoberta/index.md/#41-configurando-a-rede-docker)
+Caso você ainda não tenha configurado a rede `br-lab`. Acesse: [Configurando a Rede Docker](../../../../Laboratórios/Juniper/vJunos/Descoberta/index.md/#31-configurando-a-rede-docker)
 
 1. Crie o arquivo e acesse com um editor:
 ```bash
@@ -348,21 +346,23 @@ cd ./orb-agent
 
 2. No arquivo `.env`, configure as variáveis de acordo com o seu ambiente.
 ```bash
-DOCKER_NETWORK=br-lab                      # Container Network
-DOCKER_SUBNET=172.10.10.0/24               # Devices Network
-DIODE_CLIENT_ID=                           # Diode Client Id
-DIODE_CLIENT_SECRET=                       # Diode Client Secret
-DIODE_HOST=<your-ip>:8080                  # Diode Server Url
-AGENT_NAME=agent1                          # Agent Name
-SITE_NAME=RNP                              # Netbox Site Name 
-MULTIDEVICE_COMMUNITY="public"             # Device Community
+DOCKER_NETWORK=br-lab           # Container Network
+DOCKER_SUBNET=172.10.10.0/24    # Devices Network
+DIODE_CLIENT_ID=                # Diode Client Id
+DIODE_CLIENT_SECRET=            # Diode Client Secret
+DIODE_HOST=<your-ip>:8080       # Diode Server Url
+AGENT_NAME=agent1               # Agent Name
+SITE_NAME=RNP                   # Netbox Site Name 
+DEVICE_USERNAME=admin           # Device username 
+JUNIPER_PASSWORD=admin@123      # Device Password
+JUNIPER_COMMUNITY="public"      # Device Community
 ```
 
 Aqui fica o `Client Id` e o `Client Secret` gerados no plugin do diode no Netbox.
 
 3. Agora, vamos aplicar as variáveis no template de importação do juniper com o comando:
 ```bash
-set -o allexport && source .env && envsubst < agent.snmp.template.yaml > agent.yaml
+set -o allexport && source .env && envsubst < ./juniper/agent.device.template.yaml > agent.yaml
 ```
 
 ### 6.2 **Iniciando a coleta dos dados**
@@ -385,15 +385,13 @@ Após o laboratório ser iniciado, você poderá acessar os dispositivos e servi
 
 Aqui está a tabela de dispositivos, IPs e portas de serviço disponíveis no laboratório.
 
-| Dispositivo  | Fabricante | IP            | Porta | Serviço |
-| ------------ | ---------- | ------------- | ----- | ------- |
-| **node1**    | Juniper    | 172.10.10.201 | 22    | SSH     |
-| **node2**    | Cisco      | 172.10.10.202 | 22    | SSH     |
-| **node3**    | Huawei     | 172.10.10.203 | 22    | SSH     |
-| **Diode**    | —          | localhost     | 8080  | API     |
-| **Netbox**   | —          | localhost     | 8000  | Web UI  |
-| **Graphite** | —          | 172.20.20.1   | 8081  | Web UI  |
-
+| Dispositivo | IP de Acesso | Porta | Serviço |
+| --- | --- | --- | --- |
+| **GO** | 172.10.10.12 | 22 | SSH |
+| **MS** | 172.10.10.17 | 22 | SSH |
+| **MT** | 172.10.10.18 | 22 | SSH |
+| **Servidor de Monitoramento** | 172.20.20.1 | 8081 | Web (Graphite) |
+| **Netbox** | localhost | 8000 | Zabbix |
 
 ### :material-key-link: 7.2 Senhas de Acesso
 
@@ -401,9 +399,10 @@ Aqui está a tabela com as senhas de acesso dos serviços configurados no labora
 
 | Serviço | Usuário | Senha |
 | --- | --- | --- |
-| **node1 (SSH)** | admin | admin@123 |
-| **node2 (SSH)** | clab | clab@123 |
-| **node3 (SSH)** | admin | admin |
+| **AC (SSH)** | admin | admin@123 |
+| **MS (SSH)** | admin | admin@123 |
+| **MT (SSH)** | admin | admin@123 |
+| **Graphite (Web)** | admin | admin@123 |
 | **Netbox (Web)** | Admin | Admin |
 
 !!! warning "Atenção" 
@@ -413,11 +412,12 @@ Aqui está a tabela com as senhas de acesso dos serviços configurados no labora
 ## :octicons-rocket-24: 8. Próximos Passos
 Com o laboratório finalizado, você pode seguir algum passos abaixo como **extra**.
 
-- Testar diferenças de coleta SNMP entre Juniper, Cisco e Huawei.
-- Comparar estrutura de MIBs utilizadas na importação.
-- Adicionar novos dispositivos de qualquer fabricante para verificar compatibilidade.
+- Explorar outros tipos de importação, como Network e SNMP discovery.
+- Explorar o Netbox para visualizar e gerenciar o inventário da rede.
+- Modificar a topologia conforme a necessidade (em futuras versões personalizadas).
+- Consultar as configurações importadas pelo agente.
 ---
 
 ### :fontawesome-solid-paintbrush: 9. Conclusão
 
-✅ Agora você aprendeu como utilizar os componentes do Diode para importar automaticamente uma rede composta por dispositivos Juniper, Cisco e Huawei, construindo um inventário completo no Netbox e possibilitando a criação do seu Digital Twin com o Netreplica.
+✅ Pronto! Agora você já sabe como utilizar os componentes do Diode para importar a sua própria rede para o Netbox, assim você consegue também, através do Netreplica, gerar seu próprio Digital Twin!.
