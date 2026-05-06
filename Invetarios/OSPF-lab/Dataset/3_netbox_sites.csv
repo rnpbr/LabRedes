@@ -1,0 +1,4 @@
+"name","status","tenant","tags","slug"
+"PA-PB","active","RNP","rnp-core","pa-pb"
+"PoP-PB","active","RNP","rnp-core","pop-pb"
+"PoP-PE","active","RNP","rnp-core","pop-pe"

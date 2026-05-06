@@ -1,0 +1,4 @@
+"label","side_a_name","side_b_name","status","side_a_type","side_b_type","description","side_a_device","side_b_device"
+"PE - PB","ge-0/0/0","ge-0/0/0","connected","dcim.interface","dcim.interface","100GB","PE","PB"
+"PE - JPA","ge-0/0/1","ge-0/0/1","connected","dcim.interface","dcim.interface","100GB","PE","JPA"
+"PB - JPA","ge-0/0/1","ge-0/0/0","connected","dcim.interface","dcim.interface","10GB","PB","JPA"

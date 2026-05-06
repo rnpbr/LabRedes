@@ -1,0 +1,4 @@
+"name","status","site","role","manufacturer","device_type","tags","platform"
+"JPA","active","PA-PB","Core","Juniper","MX","rnp-core","junos"
+"PB","active","PoP-PB","Core","Juniper","MX","rnp-core","junos"
+"PE","active","PoP-PE","Core","Juniper","MX","rnp-core","junos"
