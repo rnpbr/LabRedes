@@ -15,6 +15,7 @@ commitizen = "^3.28.0"
 mkdocs-static-i18n = "^1.2.3"
 python-dotenv = "^1.0.1"
 google-genai = "^1.0.0"
+mkdocs-pdf = "^0.1.2"
 
 
 [build-system]
