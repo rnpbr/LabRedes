@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="880" viewBox="0 0 1900 880" role="img" aria-labelledby="titulo descricao" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif">
+<title id="titulo">Topologia lógica do laboratório multidomínio OSPF com Flex-Algo</title>
+<desc id="descricao">Três domínios OSPF independentes, A, B e C. DBR-AB1 e DBR-AB2 pertencem a A e B; DBR-BC1 e DBR-BC2 pertencem a B e C. Em cada domínio um enlace red mais barato atrai o SPF default e é excluído pelo Flex-Algo 128. A SR Policy de PE1 segue PE1, P1, DBR-AB1, DBR-BC1, P3 e PE9.</desc>
+<rect width="1900" height="880" rx="18" fill="#ffffff" stroke="#dde8ec"/>
+<text x="57" y="44" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#8ba2ad" font-weight="700" letter-spacing="1.7">FIGURA 1 · SR-MPLS MULTIDOMÍNIO</text>
+<text x="57" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="25" fill="#0e2430" font-weight="700" letter-spacing="-0.4">Topologia lógica</text>
+<text x="1843" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#55707c" text-anchor="end">três processos OSPF · DBRs compartilhados · Flex-Algo 128 exclui red</text>
+<rect x="40" y="112" width="650" height="560" rx="20" fill="#f4f8fa" stroke="#c6dae2" stroke-width="1.5" stroke-dasharray="8 7"/>
+<text x="365" y="150" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="17" fill="#0e2430" font-weight="700" text-anchor="middle">Domínio A</text>
+<text x="365" y="172" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c" text-anchor="middle">OSPF 100 · área 0 · 10.1.0.0/16</text>
+<rect x="710" y="112" width="480" height="560" rx="20" fill="#f4f8fa" stroke="#c6dae2" stroke-width="1.5" stroke-dasharray="8 7"/>
+<text x="950" y="150" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="17" fill="#0e2430" font-weight="700" text-anchor="middle">Domínio B</text>
+<text x="950" y="172" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c" text-anchor="middle">OSPF 200 · área 0 · 10.2.0.0/16</text>
+<rect x="1210" y="112" width="650" height="560" rx="20" fill="#f4f8fa" stroke="#c6dae2" stroke-width="1.5" stroke-dasharray="8 7"/>
+<text x="1535" y="150" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="17" fill="#0e2430" font-weight="700" text-anchor="middle">Domínio C</text>
+<text x="1535" y="172" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c" text-anchor="middle">OSPF 300 · área 0 · 10.3.0.0/16</text>
+<line x1="700" y1="120" x2="700" y2="664" stroke="#8ba2ad" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 8" opacity="0.6"/>
+<rect x="648" y="640" width="104" height="22" rx="11" fill="#ffffff" stroke="#d4e1e7" stroke-width="1"/>
+<text x="700" y="655" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" font-weight="700" text-anchor="middle">fronteira AB</text>
+<line x1="1200" y1="120" x2="1200" y2="664" stroke="#8ba2ad" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 8" opacity="0.6"/>
+<rect x="1148" y="640" width="104" height="22" rx="11" fill="#ffffff" stroke="#d4e1e7" stroke-width="1"/>
+<text x="1200" y="655" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" font-weight="700" text-anchor="middle">fronteira BC</text>
+<line x1="180" y1="400" x2="450" y2="255" stroke="#2b6a93" stroke-width="22" stroke-linecap="round" opacity="0.22"/>
+<line x1="450" y1="255" x2="700" y2="255" stroke="#2b6a93" stroke-width="22" stroke-linecap="round" opacity="0.22"/>
+<line x1="700" y1="255" x2="1200" y2="255" stroke="#2b6a93" stroke-width="22" stroke-linecap="round" opacity="0.22"/>
+<line x1="1200" y1="255" x2="1450" y2="255" stroke="#2b6a93" stroke-width="22" stroke-linecap="round" opacity="0.22"/>
+<line x1="1450" y1="255" x2="1720" y2="400" stroke="#2b6a93" stroke-width="22" stroke-linecap="round" opacity="0.22"/>
+<line x1="180" y1="400" x2="450" y2="255" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="180" y1="400" x2="450" y2="545" stroke="#bd2f56" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7"/>
+<line x1="450" y1="255" x2="450" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="450" y1="255" x2="700" y2="255" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="450" y1="545" x2="700" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="700" y1="255" x2="1200" y2="255" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="700" y1="255" x2="1200" y2="545" stroke="#bd2f56" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7"/>
+<line x1="700" y1="545" x2="1200" y2="255" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="700" y1="545" x2="1200" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="760" y1="255" x2="760" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1140" y1="255" x2="1140" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1200" y1="255" x2="1450" y2="255" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1200" y1="545" x2="1450" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1260" y1="255" x2="1260" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1450" y1="255" x2="1450" y2="545" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1450" y1="255" x2="1720" y2="400" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="1450" y1="545" x2="1720" y2="400" stroke="#bd2f56" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7"/>
+<g>
+<rect x="102" y="365" width="156" height="70" rx="13" fill="#ffffff" stroke="#2b6a93" stroke-width="1.6"/>
+<text x="180" y="385" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#2b6a93" font-weight="700" text-anchor="middle" letter-spacing="0.75">PE · HEADEND</text>
+<text x="180" y="406" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">pe1</text>
+<text x="180" y="424" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">10.1.255.1</text>
+</g>
+<g>
+<rect x="372" y="220" width="156" height="70" rx="13" fill="#ffffff" stroke="#55707c" stroke-width="1.6"/>
+<text x="450" y="240" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#55707c" font-weight="700" text-anchor="middle" letter-spacing="0.75">P</text>
+<text x="450" y="261" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">p1</text>
+<text x="450" y="279" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">10.1.255.2</text>
+</g>
+<g>
+<rect x="372" y="510" width="156" height="70" rx="13" fill="#ffffff" stroke="#55707c" stroke-width="1.6"/>
+<text x="450" y="530" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#55707c" font-weight="700" text-anchor="middle" letter-spacing="0.75">P</text>
+<text x="450" y="551" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">p2</text>
+<text x="450" y="569" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">10.1.255.3</text>
+</g>
+<g>
+<rect x="602" y="216" width="196" height="78" rx="13" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="700" y="236" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#0a7f5c" font-weight="700" text-anchor="middle" letter-spacing="0.75">DBR · A + B</text>
+<text x="700" y="257" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">dbr-ab1</text>
+<text x="700" y="275" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">anycast 10.255.12.12</text>
+</g>
+<g>
+<rect x="602" y="506" width="196" height="78" rx="13" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="700" y="526" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#0a7f5c" font-weight="700" text-anchor="middle" letter-spacing="0.75">DBR · A + B</text>
+<text x="700" y="547" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">dbr-ab2</text>
+<text x="700" y="565" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">anycast 10.255.12.12</text>
+</g>
+<g>
+<rect x="1102" y="216" width="196" height="78" rx="13" fill="#ffffff" stroke="#a2660a" stroke-width="1.6"/>
+<text x="1200" y="236" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#a2660a" font-weight="700" text-anchor="middle" letter-spacing="0.75">DBR · B + C</text>
+<text x="1200" y="257" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">dbr-bc1</text>
+<text x="1200" y="275" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">anycast 10.255.23.23</text>
+</g>
+<g>
+<rect x="1102" y="506" width="196" height="78" rx="13" fill="#ffffff" stroke="#a2660a" stroke-width="1.6"/>
+<text x="1200" y="526" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#a2660a" font-weight="700" text-anchor="middle" letter-spacing="0.75">DBR · B + C</text>
+<text x="1200" y="547" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">dbr-bc2</text>
+<text x="1200" y="565" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">anycast 10.255.23.23</text>
+</g>
+<g>
+<rect x="1372" y="220" width="156" height="70" rx="13" fill="#ffffff" stroke="#55707c" stroke-width="1.6"/>
+<text x="1450" y="240" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#55707c" font-weight="700" text-anchor="middle" letter-spacing="0.75">P</text>
+<text x="1450" y="261" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">p3</text>
+<text x="1450" y="279" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">10.3.255.3</text>
+</g>
+<g>
+<rect x="1372" y="510" width="156" height="70" rx="13" fill="#ffffff" stroke="#55707c" stroke-width="1.6"/>
+<text x="1450" y="530" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#55707c" font-weight="700" text-anchor="middle" letter-spacing="0.75">P</text>
+<text x="1450" y="551" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">p4</text>
+<text x="1450" y="569" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">10.3.255.4</text>
+</g>
+<g>
+<rect x="1642" y="365" width="156" height="70" rx="13" fill="#ffffff" stroke="#2b6a93" stroke-width="1.6"/>
+<text x="1720" y="385" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#2b6a93" font-weight="700" text-anchor="middle" letter-spacing="0.75">PE · ENDPOINT</text>
+<text x="1720" y="406" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0e2430" font-weight="700" text-anchor="middle">pe9</text>
+<text x="1720" y="424" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#55707c" text-anchor="middle">10.3.255.9</text>
+</g>
+<circle cx="315" cy="327.5" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="315" y="331.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="315" cy="472.5" r="13.5" fill="#ffffff" stroke="#bd2f56" stroke-width="1.6"/>
+<text x="315" y="476.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#bd2f56" font-weight="700" text-anchor="middle">5</text>
+<circle cx="450" cy="400" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="450" y="404" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="575" cy="255" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="575" y="259" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="575" cy="545" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="575" y="549" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="950" cy="255" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="950" y="259" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">20</text>
+<circle cx="850" cy="342" r="13.5" fill="#ffffff" stroke="#bd2f56" stroke-width="1.6"/>
+<text x="850" y="346" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#bd2f56" font-weight="700" text-anchor="middle">5</text>
+<circle cx="850" cy="458" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="850" y="462" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">20</text>
+<circle cx="950" cy="545" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="950" y="549" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="760" cy="400" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="760" y="404" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">30</text>
+<circle cx="1140" cy="400" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="1140" y="404" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">30</text>
+<circle cx="1325" cy="255" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="1325" y="259" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="1325" cy="545" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="1325" y="549" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">5</text>
+<circle cx="1260" cy="400" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="1260" y="404" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">5</text>
+<circle cx="1450" cy="400" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="1450" y="404" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="1585" cy="327.5" r="13.5" fill="#ffffff" stroke="#0a7f5c" stroke-width="1.6"/>
+<text x="1585" y="331.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">10</text>
+<circle cx="1585" cy="472.5" r="13.5" fill="#ffffff" stroke="#bd2f56" stroke-width="1.6"/>
+<text x="1585" y="476.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#bd2f56" font-weight="700" text-anchor="middle">5</text>
+<line x1="60" y1="712" x2="110" y2="712" stroke="#0a7f5c" stroke-width="4.5" stroke-linecap="round"/>
+<text x="122" y="716" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c">enlace limpo · custo OSPF no círculo, igual nos dois lados</text>
+<line x1="560" y1="712" x2="610" y2="712" stroke="#bd2f56" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7"/>
+<text x="622" y="716" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c">afinidade red · mais barato, atrai o SPF default · excluído pelo Algo 128</text>
+<line x1="1170" y1="712" x2="1220" y2="712" stroke="#2b6a93" stroke-width="22" stroke-linecap="butt" opacity="0.22"/>
+<text x="1232" y="716" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c">caminho da SR Policy color 128 · pilha 17120 / 17230 / 17309</text>
+<rect x="60" y="755" width="112" height="20" rx="10" fill="#0a7f5c" opacity="0.14"/>
+<text x="116" y="769" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#0a7f5c" font-weight="700" text-anchor="middle">Anycast AB</text>
+<text x="186" y="769" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#55707c">10.255.12.12/32 · index 1120 · label 17120 · DBR-AB1 e DBR-AB2, anunciado em OSPF 100 e OSPF 200</text>
+<rect x="60" y="785" width="112" height="20" rx="10" fill="#a2660a" opacity="0.14"/>
+<text x="116" y="799" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#a2660a" font-weight="700" text-anchor="middle">Anycast BC</text>
+<text x="186" y="799" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#55707c">10.255.23.23/32 · index 1230 · label 17230 · DBR-BC1 e DBR-BC2, anunciado em OSPF 200 e OSPF 300</text>
+<rect x="60" y="815" width="112" height="20" rx="10" fill="#2b6a93" opacity="0.14"/>
+<text x="116" y="829" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#2b6a93" font-weight="700" text-anchor="middle">Node-SID PE9</text>
+<text x="186" y="829" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#55707c">10.3.255.9/32 · index 1309 · label 17309 · só no domínio C</text>
+</svg>
