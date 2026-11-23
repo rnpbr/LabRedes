@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="584" viewBox="0 0 1240 584" role="img" aria-labelledby="titulo descricao" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif">
+<title id="titulo">Reparo TI-LFA pré-instalado no CEF</title>
+<desc id="descricao">O caminho primário de pe-pop-pb para asbr-pop-pb passa por p-pop-a; o reparo pré-instalado usa p-pop-b e aparece no CEF como Local-LFA.</desc>
+<defs><marker id="seta-alt" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0.6 L10 5 L0 9.4 Z" fill="#a2660a"/></marker></defs>
+<rect width="1240" height="584" rx="18" fill="#ffffff" stroke="#dde8ec"/>
+<text x="57" y="44" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#8ba2ad" font-weight="700" letter-spacing="1.7">FIGURA 4 · PROTEÇÃO LOCAL</text>
+<text x="57" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="25" fill="#0e2430" font-weight="700" letter-spacing="-0.4">O reparo já está programado</text>
+<line x1="240.67" y1="254" x2="287.33" y2="234" stroke="#0a7f5c" stroke-width="5" stroke-linecap="round" opacity="0.3"/>
+<line x1="464.67" y1="234" x2="511.33" y2="254" stroke="#0a7f5c" stroke-width="5" stroke-linecap="round" opacity="0.3"/>
+<line x1="230.81" y1="330" x2="297.19" y2="362" stroke="#a2660a" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 7" opacity="1" marker-end="url(#seta-alt)"/>
+<line x1="454.81" y1="362" x2="521.19" y2="330" stroke="#a2660a" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 7" opacity="1" marker-end="url(#seta-alt)"/>
+<circle cx="264" cy="244" r="16" fill="#ffffff" stroke="#bd2f56" stroke-width="2.4"/>
+<line x1="258.5" y1="238.5" x2="269.5" y2="249.5" stroke="#bd2f56" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="258.5" y1="249.5" x2="269.5" y2="238.5" stroke="#bd2f56" stroke-width="2.6" stroke-linecap="round"/>
+<text x="238" y="248" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#bd2f56" font-weight="700" text-anchor="end">falha do enlace</text>
+<rect x="66" y="263" width="172" height="58" rx="13" fill="#ffffff" stroke="#2b6a93" stroke-width="1.6"/>
+<text x="152" y="289" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#0e2430" font-weight="700" text-anchor="middle">pe-pop-pb</text>
+<text x="152" y="309" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" text-anchor="middle">PLR · PE de ingresso</text>
+<rect x="290" y="167" width="172" height="58" rx="13" fill="#ffffff" stroke="#55707c" stroke-width="1.6"/>
+<text x="376" y="193" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#0e2430" font-weight="700" text-anchor="middle">p-pop-a</text>
+<text x="376" y="213" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" text-anchor="middle">ramo primário · custo 10</text>
+<rect x="290" y="371" width="172" height="58" rx="13" fill="#ffffff" stroke="#a2660a" stroke-width="1.6"/>
+<text x="376" y="397" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#0e2430" font-weight="700" text-anchor="middle">p-pop-b</text>
+<text x="376" y="417" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" text-anchor="middle">ramo de reparo · custo 20</text>
+<rect x="514" y="263" width="172" height="58" rx="13" fill="#ffffff" stroke="#bd2f56" stroke-width="1.6"/>
+<text x="600" y="289" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#0e2430" font-weight="700" text-anchor="middle">asbr-pop-pb</text>
+<text x="600" y="309" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" text-anchor="middle">destino protegido</text>
+<rect x="277.69" y="269.25" width="196.63" height="45.5" rx="10" fill="#ffffff" stroke="#d4e1e7" stroke-width="1"/>
+<text x="376" y="287.22" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#a2660a" font-weight="700" text-anchor="middle">reparo pré-computado no PLR</text>
+<text x="376" y="303.22" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#55707c" text-anchor="middle">pe-pop-pb → p-pop-b → asbr-pop-pb</text>
+<rect x="716" y="118" width="467" height="348" rx="16" fill="#f4f8fa" stroke="#c6dae2" stroke-width="1.5"/>
+<text x="742" y="152" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#8ba2ad" font-weight="700" letter-spacing="1.5">O QUE É O ACEITE</text>
+<text x="742" y="178" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#55707c">show cef 10.0.0.4/32 detail</text>
+<text x="742" y="206" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#0e2430">via 192.0.2.1</text>
+<text x="876" y="206" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#0a7f5c" font-weight="700">protected</text>
+<text x="742" y="232" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#0e2430">via 192.0.2.3</text>
+<text x="876" y="232" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#a2660a" font-weight="700">backup (Local-LFA)</text>
+<line x1="742" y1="274" x2="1157" y2="274" stroke="#e4edf0" stroke-width="1" stroke-linecap="butt"/>
+<text x="742" y="304" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#8ba2ad" font-weight="700" letter-spacing="1.5">O QUE NÃO ESTÁ PROVADO AQUI</text>
+<circle cx="748" cy="328" r="3" fill="#bd2f56"/>
+<text x="762" y="332" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c">tempo de restauração em milissegundos</text>
+<circle cx="748" cy="354" r="3" fill="#bd2f56"/>
+<text x="762" y="358" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c">detecção de falha — não há BFD no lab</text>
+<circle cx="748" cy="380" r="3" fill="#bd2f56"/>
+<text x="762" y="384" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#55707c">encaminhamento real: XRd é control plane</text>
+<line x1="57" y1="490" x2="1183" y2="490" stroke="#e4edf0" stroke-width="1" stroke-linecap="butt"/>
+<text x="57" y="516" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#55707c">Neste losango o vizinho do outro ramo já satisfaz a condição de LFA: ver Backup (Local-LFA) com TI-LFA habilitado é o resultado correto, não uma falha do recurso.</text>
+<text x="57" y="533" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#55707c">Uma repair list com vários segmentos exigiria uma topologia em que nenhum LFA local atenda.</text>
+</svg>

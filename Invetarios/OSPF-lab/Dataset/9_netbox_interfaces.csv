@@ -1,0 +1,7 @@
+"name","device","enabled","type","description","speed"
+"ge-0/0/1","JPA","true","1000base-t","JPA - PE","1000000"
+"ge-0/0/0","JPA","true","1000base-t","JPA - PB","1000000"
+"ge-0/0/0","PB","true","1000base-t","PB - PE","1000000"
+"ge-0/0/1","PB","true","1000base-t","PB - JPA","1000000"
+"ge-0/0/1","PE","true","1000base-t","PE - JPA","1000000"
+"ge-0/0/0","PE","true","1000base-t","PE - PB","1000000"

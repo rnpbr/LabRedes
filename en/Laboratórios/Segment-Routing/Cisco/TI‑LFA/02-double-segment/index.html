@@ -1,0 +1,5772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://rnpbr.github.io/LabRedes/en/Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/02-double-segment/">
+      
+      
+        <link rel="prev" href="../01-single-segment/">
+      
+      
+      
+        
+          <link rel="alternate" href="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/02-double-segment/" hreflang="pt">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>TI-LFA Double-Segment - LabRedes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../termynal.css">
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NEEXQ81RDP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-NEEXQ81RDP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NEEXQ81RDP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ti-lfa-double-segment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../../" title="LabRedes" class="md-header__button md-logo" aria-label="LabRedes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LabRedes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TI-LFA Double-Segment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/02-double-segment/" hreflang="pt" class="md-select__link">
+              português
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English (WIP)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rnpbr/LabRedes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LabRedes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../" title="LabRedes" class="md-nav__button md-logo" aria-label="LabRedes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    LabRedes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rnpbr/LabRedes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LabRedes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Contribua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Getting%20Started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Primeiros%20passos%20-%20preparando%20o%20ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started: Preparing the Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Edgeshark/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edgeshark
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Edgeshark
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Elasticsearch/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Elasticsearch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Elasticsearch/Configurando%20IPFIX%20no%20ELK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring IPFIX on ELK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Elasticsearch/Configurando%20Syslog%20no%20ELK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurando Syslog no ELK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/LibreNMS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LibreNMS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LibreNMS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Visual%20Studio%20Code/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visual Studio Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Visual%20Studio%20Code/Guia%20-%20Deploy%20usando%20vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide: Deploying Network Labs using VSCode and Containerlab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Zabbix/Configurando%20Auto%20Discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Discovery in Zabbix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visual Studio Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Visual%20Studio%20Code/Guia%3A%20Deploy%20usando%20vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia: Deploy de Laboratórios de Rede usando VSCode e Containerlab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netbox
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netbox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_2" id="__nav_6_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Plugins/Branching/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branching
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Branching
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Plugins/Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1_2_2" id="__nav_6_1_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing the Diode Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing the Diode Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing the Diode Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Plugins/Napalm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Napalm
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Napalm
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Render_Templates/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Render Templates
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1_3" id="__nav_6_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Render Templates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Render_Templates/Criando%20um%20Template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Template Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netreplica/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netreplica
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netreplica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netreplica/NetReplica%20Criando%20Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetReplica Criando Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netreplica/NetReplica%20Guia%20Configura%C3%A7%C3%A3o%20e%20Execu%C3%A7%C3%A3o%20com%20NetBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetReplica Guide: Configuration and Execution with NetBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Contribua/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribua
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contribua
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Contribua/Guia%20Criando%20Imagens%20para%20Representar%20Laborat%C3%B3rios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide: Creating Images to Represent Labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Contribua/Template%20lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template Lab (Lab Name)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Juniper
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Juniper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_1" id="__nav_7_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vJunos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vJunos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Descoberta/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Descoberta-Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Monitoramento-ELK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento ELK
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento ELK
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Monitoramento-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_2" id="__nav_7_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vMX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vMX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vMX/Roteamento-OSPF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteamento OSPF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roteamento OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multivendor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multivendor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Automa%C3%A7%C3%A3o-Event-Driven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automação Event Driven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Automação Event Driven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Configura%C3%A7%C3%A3o-NETCONF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuração NETCONF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuração NETCONF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Descoberta-Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Logs-ELK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs ELK
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs ELK
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Logs-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multvendor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multvendor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multvendor/Configura%C3%A7%C3%A3o-NETCONF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuração NETCONF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuração NETCONF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multvendor/Logs-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multvendor/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Segment Routing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Segment Routing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-preparacao-do-ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparação do ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-base-sr-mpls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base SR-MPLS no IOS-XR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-referencia-lab-5-nos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Cisco XRd SR-MPLS de 5 nós (referência)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Inter%E2%80%91AS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter‑AS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_5" id="__nav_8_1_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Inter‑AS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/bgp-lu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-AS: BGP-LU entre o PoP-PB e o backbone Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/guia-aprofundado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia aprofundado: da configuração ao fio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/recorte-rede-ipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recorte PoP-PB ↔ backbone Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/validacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validação do lab bgp-lu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Multidom%C3%ADnio/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_6" id="__nav_8_1_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multidomínio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Multidom%C3%ADnio/flex-algo-anycast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio: Flex-Algo com SID anycast de borda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Multidom%C3%ADnio/validacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validação do lab flex-algo-anycast
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../SR%E2%80%91TE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SR‑TE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_7" id="__nav_8_1_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SR‑TE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SR%E2%80%91TE/explicit-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SR-TE: Explicit Policy sobre a Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI‑LFA
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_8" id="__nav_8_1_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TI‑LFA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-zero-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Zero-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-single-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Single-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Double-Segment
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Double-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#este-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Este lab
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Este lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-double-segment-aparece" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o double-segment aparece
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enderecamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endereçamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-do-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos do laboratório
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verificação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-adjacencias-ospf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Adjacências OSPF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-confirmar-o-custo-elevado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Confirmar o custo elevado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-backup-ti-lfa-para-es" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Backup TI-LFA para ES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-diferenca-de-comportamento-vs-single-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Diferença de comportamento vs. single-segment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quando-isso-acontece-na-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quando isso acontece na prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#este-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Este lab
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Este lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-double-segment-aparece" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o double-segment aparece
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enderecamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endereçamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-do-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos do laboratório
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verificação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-adjacencias-ospf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Adjacências OSPF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-confirmar-o-custo-elevado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Confirmar o custo elevado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-backup-ti-lfa-para-es" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Backup TI-LFA para ES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-diferenca-de-comportamento-vs-single-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Diferença de comportamento vs. single-segment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quando-isso-acontece-na-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quando isso acontece na prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../../" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../../Ferramentas/Visual%20Studio%20Code/Guia%3A%20Deploy%20usando%20vscode/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Pt
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Laboratórios
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Segment Routing
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cisco
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    TI‑LFA
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rnpbr/LabRedes/tree/main/docs/pt/Laboratórios/Segment-Routing/Cisco/TI‑LFA/02-double-segment.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="ti-lfa-double-segment">TI-LFA Double-Segment</h1>
+<div class="admonition info">
+<p class="admonition-title">Repositório</p>
+<p>Este conteúdo vem do repositório <strong><a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting">github.com/rnpbr/LabRedes-segmentrouting</a></strong>. Arquivos deste laboratório: <a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting/tree/main/labs/cisco/sr-mpls/ti-lfa/02-double-segment"><code>labs/cisco/sr-mpls/ti-lfa/02-double-segment</code></a>.</p>
+</div>
+<h2 id="contexto"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v16l7-3 7 3V5a2 2 0 0 0-2-2"/></svg></span> <strong>Contexto</strong></h2>
+<p>Continuação direta do <a href="../01-single-segment/">single-segment</a>: mesma rede, mesmos seis PoPs, mesmo PLR (SP) protegendo o mesmo link (SP-DF) para o mesmo destino final (ES). A única mudança é um único parâmetro: o custo do enlace MG-BA sobe de <code>10</code> para <code>1000</code>.</p>
+<p>Essa mudança é suficiente para quebrar a interseção entre P-space e Q-space que existia no single-segment. Quando isso acontece, não existe mais um único PQ-node. O backup precisa "costurar" um nó do P-space a um nó do Q-space usando um enlace explícito entre os dois, endereçado por um <strong>Adjacency-SID</strong>. Dois labels adicionais em vez de um: por isso <em>double</em>-segment.</p>
+<hr />
+<h2 id="este-lab"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v16l7-3 7 3V5a2 2 0 0 0-2-2"/></svg></span> <strong>Este lab</strong></h2>
+<p>Mesma topologia física do single-segment. SP tem dois links, um direto para DF (o protegido) e um para RJ. A partir de RJ existe um caminho de volta até DF passando por MG e BA. ES está pendurado atrás de DF, com um único link. Adjacências: <code>SP&lt;-&gt;DF</code> (protegido), <code>SP&lt;-&gt;RJ</code>, <code>RJ&lt;-&gt;MG</code>, <code>MG&lt;-&gt;BA</code>, <code>BA&lt;-&gt;DF</code>, <code>DF&lt;-&gt;ES</code>.</p>
+<p>Muda só um número: o enlace MG-BA sobe de custo 10 para <strong>1000</strong>. Todos os demais enlaces, incluindo o link protegido SP-DF, seguem custo 10.</p>
+<h3 id="por-que-o-double-segment-aparece">Por que o double-segment aparece</h3>
+<p>Refazendo o cálculo de P-space (estendido, via o vizinho RJ) e Q-space com o novo custo:</p>
+<p><strong>P-space estendido(SP, SP-DF)</strong>, nós cujo caminho mais curto, a partir de SP ou de RJ, não usa o link protegido:</p>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Caminho mais curto</th>
+<th style="text-align: center;">No P-space?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RJ</td>
+<td><code>SP-RJ</code> (10)</td>
+<td style="text-align: center;"><strong>sim</strong> (direto)</td>
+</tr>
+<tr>
+<td>MG</td>
+<td><code>SP-RJ-MG</code> (20)</td>
+<td style="text-align: center;"><strong>sim</strong> (direto)</td>
+</tr>
+<tr>
+<td>BA</td>
+<td>de SP: <code>SP-DF-BA</code> (20, usa o link protegido). De RJ: <code>RJ-SP-DF-BA</code> (30, usa o link) contra <code>RJ-MG-BA</code> (1010)</td>
+<td style="text-align: center;"><strong>não</strong>, o caminho mais curto de RJ até BA também acaba usando o link protegido, já que <code>RJ-MG-BA</code> ficou caro demais com o novo custo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q-space(ES, SP-DF)</strong>, aqui o custo 1000 em MG-BA muda tudo:</p>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Caminho mais curto até ES</th>
+<th style="text-align: center;">Usa SP-DF?</th>
+<th style="text-align: center;">No Q-space?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BA</td>
+<td><code>BA-DF-ES</code> (20)</td>
+<td style="text-align: center;">não</td>
+<td style="text-align: center;"><strong>sim</strong></td>
+</tr>
+<tr>
+<td>MG</td>
+<td><code>MG-BA-DF-ES</code> (1020) contra <code>MG-RJ-SP-DF-ES</code> (40, usa o link protegido)</td>
+<td style="text-align: center;">o mais barato usa o link protegido</td>
+<td style="text-align: center;"><strong>não</strong></td>
+</tr>
+<tr>
+<td>RJ</td>
+<td><code>RJ-SP-DF-ES</code> (30, usa o link protegido)</td>
+<td style="text-align: center;">sim</td>
+<td style="text-align: center;">não</td>
+</tr>
+</tbody>
+</table>
+<p>Com MG-BA custando 1000, o caminho de MG até ES que evita o link protegido (<code>MG-BA-DF-ES</code>, custo 1020) deixou de ser competitivo: o caminho mais curto real de MG passa a ser via SP, isto é, via o próprio link que caiu. MG sai do Q-space.</p>
+<p>O mesmo enlace caro derruba BA do P-space estendido, só que pelo lado oposto do cálculo. Do ponto de vista de RJ, alcançar BA por <code>RJ-MG-BA</code> custa 1010, então o caminho mais curto de RJ até BA volta a ser via SP e o link protegido.</p>
+<p><strong>P-space ∩ Q-space = ∅.</strong> P-space estendido = <code>{RJ, MG}</code>, Q-space = <code>{BA}</code>, nenhum nó comum aos dois. Mas MG é vizinho físico direto de BA, e essa adjacência é o que permite ao TI-LFA ainda calcular um backup, pulando de P-space para Q-space por um enlace específico em vez de por caminho mais curto. Diferente do single-segment, aqui só existe um candidato possível de cada lado (MG do P-space, BA do Q-space), sem ambiguidade.</p>
+<p>Backup calculado: <code>push { prefix-SID(MG) 16005, Adj-SID(MG-&gt;BA) }</code> abaixo do <code>prefix-SID(ES) 16004</code>. O Adj-SID força a travessia do enlace MG-BA especificamente, ignorando seu custo IGP de 1000, porque Adj-SID não é uma instrução de "caminho mais curto", é uma instrução de "saia exatamente por este enlace".</p>
+<hr />
+<h2 id="topologia"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h1v2H2v2h4v2H5c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h4c1.11 0 2-.89 2-2v-3c0-1.11-.89-2-2-2H8v-2h8v2h-1c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h4c1.11 0 2-.89 2-2v-3c0-1.11-.89-2-2-2h-1v-2h4v-2h-9V9h1c1.11 0 2-.89 2-2V4c0-1.11-.89-2-2-2zm0 2h4v3h-4zM5 17h4v3H5zm10 0h4v3h-4z"/></svg></span> <strong>Topologia</strong></h2>
+<p><img alt="double-segment" src="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/images/double-segment/topology-double-segment.png" /></p>
+<p>MG (verde, <strong>P-node</strong>) é o nó mais distante do P-space que o TI-LFA consegue alcançar de forma barata. BA (âmbar, <strong>Q-node</strong>) é o nó do Q-space adjacente a ele. O enlace entre os dois (dourado, rotulado com o Adj-SID forçado) é fisicamente o mesmo MG-BA de sempre, só que agora o SR o atravessa por indicação explícita, não por ser o caminho mais barato.</p>
+<hr />
+<h2 id="enderecamento"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 20a1 1 0 0 0-1-1h-1v-2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4v2h-1a1 1 0 0 0-1 1H2v2h7a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1h7v-2zm-8-5V5h10v10zm3-9H8v8h2zm4 0h-3v8h2v-2h1a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m0 4h-1V8h1z"/></svg></span> <strong>Endereçamento</strong></h2>
+<p>Idêntico ao single-segment, com uma exceção:</p>
+<table>
+<thead>
+<tr>
+<th>PoP</th>
+<th>Papel</th>
+<th>Loopback0</th>
+<th style="text-align: right;">SID index</th>
+<th style="text-align: right;">Label</th>
+<th>Mgmt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SP</td>
+<td>PLR</td>
+<td><code>10.0.1.254/32</code></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">16001</td>
+<td>172.20.23.11</td>
+</tr>
+<tr>
+<td>DF</td>
+<td>trânsito</td>
+<td><code>10.0.1.253/32</code></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">16002</td>
+<td>172.20.23.12</td>
+</tr>
+<tr>
+<td>RJ</td>
+<td>P-space (vizinho direto)</td>
+<td><code>10.0.1.252/32</code></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">16003</td>
+<td>172.20.23.13</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>destino final</td>
+<td><code>10.0.1.251/32</code></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">16004</td>
+<td>172.20.23.14</td>
+</tr>
+<tr>
+<td>MG</td>
+<td><strong>P-node</strong></td>
+<td><code>10.0.1.250/32</code></td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">16005</td>
+<td>172.20.23.15</td>
+</tr>
+<tr>
+<td>BA</td>
+<td><strong>Q-node</strong></td>
+<td><code>10.0.1.248/32</code></td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">16007</td>
+<td>172.20.23.17</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Link</th>
+<th>Subnet</th>
+<th style="text-align: right;">Custo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SP-DF (protegido)</td>
+<td>10.10.12.0/30</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>SP-RJ</td>
+<td>10.10.13.0/30</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>RJ-MG</td>
+<td>10.10.35.0/30</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td><strong>MG-BA</strong></td>
+<td>10.10.57.0/30</td>
+<td style="text-align: right;"><strong>1000</strong></td>
+</tr>
+<tr>
+<td>BA-DF</td>
+<td>10.10.27.0/30</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr>
+<td>DF-ES</td>
+<td>10.10.24.0/30</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>O mgmt subnet muda para <code>172.20.23.0/24</code> para permitir rodar este lab em paralelo ao single-segment sem colisão de rede de gerência.</p>
+<hr />
+<h2 id="deploy"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg></span> <strong>Deploy</strong></h2>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/rnpbr/LabRedes-segmentrouting.git
+<span class="nb">cd</span><span class="w"> </span>LabRedes-segmentrouting
+<span class="nb">cd</span><span class="w"> </span>labs/cisco/sr-mpls/ti-lfa/02-double-segment
+sudo<span class="w"> </span>clab<span class="w"> </span>deploy<span class="w"> </span>-t<span class="w"> </span>lab.clab.yml
+</code></pre></div>
+<p>Seis nós, de 10 a 12 GB de RAM. A rede de gerência é <code>172.20.23.0/24</code>, diferente da do single-segment, então os dois labs rodam juntos no mesmo host.</p>
+<p>Acesso: <code>ssh clab@172.20.23.11</code>, senha <code>clab@123</code>. Ou <code>sudo docker exec -it clab-tilfa-double-segment-sp /pkg/bin/xr_cli.sh</code>.</p>
+<p><img alt="Nós do lab após o clab deploy" src="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/images/double-segment/terminal-deploy.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Derrubar o lab</span>
+sudo<span class="w"> </span>clab<span class="w"> </span>destroy<span class="w"> </span>-t<span class="w"> </span>lab.clab.yml<span class="w"> </span>--cleanup
+</code></pre></div>
+<h2 id="arquivos-do-laboratorio">Arquivos do laboratório</h2>
+<p>Todos os arquivos estão no repositório, em <a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting/tree/main/labs/cisco/sr-mpls/ti-lfa/02-double-segment"><code>labs/cisco/sr-mpls/ti-lfa/02-double-segment</code></a>. Os blocos abaixo mostram o conteúdo completo de cada um para consulta rápida.</p>
+<details class="example">
+<summary>lab.clab.yml</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># TI-LFA Double-Segment</span>
+<span class="c1">#</span>
+<span class="c1"># Deploy:</span>
+<span class="c1">#   sudo clab deploy -t lab.clab.yml</span>
+<span class="c1">#</span>
+<span class="c1"># Cada no le seu arquivo de configuracao em configs/&lt;no&gt;.cfg, ao lado deste</span>
+<span class="c1"># arquivo. O containerlab entrega o .cfg ao XRd como first-boot.cfg.</span>
+<span class="c1">#</span>
+<span class="c1"># Repositorio: https://github.com/rnpbr/LabRedes-segmentrouting.git</span>
+<span class="c1">#</span>
+<span class="c1"># Para servir os .cfg direto do GitHub em vez de copiar configs/ para o disco,</span>
+<span class="c1"># troque o caminho de cada no por uma URL raw:</span>
+<span class="c1">#   startup-config: https://raw.githubusercontent.com/rnpbr/LabRedes-segmentrouting/main/labs/cisco/sr-mpls/ti-lfa/02-double-segment/configs/sp.cfg</span>
+<span class="c1"># Ref: https://containerlab.dev/manual/config-mgmt/#remote</span>
+<span class="c1">#</span>
+<span class="c1"># enforce-startup-config faz todo deploy reaplicar o .cfg, em vez de reusar a</span>
+<span class="c1"># config gravada por uma execucao anterior.</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tilfa-double-segment</span>
+
+<span class="nt">mgmt</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tilfa-double-segment-mgmt</span>
+<span class="w">  </span><span class="nt">ipv4-subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.0/24</span>
+
+<span class="nt">topology</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">defaults</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_xrd</span>
+
+<span class="w">  </span><span class="nt">kinds</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cisco_xrd</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ios-xr/xrd-control-plane:7.10.2</span>
+<span class="w">      </span><span class="nt">enforce-startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="c1"># para habilitar, o caminho do startup-config deve ser válido. Avaliando import de configs via URL, mas ainda nao definido.</span>
+
+<span class="w">  </span><span class="nt">nodes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.11</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/sp.cfg</span>
+<span class="w">    </span><span class="nt">df</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.12</span>
+
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/df.cfg</span>
+<span class="w">    </span><span class="nt">rj</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.13</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/rj.cfg</span>
+<span class="w">    </span><span class="nt">es</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.14</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/es.cfg</span>
+<span class="w">    </span><span class="nt">mg</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.15</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/mg.cfg</span>
+<span class="w">    </span><span class="nt">ba</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.23.17</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/ba.cfg</span>
+
+<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># SP-DF: enlace protegido, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sp:Gi0-0-0-0"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"df:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># SP-RJ: custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sp:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"rj:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># RJ-MG: custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"rj:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"mg:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># MG-BA: custo 1000 - e o que quebra a intersecao P-space/Q-space</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"mg:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"ba:Gi0-0-0-1"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># BA-DF: custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ba:Gi0-0-0-0"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"df:Gi0-0-0-2"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># DF-ES: pendant ES, destino observado</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"df:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"es:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/ba.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab, sem SSH e sem rota default de gerencia.
+! Nao editar: as variaveis {{ .ShortName }} e {{ .MgmtIPv4Gateway }} sao
+! resolvidas pelo containerlab em tempo de deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ port 9339
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+!
+ssh server v2
+ssh server netconf
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 {{ .MgmtIPv4Gateway }}
+ !
+!
+!
+! ==========================================================================
+! Lab TI-LFA Double-Segment - Rede Ipe / no BA
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.0.1.248 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description LINK-BA-DF
+ ipv4 address 10.10.27.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description LINK-BA-MG-cost1000
+ ipv4 address 10.10.57.2 255.255.255.252
+ no shutdown
+!
+segment-routing
+ global-block 16000 23999
+!
+router ospf 1
+ router-id 10.0.1.248
+ segment-routing mpls
+ segment-routing forwarding mpls
+ area 0
+  interface Loopback0
+   passive enable
+   prefix-sid index 7
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 1000
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+ !
+!
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/df.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab, sem SSH e sem rota default de gerencia.
+! Nao editar: as variaveis {{ .ShortName }} e {{ .MgmtIPv4Gateway }} sao
+! resolvidas pelo containerlab em tempo de deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ port 9339
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+!
+ssh server v2
+ssh server netconf
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 {{ .MgmtIPv4Gateway }}
+ !
+!
+!
+! ==========================================================================
+! Lab TI-LFA Double-Segment - Rede Ipe / no DF
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.0.1.253 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description LINK-DF-SP (protegido)
+ ipv4 address 10.10.12.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description LINK-DF-ES
+ ipv4 address 10.10.24.1 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description LINK-DF-BA
+ ipv4 address 10.10.27.1 255.255.255.252
+ no shutdown
+!
+segment-routing
+ global-block 16000 23999
+!
+router ospf 1
+ router-id 10.0.1.253
+ segment-routing mpls
+ segment-routing forwarding mpls
+ area 0
+  interface Loopback0
+   passive enable
+   prefix-sid index 2
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+ !
+!
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/es.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab, sem SSH e sem rota default de gerencia.
+! Nao editar: as variaveis {{ .ShortName }} e {{ .MgmtIPv4Gateway }} sao
+! resolvidas pelo containerlab em tempo de deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ port 9339
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+!
+ssh server v2
+ssh server netconf
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 {{ .MgmtIPv4Gateway }}
+ !
+!
+!
+! ==========================================================================
+! Lab TI-LFA Double-Segment - Rede Ipe / no ES
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.0.1.251 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description LINK-ES-DF
+ ipv4 address 10.10.24.2 255.255.255.252
+ no shutdown
+!
+segment-routing
+ global-block 16000 23999
+!
+router ospf 1
+ router-id 10.0.1.251
+ segment-routing mpls
+ segment-routing forwarding mpls
+ area 0
+  interface Loopback0
+   passive enable
+   prefix-sid index 4
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+ !
+!
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/mg.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab, sem SSH e sem rota default de gerencia.
+! Nao editar: as variaveis {{ .ShortName }} e {{ .MgmtIPv4Gateway }} sao
+! resolvidas pelo containerlab em tempo de deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ port 9339
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+!
+ssh server v2
+ssh server netconf
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 {{ .MgmtIPv4Gateway }}
+ !
+!
+!
+! ==========================================================================
+! Lab TI-LFA Double-Segment - Rede Ipe / no MG
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.0.1.250 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description LINK-MG-RJ
+ ipv4 address 10.10.35.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description LINK-MG-BA-cost1000
+ ipv4 address 10.10.57.1 255.255.255.252
+ no shutdown
+!
+segment-routing
+ global-block 16000 23999
+!
+router ospf 1
+ router-id 10.0.1.250
+ segment-routing mpls
+ segment-routing forwarding mpls
+ area 0
+  interface Loopback0
+   passive enable
+   prefix-sid index 5
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 1000
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+ !
+!
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/rj.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab, sem SSH e sem rota default de gerencia.
+! Nao editar: as variaveis {{ .ShortName }} e {{ .MgmtIPv4Gateway }} sao
+! resolvidas pelo containerlab em tempo de deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ port 9339
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+!
+ssh server v2
+ssh server netconf
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 {{ .MgmtIPv4Gateway }}
+ !
+!
+!
+! ==========================================================================
+! Lab TI-LFA Double-Segment - Rede Ipe / no RJ
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.0.1.252 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description LINK-RJ-SP
+ ipv4 address 10.10.13.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description LINK-RJ-MG
+ ipv4 address 10.10.35.1 255.255.255.252
+ no shutdown
+!
+segment-routing
+ global-block 16000 23999
+!
+router ospf 1
+ router-id 10.0.1.252
+ segment-routing mpls
+ segment-routing forwarding mpls
+ area 0
+  interface Loopback0
+   passive enable
+   prefix-sid index 3
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+ !
+!
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/sp.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab, sem SSH e sem rota default de gerencia.
+! Nao editar: as variaveis {{ .ShortName }} e {{ .MgmtIPv4Gateway }} sao
+! resolvidas pelo containerlab em tempo de deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ port 9339
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+!
+ssh server v2
+ssh server netconf
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 {{ .MgmtIPv4Gateway }}
+ !
+!
+!
+! ==========================================================================
+! Lab TI-LFA Double-Segment - Rede Ipe / no SP
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.0.1.254 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description LINK-SP-DF (protegido)
+ ipv4 address 10.10.12.1 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description LINK-SP-RJ
+ ipv4 address 10.10.13.1 255.255.255.252
+ no shutdown
+!
+segment-routing
+ global-block 16000 23999
+!
+router ospf 1
+ router-id 10.0.1.254
+ segment-routing mpls
+ segment-routing forwarding mpls
+ area 0
+  interface Loopback0
+   passive enable
+   prefix-sid index 1
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa enable
+  !
+ !
+!
+!
+end
+</code></pre></div>
+</details>
+<hr />
+<hr />
+<h2 id="verificacao"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg></span> <strong>Verificação</strong></h2>
+<h3 id="1-adjacencias-ospf">1. Adjacências OSPF</h3>
+<p><strong>Em SP:</strong></p>
+<div class="highlight"><pre><span></span><code>show ospf neighbor
+</code></pre></div>
+<p><img alt="show ospf neighbor em SP" src="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/images/double-segment/terminal-ospf-neighbor.png" /></p>
+<p>Igual ao single-segment. SP deve ter exatamente dois vizinhos, DF e RJ, ambos <code>FULL/-</code>. A interface MG-BA continua formando adjacência normalmente: custo alto não impede a adjacência OSPF, apenas torna o enlace pouco atrativo para SPF.</p>
+<h3 id="2-confirmar-o-custo-elevado">2. Confirmar o custo elevado</h3>
+<p>Em MG, na interface do enlace MG-BA:</p>
+<div class="highlight"><pre><span></span><code>show ospf interface GigabitEthernet0/0/0/1
+</code></pre></div>
+<p><img alt="show ospf interface Gi0/0/0/1 em MG, Cost 1000" src="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/images/double-segment/terminal-ospf-interface.png" /></p>
+<p>Esperado: <code>Cost: 1000</code>.</p>
+<h3 id="3-backup-ti-lfa-para-es">3. Backup TI-LFA para ES</h3>
+<p><strong>Em SP:</strong></p>
+<div class="highlight"><pre><span></span><code>show cef 10.0.1.251/32 detail
+</code></pre></div>
+<p><img alt="show cef 10.0.1.251/32 detail em SP" src="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/images/double-segment/terminal-show-cef.png" /></p>
+<p>O campo <code>labels imposed</code> na entrada de backup deve mostrar <strong>três</strong> labels. Na execução capturada acima:</p>
+<div class="highlight"><pre><span></span><code>via 10.10.13.2/32, GigabitEthernet0/0/0/1, ..., backup (TI-LFA)
+  next hop 10.10.13.2/32, Repair Node(s): 10.0.1.250, 10.0.1.248
+  local label 16004   labels imposed {16005 24002 16004}
+</code></pre></div>
+<p><code>16005</code> é o prefix-SID de MG, <code>24002</code> é um Adjacency-SID dinâmico representando o enlace MG para BA, e <code>16004</code> é o prefix-SID de ES. O Adj-SID sai da faixa acima de <code>24000</code> porque este projeto não configura <code>local-block</code> separado, então o valor exato pode variar entre execuções.</p>
+<p>Repare no campo <code>Repair Node(s)</code>: aqui ele lista <strong>dois</strong> nós, <code>10.0.1.250</code> (MG) e <code>10.0.1.248</code> (BA). É a diferença mais direta em relação ao single-segment, onde a mesma linha traz um nó só.</p>
+<p><strong>Em MG</strong>, para identificar exatamente qual Adjacency-SID é esse:</p>
+<div class="highlight"><pre><span></span><code>show ospf segment-routing adjacency-sids
+</code></pre></div>
+<p><img alt="show ospf segment-routing adjacency-sids em MG" src="../../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/TI%E2%80%91LFA/images/double-segment/terminal-adjacency-sids.png" /></p>
+<p>Esperado: linhas com <code>Neighbor ID 10.0.1.248</code> (BA) na <code>Interface Gi0/0/0/1</code>. Na captura acima:</p>
+<div class="highlight"><pre><span></span><code>24002  10.0.1.248  10.10.57.2  Gi0/0/0/1  D U N
+24003  10.0.1.248  10.10.57.2  Gi0/0/0/1  D P B  10.10.35.1  Gi0/0/0/0
+</code></pre></div>
+<p>Aparecem duas entradas para o mesmo vizinho: uma desprotegida (<code>U N</code>, unprotected / no backup path) e uma protegida com backup (<code>P B</code>, protected / has backup path). O <code>24002</code> da primeira linha é exatamente o label do meio da pilha vista no <code>show cef</code> de SP.</p>
+<p>O TI-LFA usa a entrada <strong>desprotegida</strong>, e não a protegida. O motivo é que o pacote que carrega essa pilha já está trafegando por um caminho de reparo. Proteger o segmento de reparo com um segundo backup criaria recursão: um desvio dentro do desvio, com risco de loop e sem garantia de convergência. O Adj-SID desprotegido diz apenas "saia por este enlace", sem plano alternativo, que é exatamente o que o cálculo de reparo precisa.</p>
+<p>Isso fecha a prova: o segmento do meio do backup é a adjacência MG para BA, e não um caminho calculado por custo.</p>
+<h3 id="4-diferenca-de-comportamento-vs-single-segment">4. Diferença de comportamento vs. single-segment</h3>
+<p>Compare com o <code>show cef</code> do single-segment, rodado em SP também:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>single-segment</th>
+<th>double-segment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Labels impostos</td>
+<td><code>{16007, 16004}</code> (2)</td>
+<td><code>{16005, 24002, 16004}</code> (3)</td>
+</tr>
+<tr>
+<td><code>Repair Node(s)</code></td>
+<td><code>10.0.1.248</code> (só BA)</td>
+<td><code>10.0.1.250, 10.0.1.248</code> (MG e BA)</td>
+</tr>
+<tr>
+<td>Nó intermediário participa como</td>
+<td>PQ-node (P∩Q)</td>
+<td>P-node apenas, precisa do Adj-SID pra alcançar o Q-node</td>
+</tr>
+<tr>
+<td>Enlace até o Q-node</td>
+<td>usado por custo (parte do caminho nativo)</td>
+<td>usado por Adj-SID (custo do enlace irrelevante)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quando-isso-acontece-na-pratica"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-5v2h5v13l-5-6v9h5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-9 15H5l5-6m0-9H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h5v2h2V1h-2z"/></svg></span> <strong>Quando isso acontece na prática</strong></h2>
+<p>Em produção, um custo de 1000 artificial não é o gatilho real. A situação double-segment aparece organicamente em topologias com poucos caminhos alternativos entre certas regiões da rede: anéis metropolitanos, redes regionais com poucos backbones de trânsito, ou domínios onde uma falha anterior já consumiu o caminho alternativo mais óbvio e sobrou apenas uma rota cara.</p>
+<p>O padrão comum a esses casos é sempre o mesmo. O caminho de reparo existe fisicamente, mas o custo IGP de algum trecho dele é alto o suficiente para que nenhum nó o escolha por SPF. Sem o Adj-SID, o TI-LFA não teria como costurar P-space e Q-space, porque tudo o que o prefix-SID sabe dizer é "vá pelo caminho mais curto", e o caminho mais curto é justamente o que não serve.</p>
+<p>Vale notar também que o custo alto não é o único gatilho possível. Afinidades de link, restrições de Flex-Algo e enlaces com atributos administrativos que os excluam do SPF produzem o mesmo efeito: um enlace que existe, forma adjacência e encaminha normalmente, mas que o cálculo de caminho mais curto nunca elege. O Adj-SID é o que dá acesso a ele.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-single-segment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TI-LFA Single-Segment">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                TI-LFA Single-Segment
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../../..", "features": ["content.tabs.link", "search.suggest", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "toc.follow", "content.tooltips", "navigation.indexes", "navigation.path", "navigation.footer"], "search": "../../../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../../../../termynal.js"></script>
+      
+    
+  </body>
+</html>

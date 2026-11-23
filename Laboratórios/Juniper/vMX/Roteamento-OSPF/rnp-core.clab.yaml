@@ -1,0 +1,64 @@
+name: rnp-core-ospf
+topology:
+    nodes:
+        graphite:
+            kind: linux
+            image: netreplica/graphite:latest
+            env:
+                HOST_CONNECTION: ${SSH_CONNECTION}
+            binds:
+                - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+                - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+            ports:
+                - 8080:80
+            exec:
+                - sh -c 'graphite_motd.sh 8080'
+            labels:
+                graph-hide: yes
+        PB:
+            kind: juniper_vmx
+            image: nexusd.ids.rnp.br/knetlab/vr-vmx:22.2R1.9
+            startup-config: PB.config
+            binds:
+                - PB_interface_map.json:/mnt/flash/EosIntfMapping.json:ro
+            labels:
+                graph-icon: core
+                graph-level: 10
+                role: Core
+                group: PoP-PB
+                platform: junos
+                vendor: Juniper
+                model: MX10003
+        PE:
+            kind: juniper_vmx
+            image: nexusd.ids.rnp.br/knetlab/vr-vmx:22.2R1.9
+            startup-config: PE.config
+            binds:
+                - PE_interface_map.json:/mnt/flash/EosIntfMapping.json:ro
+            labels:
+                graph-icon: core
+                graph-level: 10
+                role: Core
+                group: PoP-PE
+                platform: junos
+                vendor: Juniper
+                model: MX10003
+        JPA:
+            kind: juniper_vmx
+            image: nexusd.ids.rnp.br/knetlab/vr-vmx:22.2R1.9
+            startup-config: JPA.config
+            binds:
+                - JPA_interface_map.json:/mnt/flash/EosIntfMapping.json:ro
+            labels:
+                graph-icon: core
+                graph-level: 10
+                role: Core
+                group: PA-PB
+                platform: junos
+                vendor: Juniper
+                model: MX204
+    links:
+        - endpoints: ["PE:eth1", "PB:eth1"]
+        - endpoints: ["JPA:eth1", "PB:eth2"]
+        - endpoints: ["PE:eth2", "JPA:eth2"]
+

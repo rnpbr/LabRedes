@@ -1,0 +1,5792 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://rnpbr.github.io/LabRedes/en/Laborat%C3%B3rios/Segment-Routing/Cisco/03-referencia-lab-5-nos/">
+      
+      
+        <link rel="prev" href="../02-base-sr-mpls/">
+      
+      
+        <link rel="next" href="../Inter%E2%80%91AS/">
+      
+      
+        
+          <link rel="alternate" href="../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/03-referencia-lab-5-nos/" hreflang="pt">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>Lab Cisco XRd SR-MPLS de 5 nós (referência) - LabRedes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../termynal.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NEEXQ81RDP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-NEEXQ81RDP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NEEXQ81RDP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-cisco-xrd-sr-mpls-de-5-nos-referencia" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../" title="LabRedes" class="md-header__button md-logo" aria-label="LabRedes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LabRedes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab Cisco XRd SR-MPLS de 5 nós (referência)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../../Laborat%C3%B3rios/Segment-Routing/Cisco/03-referencia-lab-5-nos/" hreflang="pt" class="md-select__link">
+              português
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English (WIP)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rnpbr/LabRedes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LabRedes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../" title="LabRedes" class="md-nav__button md-logo" aria-label="LabRedes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    LabRedes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rnpbr/LabRedes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LabRedes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Contribua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ferramentas/Primeiros%20passos%20-%20preparando%20o%20ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started: Preparing the Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/Edgeshark/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edgeshark
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Edgeshark
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/Elasticsearch/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Elasticsearch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ferramentas/Elasticsearch/Configurando%20IPFIX%20no%20ELK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring IPFIX on ELK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ferramentas/Elasticsearch/Configurando%20Syslog%20no%20ELK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurando Syslog no ELK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/LibreNMS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LibreNMS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LibreNMS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/Visual%20Studio%20Code/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visual Studio Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ferramentas/Visual%20Studio%20Code/Guia%20-%20Deploy%20usando%20vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide: Deploying Network Labs using VSCode and Containerlab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Ferramentas/Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ferramentas/Zabbix/Configurando%20Auto%20Discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Discovery in Zabbix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visual Studio Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ferramentas/Visual%20Studio%20Code/Guia%3A%20Deploy%20usando%20vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia: Deploy de Laboratórios de Rede usando VSCode e Containerlab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Guias/Netbox/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netbox
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netbox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_2" id="__nav_6_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Guias/Netbox/Plugins/Branching/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branching
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Branching
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Guias/Netbox/Plugins/Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1_2_2" id="__nav_6_1_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing the Diode Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing the Diode Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing the Diode Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Guias/Netbox/Plugins/Napalm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Napalm
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Napalm
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Guias/Netbox/Render_Templates/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Render Templates
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1_3" id="__nav_6_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Render Templates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Guias/Netbox/Render_Templates/Criando%20um%20Template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Template Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Guias/Netreplica/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netreplica
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netreplica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Guias/Netreplica/NetReplica%20Criando%20Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetReplica Criando Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Guias/Netreplica/NetReplica%20Guia%20Configura%C3%A7%C3%A3o%20e%20Execu%C3%A7%C3%A3o%20com%20NetBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetReplica Guide: Configuration and Execution with NetBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Contribua/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribua
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contribua
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Contribua/Guia%20Criando%20Imagens%20para%20Representar%20Laborat%C3%B3rios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide: Creating Images to Represent Labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Contribua/Template%20lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template Lab (Lab Name)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Juniper
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Juniper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_1" id="__nav_7_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vJunos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vJunos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Juniper/vJunos/Descoberta/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Juniper/vJunos/Descoberta-Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Juniper/vJunos/Monitoramento-ELK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento ELK
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento ELK
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Juniper/vJunos/Monitoramento-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Juniper/vJunos/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_2" id="__nav_7_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vMX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vMX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Juniper/vMX/Roteamento-OSPF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteamento OSPF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roteamento OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multivendor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multivendor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multivendor/Automa%C3%A7%C3%A3o-Event-Driven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automação Event Driven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Automação Event Driven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multivendor/Configura%C3%A7%C3%A3o-NETCONF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuração NETCONF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuração NETCONF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multivendor/Descoberta-Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multivendor/Logs-ELK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs ELK
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs ELK
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multivendor/Logs-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multivendor/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multvendor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multvendor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multvendor/Configura%C3%A7%C3%A3o-NETCONF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuração NETCONF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuração NETCONF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multvendor/Logs-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Multvendor/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Segment Routing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Segment Routing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-preparacao-do-ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparação do ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-base-sr-mpls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base SR-MPLS no IOS-XR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Cisco XRd SR-MPLS de 5 nós (referência)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Cisco XRd SR-MPLS de 5 nós (referência)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-este-laboratorio-cobre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que este laboratório cobre
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subir-o-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subir o laboratório
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interfaces-e-enderecos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces e endereços
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-base-ospfv2-sr-mpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração base OSPFv2 SR-MPLS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração base OSPFv2 SR-MPLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pe1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pe1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pe2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pe2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação inicial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-ecmp-e-metricas-ospf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1: ECMP e métricas OSPF
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-adjacency-sids-manuais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2: Adjacency-SIDs manuais
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-sr-policy-explicita-passando-por-p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 3: SR Policy explícita passando por p3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-direcionamento-para-a-sr-policy-por-rota-estatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 4: Direcionamento para a SR Policy por rota estática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-5-ti-lfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 5: TI-LFA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-6-flexible-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 6: Flexible Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-7-oam-de-srmpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 7: OAM de SR/MPLS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desfazer-as-alteracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desfazer as alterações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Inter%E2%80%91AS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter‑AS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_5" id="__nav_8_1_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Inter‑AS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inter%E2%80%91AS/bgp-lu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-AS: BGP-LU entre o PoP-PB e o backbone Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inter%E2%80%91AS/guia-aprofundado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia aprofundado: da configuração ao fio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inter%E2%80%91AS/recorte-rede-ipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recorte PoP-PB ↔ backbone Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inter%E2%80%91AS/validacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validação do lab bgp-lu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Multidom%C3%ADnio/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_6" id="__nav_8_1_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multidomínio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Multidom%C3%ADnio/flex-algo-anycast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio: Flex-Algo com SID anycast de borda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Multidom%C3%ADnio/validacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validação do lab flex-algo-anycast
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../SR%E2%80%91TE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SR‑TE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_7" id="__nav_8_1_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SR‑TE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SR%E2%80%91TE/explicit-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SR-TE: Explicit Policy sobre a Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../TI%E2%80%91LFA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI‑LFA
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_2_8" id="__nav_8_1_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TI‑LFA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TI%E2%80%91LFA/00-zero-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Zero-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TI%E2%80%91LFA/01-single-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Single-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TI%E2%80%91LFA/02-double-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Double-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-este-laboratorio-cobre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que este laboratório cobre
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subir-o-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subir o laboratório
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interfaces-e-enderecos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces e endereços
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-base-ospfv2-sr-mpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração base OSPFv2 SR-MPLS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração base OSPFv2 SR-MPLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pe1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pe1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pe2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pe2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação inicial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-ecmp-e-metricas-ospf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1: ECMP e métricas OSPF
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-adjacency-sids-manuais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2: Adjacency-SIDs manuais
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-sr-policy-explicita-passando-por-p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 3: SR Policy explícita passando por p3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-direcionamento-para-a-sr-policy-por-rota-estatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 4: Direcionamento para a SR Policy por rota estática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-5-ti-lfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 5: TI-LFA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-6-flexible-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 6: Flexible Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-7-oam-de-srmpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 7: OAM de SR/MPLS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desfazer-as-alteracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desfazer as alterações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../Ferramentas/Visual%20Studio%20Code/Guia%3A%20Deploy%20usando%20vscode/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Pt
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Laboratórios
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Segment Routing
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cisco
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rnpbr/LabRedes/tree/main/docs/pt/Laboratórios/Segment-Routing/Cisco/03-referencia-lab-5-nos.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="lab-cisco-xrd-sr-mpls-de-5-nos-referencia">Lab Cisco XRd SR-MPLS de 5 nós (referência)</h1>
+<div class="admonition info">
+<p class="admonition-title">Repositório</p>
+<p>Este conteúdo vem do repositório <strong><a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting">github.com/rnpbr/LabRedes-segmentrouting</a></strong>. Arquivos deste laboratório: <a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting/tree/main/docs/references/cisco-sr-mpls-5node/labs-aprendizado"><code>docs/references/cisco-sr-mpls-5node/labs-aprendizado</code></a>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Material de referência</p>
+<p>Material de origem desta trilha, escrito originalmente em inglês, traduzido aqui e preservado como referência histórica. A versão canônica em português dos conceitos e convenções está na <a href="../02-base-sr-mpls/">base SR-MPLS no IOS-XR</a>. A topologia deste material está em <a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting/blob/main/docs/references/cisco-sr-mpls-5node/labs-aprendizado/lab.clab.yml"><code>docs/references/cisco-sr-mpls-5node/labs-aprendizado/lab.clab.yml</code></a>.</p>
+</div>
+<p>Este laboratório usa cinco roteadores Cisco XRd control-plane com a imagem <code>xrd-control-plane:7.10.2</code>.</p>
+<div class="highlight"><pre><span></span><code>             p1
+          /      \
+       pe1        pe2
+          \      /
+             p2
+
+          p1 -- p3 -- p2
+</code></pre></div>
+<p>O caminho adicional por <code>p3</code> permite testar ECMP, caminhos de SR Policy diferentes do mais curto, caminhos de backup do TI-LFA e restrições de Flex-Algo sem aumentar demais o laboratório.</p>
+<h2 id="o-que-este-laboratorio-cobre">O que este laboratório cobre</h2>
+<ul>
+<li>Prefix-SIDs e Node-SIDs SR-MPLS no OSPFv2</li>
+<li>Comportamento do SRGB e do SRLB</li>
+<li>Adjacency-SIDs do OSPF</li>
+<li>ECMP e alteração de métricas OSPF</li>
+<li>Políticas SR-TE explícitas com segment lists de labels MPLS</li>
+<li>Direcionamento de tráfego para uma SR Policy por rota estática</li>
+<li>Proteção de enlace e de nó com TI-LFA</li>
+<li>Fundamentos de Flexible Algorithm no OSPF</li>
+<li>Comandos de verificação e OAM de SR/MPLS</li>
+</ul>
+<p>Este laboratório, só com XRd, não cobre por completo L3VPN, EVPN, fluxos com SR-PCE/controlador, SR interdomínio, SRv6 nem medições de convergência em hardware. Esses são os próximos laboratórios naturais.</p>
+<h2 id="subir-o-laboratorio">Subir o laboratório</h2>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/rnpbr/LabRedes-segmentrouting.git
+<span class="nb">cd</span><span class="w"> </span>LabRedes-segmentrouting/docs/references/cisco-sr-mpls-5node/labs-aprendizado
+sudo<span class="w"> </span>containerlab<span class="w"> </span>deploy<span class="w"> </span>-t<span class="w"> </span>lab.clab.yml
+</code></pre></div>
+<p>Acessar o IOS XR:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>clab-cisco-sr-mpls-5node-pe1<span class="w"> </span>/pkg/bin/xr_cli.sh
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>clab-cisco-sr-mpls-5node-p1<span class="w"> </span>/pkg/bin/xr_cli.sh
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>clab-cisco-sr-mpls-5node-p2<span class="w"> </span>/pkg/bin/xr_cli.sh
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>clab-cisco-sr-mpls-5node-p3<span class="w"> </span>/pkg/bin/xr_cli.sh
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>clab-cisco-sr-mpls-5node-pe2<span class="w"> </span>/pkg/bin/xr_cli.sh
+</code></pre></div>
+<p>O acesso por SSH também está disponível, com usuário <code>clab</code> e senha <code>clab@123</code>.</p>
+<h2 id="interfaces-e-enderecos">Interfaces e endereços</h2>
+<p>O Containerlab usa nomes de interface XRd separados por hífen, como <code>Gi0-0-0-0</code>. O IOS XR enxerga a mesma porta como <code>GigabitEthernet0/0/0/0</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Enlace</th>
+<th>Lado A</th>
+<th>Endereço</th>
+<th>Lado B</th>
+<th>Endereço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pe1-p1</td>
+<td>pe1 Gi0/0/0/0</td>
+<td>192.0.2.0/31</td>
+<td>p1 Gi0/0/0/0</td>
+<td>192.0.2.1/31</td>
+</tr>
+<tr>
+<td>pe1-p2</td>
+<td>pe1 Gi0/0/0/1</td>
+<td>192.0.2.2/31</td>
+<td>p2 Gi0/0/0/0</td>
+<td>192.0.2.3/31</td>
+</tr>
+<tr>
+<td>p1-pe2</td>
+<td>p1 Gi0/0/0/1</td>
+<td>192.0.2.4/31</td>
+<td>pe2 Gi0/0/0/0</td>
+<td>192.0.2.5/31</td>
+</tr>
+<tr>
+<td>p2-pe2</td>
+<td>p2 Gi0/0/0/1</td>
+<td>192.0.2.6/31</td>
+<td>pe2 Gi0/0/0/1</td>
+<td>192.0.2.7/31</td>
+</tr>
+<tr>
+<td>p1-p3</td>
+<td>p1 Gi0/0/0/2</td>
+<td>192.0.2.8/31</td>
+<td>p3 Gi0/0/0/0</td>
+<td>192.0.2.9/31</td>
+</tr>
+<tr>
+<td>p3-p2</td>
+<td>p3 Gi0/0/0/1</td>
+<td>192.0.2.10/31</td>
+<td>p2 Gi0/0/0/2</td>
+<td>192.0.2.11/31</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Loopback0</th>
+<th style="text-align: right;">Índice do Prefix-SID</th>
+<th style="text-align: right;">Label com SRGB 16000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pe1</td>
+<td>10.0.0.1/32</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">16001</td>
+</tr>
+<tr>
+<td>p1</td>
+<td>10.0.0.2/32</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">16002</td>
+</tr>
+<tr>
+<td>p2</td>
+<td>10.0.0.3/32</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">16003</td>
+</tr>
+<tr>
+<td>p3</td>
+<td>10.0.0.4/32</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">16004</td>
+</tr>
+<tr>
+<td>pe2</td>
+<td>10.0.0.5/32</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">16005</td>
+</tr>
+</tbody>
+</table>
+<p>O laboratório usa o SRLB padrão, <code>15000-15999</code>, para segmentos locais alocados manualmente, como Adjacency-SIDs e Binding-SIDs.</p>
+<h2 id="configuracao-base-ospfv2-sr-mpls">Configuração base OSPFv2 SR-MPLS</h2>
+<p>Cole o bloco correspondente em cada roteador.</p>
+<h3 id="pe1">pe1</h3>
+<div class="highlight"><pre><span></span><code>configure
+hostname pe1
+segment-routing global-block 16000 23999
+segment-routing local-block 15000 15999
+!
+interface Loopback0
+ ipv4 address 10.0.0.1 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description pe1 to p1
+ ipv4 address 192.0.2.0 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description pe1 to p2
+ ipv4 address 192.0.2.2 255.255.255.254
+ no shutdown
+!
+router ospf 1
+ router-id 10.0.0.1
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 1
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<h3 id="p1">p1</h3>
+<div class="highlight"><pre><span></span><code>configure
+hostname p1
+segment-routing global-block 16000 23999
+segment-routing local-block 15000 15999
+!
+interface Loopback0
+ ipv4 address 10.0.0.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p1 to pe1
+ ipv4 address 192.0.2.1 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p1 to pe2
+ ipv4 address 192.0.2.4 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description p1 to p3
+ ipv4 address 192.0.2.8 255.255.255.254
+ no shutdown
+!
+router ospf 1
+ router-id 10.0.0.2
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 2
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<h3 id="p2">p2</h3>
+<div class="highlight"><pre><span></span><code>configure
+hostname p2
+segment-routing global-block 16000 23999
+segment-routing local-block 15000 15999
+!
+interface Loopback0
+ ipv4 address 10.0.0.3 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p2 to pe1
+ ipv4 address 192.0.2.3 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p2 to pe2
+ ipv4 address 192.0.2.6 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description p2 to p3
+ ipv4 address 192.0.2.11 255.255.255.254
+ no shutdown
+!
+router ospf 1
+ router-id 10.0.0.3
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 3
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<h3 id="p3">p3</h3>
+<div class="highlight"><pre><span></span><code>configure
+hostname p3
+segment-routing global-block 16000 23999
+segment-routing local-block 15000 15999
+!
+interface Loopback0
+ ipv4 address 10.0.0.4 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p3 to p1
+ ipv4 address 192.0.2.9 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p3 to p2
+ ipv4 address 192.0.2.10 255.255.255.254
+ no shutdown
+!
+router ospf 1
+ router-id 10.0.0.4
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 4
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<h3 id="pe2">pe2</h3>
+<div class="highlight"><pre><span></span><code>configure
+hostname pe2
+segment-routing global-block 16000 23999
+segment-routing local-block 15000 15999
+!
+interface Loopback0
+ ipv4 address 10.0.0.5 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description pe2 to p1
+ ipv4 address 192.0.2.5 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description pe2 to p2
+ ipv4 address 192.0.2.7 255.255.255.254
+ no shutdown
+!
+router ospf 1
+ router-id 10.0.0.5
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 5
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<h2 id="verificacao-inicial">Verificação inicial</h2>
+<p>Execute primeiro em <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>show ospf neighbor
+show ospf routes
+show ospf segment-routing prefix-sid-map active-policy
+show route 10.0.0.5/32 detail
+show mpls forwarding
+show mpls label table 0 label 16005 detail
+ping 10.0.0.5 source 10.0.0.1
+traceroute 10.0.0.5 source 10.0.0.1
+</code></pre></div>
+<p>Resultado esperado: <code>pe1</code> deve ter dois caminhos de mesmo custo até <code>pe2</code>, um por <code>p1</code> e outro por <code>p2</code>. O Prefix-SID de <code>pe2</code> tem índice <code>5</code>, então o label SR é <code>16005</code>.</p>
+<h2 id="lab-1-ecmp-e-metricas-ospf">Lab 1: ECMP e métricas OSPF</h2>
+<p>A partir de <code>pe1</code>, os dois caminhos diretos pelo core devem ter o mesmo custo:</p>
+<div class="highlight"><pre><span></span><code>show route 10.0.0.5/32 detail
+</code></pre></div>
+<p>Torne o caminho por <code>p2</code> menos preferido:</p>
+<div class="highlight"><pre><span></span><code>configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/1
+   cost 50
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Confirme que <code>pe1</code> agora prefere <code>p1</code>:</p>
+<div class="highlight"><pre><span></span><code>show ospf routes 10.0.0.5/32
+show route 10.0.0.5/32 detail
+show mpls forwarding labels 16005
+</code></pre></div>
+<p>Restaure o ECMP:</p>
+<div class="highlight"><pre><span></span><code>configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/1
+   no cost
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<h2 id="lab-2-adjacency-sids-manuais">Lab 2: Adjacency-SIDs manuais</h2>
+<p>O OSPF cria Adjacency-SIDs dinâmicos automaticamente. Adjacency-SIDs manuais são úteis quando se quer labels locais estáveis para caminhos explícitos ou para fluxos com controlador. O label tem significado local e é alocado do SRLB.</p>
+<p>Configure Adjacency-SIDs manuais protegidos em <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/0
+   adjacency-sid index 11 protected
+  !
+  interface GigabitEthernet0/0/0/1
+   adjacency-sid index 12 protected
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Verifique:</p>
+<div class="highlight"><pre><span></span><code>show mpls label table 0 detail
+show ospf database opaque-area self-originate
+show mpls forwarding
+</code></pre></div>
+<p>Os labels exatos são a base do SRLB mais o índice configurado. Com a base padrão <code>15000</code>, o índice <code>11</code> corresponde ao label <code>15011</code> e o índice <code>12</code>, ao label <code>15012</code>.</p>
+<h2 id="lab-3-sr-policy-explicita-passando-por-p3">Lab 3: SR Policy explícita passando por p3</h2>
+<p>Os caminhos mais curtos nativos de <code>pe1</code> até <code>pe2</code> são:</p>
+<div class="highlight"><pre><span></span><code>pe1-p1-pe2
+pe1-p2-pe2
+</code></pre></div>
+<p>Crie em <code>pe1</code> uma SR Policy que force o tráfego pelo caminho mais longo:</p>
+<div class="highlight"><pre><span></span><code>pe1-p1-p3-p2-pe2
+</code></pre></div>
+<p>Esta segment list usa labels de Node-SID:</p>
+<table>
+<thead>
+<tr>
+<th>Segmento</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>16002</code></td>
+<td>alcançar <code>p1</code></td>
+</tr>
+<tr>
+<td><code>16004</code></td>
+<td>em seguida, alcançar <code>p3</code></td>
+</tr>
+<tr>
+<td><code>16003</code></td>
+<td>em seguida, alcançar <code>p2</code></td>
+</tr>
+<tr>
+<td><code>16005</code></td>
+<td>em seguida, alcançar <code>pe2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Configure a policy em <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>configure
+segment-routing
+ traffic-eng
+  logging
+   policy status
+  !
+  segment-list PE1_P1_P3_P2_PE2
+   index 10 mpls label 16002
+   index 20 mpls label 16004
+   index 30 mpls label 16003
+   index 40 mpls label 16005
+  !
+  policy PE1_TO_PE2_VIA_P3
+   binding-sid mpls 15090
+   color 100 end-point ipv4 10.0.0.5
+   candidate-paths
+    preference 100
+     explicit segment-list PE1_P1_P3_P2_PE2
+     !
+    !
+   !
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Verifique a policy:</p>
+<div class="highlight"><pre><span></span><code>show segment-routing traffic-eng policy color 100
+show segment-routing traffic-eng policy name srte_c_100_ep_10.0.0.5
+show mpls forwarding labels 15090
+show mpls label table 0 label 15090 detail
+</code></pre></div>
+<p>A policy deve estar operacionalmente <code>up</code> e mostrar a segment list explícita. O label <code>15090</code> é o Binding-SID da policy. Um Binding-SID tem significado local no roteador headend e representa a policy inteira.</p>
+<h2 id="lab-4-direcionamento-para-a-sr-policy-por-rota-estatica">Lab 4: Direcionamento para a SR Policy por rota estática</h2>
+<p>Adicione um destino de teste em <code>pe2</code>:</p>
+<div class="highlight"><pre><span></span><code>configure
+interface Loopback100
+ description SR policy test endpoint
+ ipv4 address 203.0.113.5 255.255.255.255
+!
+commit
+end
+</code></pre></div>
+<p>Em <code>pe1</code>, direcione <code>203.0.113.5/32</code> para a SR Policy. O IOS XR usa na RIB o nome gerado da SR Policy, então confira o nome primeiro:</p>
+<div class="highlight"><pre><span></span><code>show segment-routing traffic-eng policy color 100
+</code></pre></div>
+<p>Depois configure a rota estática:</p>
+<div class="highlight"><pre><span></span><code>configure
+router static
+ address-family ipv4 unicast
+  203.0.113.5/32 sr-policy srte_c_100_ep_10.0.0.5
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Verifique:</p>
+<div class="highlight"><pre><span></span><code>show route 203.0.113.5/32 detail
+ping 203.0.113.5 source 10.0.0.1
+traceroute 203.0.113.5 source 10.0.0.1
+</code></pre></div>
+<p>Resultado esperado: a rota deve ser conhecida via <code>static</code> e resolver pela policy SR-TE em direção a <code>10.0.0.5</code>.</p>
+<h2 id="lab-5-ti-lfa">Lab 5: TI-LFA</h2>
+<p>O TI-LFA calcula caminhos de reparo pré-instalados para falhas de enlace, de nó ou de SRLG. Configure-o nas interfaces OSPF voltadas para o core.</p>
+<p>Em <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/0
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+   fast-reroute per-prefix tiebreaker node-protecting index 200
+  !
+  interface GigabitEthernet0/0/0/1
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+   fast-reroute per-prefix tiebreaker node-protecting index 200
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Repita o mesmo padrão em todas as interfaces OSPF que não sejam loopback em <code>p1</code>, <code>p2</code>, <code>p3</code> e <code>pe2</code>.</p>
+<p>Verifique a partir de <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>show route 10.0.0.5/32 detail
+show cef ipv4 10.0.0.5/32 detail
+show ospf routes 10.0.0.5/32
+</code></pre></div>
+<p>Depois derrube um dos caminhos e observe a rota continuar instalada por um caminho de reparo:</p>
+<div class="highlight"><pre><span></span><code>configure
+interface GigabitEthernet0/0/0/0
+ shutdown
+!
+commit
+end
+</code></pre></div>
+<p>Verifique e, em seguida, restaure:</p>
+<div class="highlight"><pre><span></span><code>show ospf neighbor
+show route 10.0.0.5/32 detail
+show mpls forwarding labels 16005
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>configure
+interface GigabitEthernet0/0/0/0
+ no shutdown
+!
+commit
+end
+</code></pre></div>
+<h2 id="lab-6-flexible-algorithm">Lab 6: Flexible Algorithm</h2>
+<p>O Flex-Algo permite que o IGP calcule um SPF alternativo, com outro algoritmo e outras restrições. Este exemplo define o algoritmo <code>128</code> para excluir os enlaces marcados com a cor <code>red</code>.</p>
+<p>O objetivo é fazer o algoritmo <code>128</code> evitar estes enlaces diretos:</p>
+<div class="highlight"><pre><span></span><code>pe1-p2
+p1-pe2
+</code></pre></div>
+<p>Isso deixa este caminho de <code>pe1</code> até <code>pe2</code>:</p>
+<div class="highlight"><pre><span></span><code>pe1-p1-p3-p2-pe2
+</code></pre></div>
+<p>Configure a mesma definição de Flex-Algo e o mesmo mapa de afinidades em todos os roteadores:</p>
+<div class="highlight"><pre><span></span><code>configure
+router ospf 1
+ flex-algo 128
+  advertise-definition
+  priority 200
+  affinity exclude-any
+   red
+  !
+ !
+ affinity-map
+  color red bit-position 10
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Adicione Prefix-SIDs específicos do algoritmo. Use o índice correspondente em cada roteador:</p>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th style="text-align: right;">Índice do SID Flex-Algo 128</th>
+<th style="text-align: right;">Label com SRGB 16000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pe1</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">16101</td>
+</tr>
+<tr>
+<td>p1</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">16102</td>
+</tr>
+<tr>
+<td>p2</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">16103</td>
+</tr>
+<tr>
+<td>p3</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">16104</td>
+</tr>
+<tr>
+<td>pe2</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">16105</td>
+</tr>
+</tbody>
+</table>
+<p>Exemplo para <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>configure
+router ospf 1
+ area 0
+  interface Loopback0
+   prefix-sid algorithm 128 index 101
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Use <code>102</code> em <code>p1</code>, <code>103</code> em <code>p2</code>, <code>104</code> em <code>p3</code> e <code>105</code> em <code>pe2</code>.</p>
+<p>Marque os dois lados do enlace <code>pe1-p2</code> com a cor <code>red</code>:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/1
+   flex-algo affinity
+    color red
+   !
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>! p2
+configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/0
+   flex-algo affinity
+    color red
+   !
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Marque os dois lados do enlace <code>p1-pe2</code> com a cor <code>red</code>:</p>
+<div class="highlight"><pre><span></span><code>! p1
+configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/1
+   flex-algo affinity
+    color red
+   !
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>! pe2
+configure
+router ospf 1
+ area 0
+  interface GigabitEthernet0/0/0/0
+   flex-algo affinity
+    color red
+   !
+  !
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Verifique:</p>
+<div class="highlight"><pre><span></span><code>show ospf topology summary
+show ospf routes flex-algo 128
+show route 10.0.0.5/32 detail
+show mpls label table 0 label 16105 detail
+</code></pre></div>
+<p>O algoritmo padrão continua usando o SPF normal do OSPF. O algoritmo <code>128</code> calcula um caminho restrito que exclui os enlaces <code>red</code>. O label Flex-Algo de <code>pe2</code> é <code>16105</code>.</p>
+<h2 id="lab-7-oam-de-srmpls">Lab 7: OAM de SR/MPLS</h2>
+<p>Alcançabilidade IP básica:</p>
+<div class="highlight"><pre><span></span><code>ping 10.0.0.5 source 10.0.0.1
+traceroute 10.0.0.5 source 10.0.0.1
+</code></pre></div>
+<p>Verificação do encaminhamento MPLS e dos labels:</p>
+<div class="highlight"><pre><span></span><code>show mpls forwarding
+show mpls forwarding labels 15090
+show mpls label table 0 label 16005 detail
+show mpls label table 0 label 16105 detail
+</code></pre></div>
+<p>O <code>ping</code> e o <code>traceroute</code> MPLS Nil-FEC testam uma pilha de labels escolhida. A partir de <code>pe1</code>, isto testa a pilha explícita do caminho <code>pe1-p1-p3-p2-pe2</code>:</p>
+<div class="highlight"><pre><span></span><code>ping mpls nil-fec labels 16002,16004,16003,16005 output interface GigabitEthernet0/0/0/0 nexthop 192.0.2.1
+traceroute mpls nil-fec labels 16002,16004,16003,16005 output interface GigabitEthernet0/0/0/0 nexthop 192.0.2.1
+</code></pre></div>
+<p>Se a imagem XRd control-plane aceitar os comandos mas não retornar resultados úteis de data plane, use as verificações de plano de controle:</p>
+<div class="highlight"><pre><span></span><code>show ospf database opaque-area
+show ospf segment-routing prefix-sid-map active-policy
+show segment-routing traffic-eng policy color 100
+show route 203.0.113.5/32 detail
+</code></pre></div>
+<h2 id="desfazer-as-alteracoes">Desfazer as alterações</h2>
+<p>Remova a rota estática de direcionamento:</p>
+<div class="highlight"><pre><span></span><code>configure
+router static
+ address-family ipv4 unicast
+  no 203.0.113.5/32 sr-policy srte_c_100_ep_10.0.0.5
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Remova a SR Policy:</p>
+<div class="highlight"><pre><span></span><code>configure
+segment-routing
+ traffic-eng
+  no policy PE1_TO_PE2_VIA_P3
+  no segment-list PE1_P1_P3_P2_PE2
+ !
+!
+commit
+end
+</code></pre></div>
+<p>Derrube o laboratório:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>containerlab<span class="w"> </span>destroy<span class="w"> </span>-t<span class="w"> </span>lab.clab.yml<span class="w"> </span>--cleanup
+</code></pre></div>
+<h2 id="referencias">Referências</h2>
+<ul>
+<li>Containerlab, kind Cisco XRd: <a href="https://containerlab.dev/manual/kinds/xrd/">https://containerlab.dev/manual/kinds/xrd/</a></li>
+<li>Cisco IOS XR 7.10.x, OSPF SR-MPLS: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-segment-routing-for-ospf-protocol.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-segment-routing-for-ospf-protocol.html</a></li>
+<li>Cisco IOS XR 7.10.x, SRGB e SRLB: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-sr-global-block-and-sr-local-block.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-sr-global-block-and-sr-local-block.html</a></li>
+<li>Cisco IOS XR 7.10.x, políticas SR-TE: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-sr-te-policy.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-sr-te-policy.html</a></li>
+<li>Cisco IOS XR 7.10.x, TI-LFA: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-topology-independent-loop-free-alternate.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/configuring-topology-independent-loop-free-alternate.html</a></li>
+<li>Cisco IOS XR 7.10.x, Flexible Algorithm: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/enabling-segment-routing-flexible-algorithm.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/enabling-segment-routing-flexible-algorithm.html</a></li>
+<li>Cisco IOS XR 7.10.x, OAM de SR: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/using-segment-routing-oam.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x/using-segment-routing-oam.html</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-base-sr-mpls/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Base SR-MPLS no IOS-XR">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Base SR-MPLS no IOS-XR
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Inter%E2%80%91AS/" class="md-footer__link md-footer__link--next" aria-label="Next: Inter-AS - transporte SR-MPLS entre domínios">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Inter-AS - transporte SR-MPLS entre domínios
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tabs.link", "search.suggest", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "toc.follow", "content.tooltips", "navigation.indexes", "navigation.path", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../../../termynal.js"></script>
+      
+    
+  </body>
+</html>

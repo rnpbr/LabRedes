@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="900" viewBox="0 0 1900 900" role="img" aria-labelledby="titulo descricao" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif">
+<title id="titulo">Pilha de labels da SR Policy color 128, salto a salto</title>
+<desc id="descricao">Em cima, o caso normal: PE1 impõe 17120, 17230 e 17309; P1 remove 17120 por PHP, DBR-AB1 remove 17230 por PHP, DBR-BC1 encaminha 17309 e P3 o remove antes de PE9. Embaixo, o caso maligno: DBR-AB1 perdeu o domínio B, ainda atrai o anycast AB e descarta o pacote porque não tem entrada para 17230.</desc>
+<rect width="1900" height="900" rx="18" fill="#0b1820" stroke="#1d3542"/>
+<text x="57" y="44" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6d8896" font-weight="700" letter-spacing="1.7">FIGURA 2 · SR POLICY COLOR 128</text>
+<text x="57" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="25" fill="#e8f2f6" font-weight="700" letter-spacing="-0.4">A pilha no fio</text>
+<text x="1843" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#9db4be" text-anchor="end">um segmento por domínio · o label só precisa existir onde vira topo</text>
+<rect x="80" y="112" width="710" height="30" rx="10" fill="#42cf9a" opacity="0.12"/>
+<text x="435" y="132" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#42cf9a" font-weight="700" text-anchor="middle">Domínio A · 17120 resolve aqui</text>
+<rect x="798" y="112" width="304" height="30" rx="10" fill="#f0b352" opacity="0.12"/>
+<text x="950" y="132" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#f0b352" font-weight="700" text-anchor="middle">Domínio B · 17230 resolve aqui</text>
+<rect x="1110" y="112" width="710" height="30" rx="10" fill="#75b8e8" opacity="0.12"/>
+<text x="1465" y="132" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#75b8e8" font-weight="700" text-anchor="middle">Domínio C · 17309 resolve aqui</text>
+<text x="57" y="190" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="15" fill="#e8f2f6" font-weight="700">Caso normal</text>
+<text x="57" y="210" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#9db4be">traceroute sr-mpls policy name srte_c_128_ep_10.3.255.9</text>
+<line x1="240" y1="250" x2="412" y2="250" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="552" y1="250" x2="724" y2="250" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="864" y1="250" x2="1036" y2="250" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="1176" y1="250" x2="1348" y2="250" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="1488" y1="250" x2="1660" y2="250" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<rect x="100" y="224" width="140" height="52" rx="12" fill="#14262f" stroke="#75b8e8" stroke-width="1.6"/>
+<text x="170" y="255" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">pe1</text>
+<rect x="412" y="224" width="140" height="52" rx="12" fill="#14262f" stroke="#9db4be" stroke-width="1.6"/>
+<text x="482" y="255" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">p1</text>
+<rect x="724" y="224" width="140" height="52" rx="12" fill="#14262f" stroke="#42cf9a" stroke-width="1.6"/>
+<text x="794" y="255" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">dbr-ab1</text>
+<rect x="1036" y="224" width="140" height="52" rx="12" fill="#14262f" stroke="#f0b352" stroke-width="1.6"/>
+<text x="1106" y="255" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">dbr-bc1</text>
+<rect x="1348" y="224" width="140" height="52" rx="12" fill="#14262f" stroke="#9db4be" stroke-width="1.6"/>
+<text x="1418" y="255" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">p3</text>
+<rect x="1660" y="224" width="140" height="52" rx="12" fill="#14262f" stroke="#75b8e8" stroke-width="1.6"/>
+<text x="1730" y="255" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">pe9</text>
+<rect x="274" y="292" width="104" height="28" rx="7" fill="#42cf9a" opacity="0.16"/>
+<rect x="274" y="292" width="104" height="28" rx="7" fill="none" stroke="#42cf9a" stroke-width="1.4"/>
+<text x="326" y="311" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#42cf9a" font-weight="700" text-anchor="middle">17120</text>
+<rect x="274" y="324" width="104" height="28" rx="7" fill="#f0b352" opacity="0.16"/>
+<rect x="274" y="324" width="104" height="28" rx="7" fill="none" stroke="#f0b352" stroke-width="1.4"/>
+<text x="326" y="343" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#f0b352" font-weight="700" text-anchor="middle">17230</text>
+<rect x="274" y="356" width="104" height="28" rx="7" fill="#75b8e8" opacity="0.16"/>
+<rect x="274" y="356" width="104" height="28" rx="7" fill="none" stroke="#75b8e8" stroke-width="1.4"/>
+<text x="326" y="375" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#75b8e8" font-weight="700" text-anchor="middle">17309</text>
+<text x="326" y="412" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">PE1 impõe a lista</text>
+<rect x="586" y="292" width="104" height="28" rx="7" fill="#f0b352" opacity="0.16"/>
+<rect x="586" y="292" width="104" height="28" rx="7" fill="none" stroke="#f0b352" stroke-width="1.4"/>
+<text x="638" y="311" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#f0b352" font-weight="700" text-anchor="middle">17230</text>
+<rect x="586" y="324" width="104" height="28" rx="7" fill="#75b8e8" opacity="0.16"/>
+<rect x="586" y="324" width="104" height="28" rx="7" fill="none" stroke="#75b8e8" stroke-width="1.4"/>
+<text x="638" y="343" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#75b8e8" font-weight="700" text-anchor="middle">17309</text>
+<text x="638" y="412" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">P1: PHP de 17120</text>
+<rect x="898" y="292" width="104" height="28" rx="7" fill="#75b8e8" opacity="0.16"/>
+<rect x="898" y="292" width="104" height="28" rx="7" fill="none" stroke="#75b8e8" stroke-width="1.4"/>
+<text x="950" y="311" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#75b8e8" font-weight="700" text-anchor="middle">17309</text>
+<text x="950" y="412" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">DBR-AB1: PHP de 17230</text>
+<rect x="1210" y="292" width="104" height="28" rx="7" fill="#75b8e8" opacity="0.16"/>
+<rect x="1210" y="292" width="104" height="28" rx="7" fill="none" stroke="#75b8e8" stroke-width="1.4"/>
+<text x="1262" y="311" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#75b8e8" font-weight="700" text-anchor="middle">17309</text>
+<text x="1262" y="412" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">DBR-BC1: swap 17309</text>
+<rect x="1522" y="292" width="104" height="28" rx="7" fill="#14262f" stroke="#2c4857" stroke-width="1"/>
+<text x="1574" y="311" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#9db4be" font-weight="700" text-anchor="middle">IP</text>
+<text x="1574" y="412" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">P3: PHP de 17309</text>
+<line x1="57" y1="450" x2="1843" y2="450" stroke="#1c333f" stroke-width="1.5" stroke-linecap="butt"/>
+<text x="57" y="500" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="15" fill="#ff7592" font-weight="700">Caso maligno · DBR-AB1 sem nenhum enlace no domínio B</text>
+<text x="57" y="520" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11.5" fill="#9db4be">OSPF 100 continua FULL com P1 · OSPF 200 sem vizinhos</text>
+<line x1="240" y1="560" x2="412" y2="560" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="552" y1="560" x2="724" y2="560" stroke="#6d8896" stroke-width="2.5" stroke-linecap="round"/>
+<rect x="100" y="534" width="140" height="52" rx="12" fill="#14262f" stroke="#75b8e8" stroke-width="1.6"/>
+<text x="170" y="565" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">pe1</text>
+<rect x="412" y="534" width="140" height="52" rx="12" fill="#14262f" stroke="#9db4be" stroke-width="1.6"/>
+<text x="482" y="565" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">p1</text>
+<rect x="724" y="534" width="140" height="52" rx="12" fill="#14262f" stroke="#ff7592" stroke-width="2"/>
+<text x="794" y="565" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5" fill="#e8f2f6" font-weight="700" text-anchor="middle">dbr-ab1</text>
+<rect x="274" y="602" width="104" height="28" rx="7" fill="#42cf9a" opacity="0.16"/>
+<rect x="274" y="602" width="104" height="28" rx="7" fill="none" stroke="#42cf9a" stroke-width="1.4"/>
+<text x="326" y="621" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#42cf9a" font-weight="700" text-anchor="middle">17120</text>
+<rect x="274" y="634" width="104" height="28" rx="7" fill="#f0b352" opacity="0.16"/>
+<rect x="274" y="634" width="104" height="28" rx="7" fill="none" stroke="#f0b352" stroke-width="1.4"/>
+<text x="326" y="653" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#f0b352" font-weight="700" text-anchor="middle">17230</text>
+<rect x="274" y="666" width="104" height="28" rx="7" fill="#75b8e8" opacity="0.16"/>
+<rect x="274" y="666" width="104" height="28" rx="7" fill="none" stroke="#75b8e8" stroke-width="1.4"/>
+<text x="326" y="685" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#75b8e8" font-weight="700" text-anchor="middle">17309</text>
+<text x="326" y="722" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">PE1 ainda escolhe DBR-AB1</text>
+<rect x="586" y="602" width="104" height="28" rx="7" fill="#f0b352" opacity="0.16"/>
+<rect x="586" y="602" width="104" height="28" rx="7" fill="none" stroke="#f0b352" stroke-width="1.4"/>
+<text x="638" y="621" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#f0b352" font-weight="700" text-anchor="middle">17230</text>
+<rect x="586" y="634" width="104" height="28" rx="7" fill="#75b8e8" opacity="0.16"/>
+<rect x="586" y="634" width="104" height="28" rx="7" fill="none" stroke="#75b8e8" stroke-width="1.4"/>
+<text x="638" y="653" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#75b8e8" font-weight="700" text-anchor="middle">17309</text>
+<text x="638" y="722" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be" text-anchor="middle">P1: PHP de 17120</text>
+<line x1="884" y1="542" x2="920" y2="578" stroke="#ff7592" stroke-width="5" stroke-linecap="round"/>
+<line x1="884" y1="578" x2="920" y2="542" stroke="#ff7592" stroke-width="5" stroke-linecap="round"/>
+<text x="940" y="554" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#ff7592" font-weight="700">sem entrada LFIB para 17230</text>
+<text x="940" y="574" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#9db4be">N 2 10.1.0.7 MRU 0 [No Label]</text>
+<circle cx="66" cy="786" r="3.5" fill="#ff7592"/>
+<text x="80" y="790" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#9db4be">PE1 calcula o anycast AB só no domínio A: DBR-AB1 continua o contribuidor de menor métrica (21 contra 31).</text>
+<circle cx="66" cy="814" r="3.5" fill="#ff7592"/>
+<text x="80" y="818" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#9db4be">A policy segue Admin up / Operational up: o headend valida o primeiro SID, não a lista inteira.</text>
+<circle cx="66" cy="842" r="3.5" fill="#ff7592"/>
+<text x="80" y="846" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#9db4be">O anycast prova alcance da borda dentro do domínio local, não a capacidade de seguir para o próximo.</text>
+</svg>

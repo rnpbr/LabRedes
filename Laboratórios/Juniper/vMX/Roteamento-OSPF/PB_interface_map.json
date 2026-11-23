@@ -1,0 +1,9 @@
+{
+  "ManagementIntf": {
+    "eth0": "Management0"
+  },
+  "EthernetIntf": {
+    "eth1": "ge-0/0/1",
+    "eth2": "ge-0/0/2"
+  }
+}

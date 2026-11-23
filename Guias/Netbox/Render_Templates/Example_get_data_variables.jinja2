@@ -1,0 +1,37 @@
+Device Information:
+------------------------------------------
+Device Name: {{ device.name }}
+Device Type: {{ device.device_type.name if device.device_type else 'N/A' }}
+Site: {{ device.site.name if device.site else 'N/A' }}
+Status: {{ device.status if device.status else 'N/A' }}
+Serial Number: {{ device.serial if device.serial else 'N/A' }}
+{% if device.primary_ip %}
+Primary IP: {{ device.primary_ip.address if device.primary_ip.address else 'N/A' }}
+{% endif %}
+Platform: {{ device.platform if device.platform else 'N/A' }}
+Rack: {{ device.rack.name if device.rack else 'N/A' }}
+Asset Tag: {{ device.asset_tag if device.asset_tag else 'N/A' }}
+{% if device.comments %}
+Comments: {{ device.comments }}
+{% endif %}
+
+Interfaces Information:
+----------------------------------------------
+{% for interface in device.interfaces.all() %}
+Interface Name: {{ interface.name if interface.name else 'N/A' }}
+Type: {{ interface.type if interface.type else 'N/A' }}
+MAC Address: {{ interface.mac_address if interface.mac_address else 'N/A' }}
+{% if interface.ip_addresses %}
+IP Addresses: {% for ip in interface.ip_addresses.all() %}
+              {{ ip.address }}
+              {% endfor %}
+{% endif %}
+Operational Status: {{ interface.enabled if interface.enabled else 'N/A' }}
+Admin Status: {{ interface.enabled if interface.enabled is defined else 'N/A' }}
+{% if interface.untagged_vlan %}
+VLANs: {% for vlan in interface.untagged_vlan.all() %}
+       {{ vlan.vid }}
+       {% endfor %}
+{% endif %}
+----------------------------------------------
+{% endfor %}

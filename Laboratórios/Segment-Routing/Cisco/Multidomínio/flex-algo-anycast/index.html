@@ -1,0 +1,7011 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://rnpbr.github.io/LabRedes/Laborat%C3%B3rios/Segment-Routing/Cisco/Multidom%C3%ADnio/flex-algo-anycast/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../validacao/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="pt">
+        
+          <link rel="alternate" href="../../../../../en/Laborat%C3%B3rios/Segment-Routing/Cisco/Multidom%C3%ADnio/flex-algo-anycast/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>Multidomínio: Flex-Algo com SID anycast de borda - LabRedes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../termynal.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-NEEXQ81RDP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-NEEXQ81RDP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-NEEXQ81RDP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multidominio-flex-algo-com-sid-anycast-de-borda" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../../../.." title="LabRedes" class="md-header__button md-logo" aria-label="LabRedes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LabRedes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multidomínio: Flex-Algo com SID anycast de borda
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Selecione o idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="pt" class="md-select__link">
+              português
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../../../en/Laborat%C3%B3rios/Segment-Routing/Cisco/Multidom%C3%ADnio/flex-algo-anycast/" hreflang="en" class="md-select__link">
+              English (WIP)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rnpbr/LabRedes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LabRedes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="LabRedes" class="md-nav__button md-logo" aria-label="LabRedes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    LabRedes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rnpbr/LabRedes" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LabRedes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Contribua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribua
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Getting%20Started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Primeiros%20passos%20-%20preparando%20o%20ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros Passos: Preparando o Ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Edgeshark/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edgeshark
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Edgeshark
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Elasticsearch/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Elasticsearch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Elasticsearch/Configurando%20IPFIX%20no%20ELK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurando IPFIX no ELK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Elasticsearch/Configurando%20Syslog%20no%20ELK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurando Syslog no ELK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/LibreNMS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LibreNMS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LibreNMS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Visual%20Studio%20Code/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visual Studio Code
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Visual%20Studio%20Code/Guia%3A%20Deploy%20usando%20vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia: Deploy de Laboratórios de Rede usando VSCode e Containerlab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Ferramentas/Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Ferramentas/Zabbix/Configurando%20Auto%20Discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto Discovery no Zabbix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netbox
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netbox
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Plugins/Branching/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branching
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Branching
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Plugins/Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_2_2" id="__nav_5_1_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalando o Diode Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalando o Diode Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Plugins/Diode/Instalando%20o%20Diode%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalando o Diode Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Plugins/Napalm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Napalm
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Napalm
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netbox/Render_Templates/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Render Templates
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Render Templates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netbox/Render_Templates/Criando%20um%20Template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Criação de Templates de configurações
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../Guias/Netreplica/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netreplica
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netreplica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netreplica/NetReplica%20Criando%20Templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetReplica Criando Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Guias/Netreplica/NetReplica%20Guia%20Configura%C3%A7%C3%A3o%20e%20Execu%C3%A7%C3%A3o%20com%20NetBox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetReplica Guia: Configuração e Execução com NetBox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Laboratórios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Contribua/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribua
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contribua
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Contribua/Guia%20Criando%20Imagens%20para%20Representar%20Laborat%C3%B3rios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia : Criando Imagens para Representar Laboratórios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Contribua/Template%20lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template lab (Nome Do lab)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Juniper
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Juniper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vJunos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vJunos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Descoberta/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Descoberta-Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Monitoramento-ELK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento ELK
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento ELK
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Monitoramento-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vJunos/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vMX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    vMX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Juniper/vMX/Roteamento-OSPF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roteamento OSPF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roteamento OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multivendor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multivendor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Automa%C3%A7%C3%A3o-Event-Driven/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automação Event Driven
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Automação Event Driven
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Configura%C3%A7%C3%A3o-NETCONF/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuração NETCONF
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuração NETCONF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Descoberta-Diode/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descoberta Diode
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Descoberta Diode
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Logs-ELK/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs ELK
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs ELK
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Logs-Telegraf/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logs Telegraf
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs Telegraf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../Multivendor/Monitoramento-Zabbix/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoramento Zabbix
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoramento Zabbix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Segment Routing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Segment Routing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cisco
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5_2" id="__nav_6_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cisco
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-preparacao-do-ambiente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparação do ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-base-sr-mpls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base SR-MPLS no IOS-XR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-referencia-lab-5-nos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Cisco XRd SR-MPLS de 5 nós (referência)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Inter%E2%80%91AS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter‑AS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5_2_5" id="__nav_6_5_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Inter‑AS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/bgp-lu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-AS: BGP-LU entre o PoP-PB e o backbone Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/guia-aprofundado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia aprofundado: da configuração ao fio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/recorte-rede-ipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recorte PoP-PB ↔ backbone Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Inter%E2%80%91AS/validacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validação do lab bgp-lu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_2_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5_2_6" id="__nav_6_5_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_5_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_5_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multidomínio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio: Flex-Algo com SID anycast de borda
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multidomínio: Flex-Algo com SID anycast de borda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-este-lab-demonstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que este lab demonstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-este-lab-nao-demonstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que este lab não demonstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceitos-aplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceitos aplicados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topologia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esquema-de-sids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esquema de SIDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enlaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enlaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencas-no-bloco-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferenças no bloco base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-do-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos do laboratório
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-mecanismo-central-em-detalhe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O mecanismo central, em detalhe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progressao-em-tres-estagios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressão em três estágios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progressão em três estágios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estagio-1-tres-dominios-ospfsr-com-flex-algo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio 1 - três domínios OSPF/SR com Flex-Algo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-2-sids-anycast-de-borda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio 2 - SIDs anycast de borda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-3-sr-policy-explicita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio 3 - SR Policy explícita
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensaio-1-falha-benigna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensaio 1 - falha benigna
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensaio-2-o-risco-do-sid-anycast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensaio 2 - o risco do SID anycast
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentos-deste-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentos deste lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validação do lab flex-algo-anycast
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../SR%E2%80%91TE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SR‑TE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5_2_7" id="__nav_6_5_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_5_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SR‑TE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SR%E2%80%91TE/explicit-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SR-TE: Explicit Policy sobre a Rede Ipê
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_2_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TI%E2%80%91LFA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI‑LFA
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_5_2_8" id="__nav_6_5_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_5_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TI‑LFA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TI%E2%80%91LFA/00-zero-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Zero-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TI%E2%80%91LFA/01-single-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Single-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TI%E2%80%91LFA/02-double-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TI-LFA Double-Segment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-este-lab-demonstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que este lab demonstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-este-lab-nao-demonstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que este lab não demonstra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceitos-aplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceitos aplicados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologia
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topologia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esquema-de-sids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esquema de SIDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enlaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enlaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferencas-no-bloco-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diferenças no bloco base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquivos-do-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos do laboratório
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-mecanismo-central-em-detalhe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O mecanismo central, em detalhe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progressao-em-tres-estagios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressão em três estágios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progressão em três estágios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estagio-1-tres-dominios-ospfsr-com-flex-algo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio 1 - três domínios OSPF/SR com Flex-Algo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-2-sids-anycast-de-borda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio 2 - SIDs anycast de borda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-3-sr-policy-explicita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio 3 - SR Policy explícita
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensaio-1-falha-benigna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensaio 1 - falha benigna
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensaio-2-o-risco-do-sid-anycast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensaio 2 - o risco do SID anycast
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentos-deste-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentos deste lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegação" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../.." class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Pt
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Laboratórios
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Segment Routing
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cisco
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Multidomínio
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rnpbr/LabRedes/tree/main/docs/pt/Laboratórios/Segment-Routing/Cisco/Multidomínio/flex-algo-anycast.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="multidominio-flex-algo-com-sid-anycast-de-borda">Multidomínio: Flex-Algo com SID anycast de borda</h1>
+<div class="admonition info">
+<p class="admonition-title">Repositório</p>
+<p>Este conteúdo vem do repositório <strong><a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting">github.com/rnpbr/LabRedes-segmentrouting</a></strong>. Arquivos deste laboratório: <a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting/tree/main/labs/cisco/sr-mpls/multidominio/flex-algo-anycast"><code>labs/cisco/sr-mpls/multidominio/flex-algo-anycast</code></a>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Pré-requisitos</p>
+<p><a href="../">conceitos de multidomínio e Flex-Algo</a>, <a href="../../02-base-sr-mpls/">base Cisco</a> e <a href="../../01-preparacao-do-ambiente/">ambiente XRd</a>.</p>
+</div>
+<h2 id="o-que-este-lab-demonstra"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v16l7-3 7 3V5a2 2 0 0 0-2-2"/></svg></span> <strong>O que este lab demonstra</strong></h2>
+<p>Três domínios OSPF independentes - processos <code>100</code>, <code>200</code> e <code>300</code>, todos em
+área <code>0</code> - sem redistribuição entre eles. O PE de um extremo não tem rota, LSA
+nem label para o PE do outro. Mesmo assim, uma SR Policy em <code>pe1</code> entrega
+tráfego a <code>pe9</code> com uma pilha de três segmentos, um por domínio:</p>
+<div class="highlight"><pre><span></span><code>17120  SID anycast da fronteira AB, Algo 128
+17230  SID anycast da fronteira BC, Algo 128
+17309  Node-SID de pe9, Algo 128
+</code></pre></div>
+<p>O ponto central é que <strong>cada label só precisa existir no domínio em que vira o
+topo da pilha</strong>. <code>17230</code> só existe nos nós dos domínios B e C, e <code>17309</code> só nos
+do domínio C. <code>pe1</code> e <code>p1</code> não têm entrada para nenhum dos dois, e não precisam.</p>
+<p>Duas peças tornam a pilha útil:</p>
+<ul>
+<li><strong>Flex-Algo 128</strong>, definido igual nos três domínios: métrica IGP e exclusão
+  dos enlaces com afinidade <code>red</code>. Os enlaces <code>red</code> são de propósito mais
+  baratos que o caminho limpo, então o SPF default os usa e o algoritmo 128 os
+  evita.</li>
+<li><strong>SIDs anycast de borda</strong>: os dois DBRs de cada fronteira anunciam o mesmo
+  prefixo com o mesmo índice. A pilha diz "entregue a qualquer borda AB", não
+  "entregue ao <code>dbr-ab1</code>".</li>
+</ul>
+<p>Por fim, o lab quebra o desenho de duas formas: uma falha que o anycast absorve
+e outra em que ele cria um buraco negro que nem o domínio de origem nem o
+headend conseguem perceber.</p>
+<h2 id="o-que-este-lab-nao-demonstra"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm1-5C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8"/></svg></span> <strong>O que este lab não demonstra</strong></h2>
+<ul>
+<li><strong>Não há computação de caminho interdomínio.</strong> Não há BGP-LU, SR-PCE, BGP-LS
+  nem ODN. A pilha foi montada à mão: o humano faz o papel do elemento de
+  computação. Trate a lista estática como degrau didático, não como resposta de
+  produção. O transporte interdomínio por BGP está no lab
+  <a href="../../Inter%E2%80%91AS/bgp-lu/"><code>bgp-lu</code></a>.</li>
+<li><strong>Não há caminho de volta.</strong> <code>pe9</code> não tem rota para o domínio A. A prova
+  bidirecional usa o endereço de gerência de <code>pe1</code> como origem, para que a
+  resposta volte pela rede de gerência - ver <a href="#estagio-3-sr-policy-explicita">Estágio 3</a>.</li>
+<li><strong>Não há mitigação do risco do anycast.</strong> O <a href="#ensaio-2-o-risco-do-sid-anycast">ensaio maligno</a>
+  mostra o problema; nada no lab o corrige.</li>
+<li><strong>Não é OSPF multiárea nem IS-IS multinível.</strong> São processos separados. Ver
+  <a href="../#multiprocesso-nao-e-multiarea">multiprocesso não é multiárea</a>.</li>
+<li><strong>Não mede convergência.</strong> Não há BFD, e a imagem XRd Control Plane não é uma
+  plataforma de dados.</li>
+</ul>
+<h2 id="conceitos-aplicados"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93zm12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12zM12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm-3-3h2v-2.13c1.73-.44 3-2.01 3-3.87a4 4 0 0 0-4-4 4 4 0 0 0-4 4c0 1.86 1.27 3.43 3 3.87z"/></svg></span> <strong>Conceitos aplicados</strong></h2>
+<ul>
+<li><strong>Flex-Algo 128 (RFC 9350)</strong>: FAD com <code>priority 200</code>, <code>advertise-definition</code>
+  e <code>affinity exclude-any red</code> em todos os nós de todos os domínios.</li>
+<li><strong>Afinidade <code>red</code></strong>: <code>affinity-map red bit-position 10</code>, anunciada como admin
+  group <code>0x00000400</code> nos atributos de enlace do Flex-Algo.</li>
+<li><strong>Prefix-SID por algoritmo</strong>: toda loopback tem um SID no algoritmo 0 e outro
+  no 128 (<code>prefix-sid algorithm 128 index ...</code>).</li>
+<li><strong>SID anycast</strong>: <code>Loopback12</code> (<code>10.255.12.12/32</code>) nos dois DBRs AB e
+  <code>Loopback23</code> (<code>10.255.23.23/32</code>) nos dois DBRs BC, com <code>n-flag-clear</code>,
+  anunciadas nos dois processos de cada DBR.</li>
+<li><strong>SR Policy explícita</strong>: segment list de labels, steering por rota estática
+  <code>sr-policy</code>, como no lab <a href="../../SR%E2%80%91TE/explicit-policy/"><code>explicit-policy</code></a>.</li>
+<li><strong>MPLS OAM</strong>: <code>mpls oam</code> em todos os nós, para provar a pilha com
+  <code>ping mpls</code> e <code>traceroute sr-mpls</code>.</li>
+</ul>
+<h2 id="topologia"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h1v2H2v2h4v2H5c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h4c1.11 0 2-.89 2-2v-3c0-1.11-.89-2-2-2H8v-2h8v2h-1c-1.11 0-2 .89-2 2v3c0 1.11.89 2 2 2h4c1.11 0 2-.89 2-2v-3c0-1.11-.89-2-2-2h-1v-2h4v-2h-9V9h1c1.11 0 2-.89 2-2V4c0-1.11-.89-2-2-2zm0 2h4v3h-4zM5 17h4v3H5zm10 0h4v3h-4z"/></svg></span> <strong>Topologia</strong></h2>
+<p><img alt="Topologia lógica: três domínios OSPF lado a lado; dbr-ab1 e dbr-ab2 na fronteira entre A e B, dbr-bc1 e dbr-bc2 na fronteira entre B e C; um enlace red mais barato em cada domínio; o caminho da SR Policy passa por pe1, p1, dbr-ab1, dbr-bc1, p3 e pe9" src="../images/flex-algo-anycast/topology-flex-algo-anycast.svg#only-light" />
+<img alt="Topologia lógica: três domínios OSPF lado a lado; dbr-ab1 e dbr-ab2 na fronteira entre A e B, dbr-bc1 e dbr-bc2 na fronteira entre B e C; um enlace red mais barato em cada domínio; o caminho da SR Policy passa por pe1, p1, dbr-ab1, dbr-bc1, p3 e pe9" src="../images/flex-algo-anycast/topology-flex-algo-anycast-escuro.svg#only-dark" /></p>
+<p>Cada DBR pertence a dois domínios e roda um processo OSPF por domínio. Os dois
+enlaces entre <code>dbr-bc1</code> e <code>dbr-bc2</code> são distintos: <code>Gi0/0/0/2</code> está no domínio B
+e <code>Gi0/0/0/4</code> no domínio C.</p>
+<h3 id="esquema-de-sids">Esquema de SIDs</h3>
+<p>O índice codifica o domínio e o nó; o algoritmo 128 soma <code>1000</code>. Com a SRGB
+<code>16000-23999</code> nos dez nós, label = <code>16000 + índice</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Domínio</th>
+<th>Router-ID</th>
+<th>Interface</th>
+<th>Prefixo</th>
+<th>Índice algo 0 / 128</th>
+<th style="text-align: right;">Label algo 128</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pe1</code></td>
+<td>A</td>
+<td><code>1.1.1.1</code></td>
+<td>Lo0</td>
+<td><code>10.1.255.1/32</code></td>
+<td>101 / 1101</td>
+<td style="text-align: right;"><code>17101</code></td>
+</tr>
+<tr>
+<td><code>p1</code></td>
+<td>A</td>
+<td><code>1.1.1.2</code></td>
+<td>Lo0</td>
+<td><code>10.1.255.2/32</code></td>
+<td>102 / 1102</td>
+<td style="text-align: right;"><code>17102</code></td>
+</tr>
+<tr>
+<td><code>p2</code></td>
+<td>A</td>
+<td><code>1.1.1.3</code></td>
+<td>Lo0</td>
+<td><code>10.1.255.3/32</code></td>
+<td>103 / 1103</td>
+<td style="text-align: right;"><code>17103</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code></td>
+<td>A</td>
+<td><code>1.1.1.4</code></td>
+<td>Lo0</td>
+<td><code>10.1.255.11/32</code></td>
+<td>111 / 1111</td>
+<td style="text-align: right;"><code>17111</code></td>
+</tr>
+<tr>
+<td></td>
+<td>B</td>
+<td><code>2.2.2.1</code></td>
+<td>Lo1</td>
+<td><code>10.2.255.11/32</code></td>
+<td>201 / 1201</td>
+<td style="text-align: right;"><code>17201</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab2</code></td>
+<td>A</td>
+<td><code>1.1.1.5</code></td>
+<td>Lo0</td>
+<td><code>10.1.255.12/32</code></td>
+<td>112 / 1112</td>
+<td style="text-align: right;"><code>17112</code></td>
+</tr>
+<tr>
+<td></td>
+<td>B</td>
+<td><code>2.2.2.2</code></td>
+<td>Lo1</td>
+<td><code>10.2.255.12/32</code></td>
+<td>202 / 1202</td>
+<td style="text-align: right;"><code>17202</code></td>
+</tr>
+<tr>
+<td><code>dbr-bc1</code></td>
+<td>B</td>
+<td><code>2.2.2.3</code></td>
+<td>Lo0</td>
+<td><code>10.2.255.21/32</code></td>
+<td>221 / 1221</td>
+<td style="text-align: right;"><code>17221</code></td>
+</tr>
+<tr>
+<td></td>
+<td>C</td>
+<td><code>3.3.3.1</code></td>
+<td>Lo1</td>
+<td><code>10.3.255.21/32</code></td>
+<td>321 / 1321</td>
+<td style="text-align: right;"><code>17321</code></td>
+</tr>
+<tr>
+<td><code>dbr-bc2</code></td>
+<td>B</td>
+<td><code>2.2.2.4</code></td>
+<td>Lo0</td>
+<td><code>10.2.255.22/32</code></td>
+<td>222 / 1222</td>
+<td style="text-align: right;"><code>17222</code></td>
+</tr>
+<tr>
+<td></td>
+<td>C</td>
+<td><code>3.3.3.2</code></td>
+<td>Lo1</td>
+<td><code>10.3.255.22/32</code></td>
+<td>322 / 1322</td>
+<td style="text-align: right;"><code>17322</code></td>
+</tr>
+<tr>
+<td><code>p3</code></td>
+<td>C</td>
+<td><code>3.3.3.3</code></td>
+<td>Lo0</td>
+<td><code>10.3.255.3/32</code></td>
+<td>303 / 1303</td>
+<td style="text-align: right;"><code>17303</code></td>
+</tr>
+<tr>
+<td><code>p4</code></td>
+<td>C</td>
+<td><code>3.3.3.4</code></td>
+<td>Lo0</td>
+<td><code>10.3.255.4/32</code></td>
+<td>304 / 1304</td>
+<td style="text-align: right;"><code>17304</code></td>
+</tr>
+<tr>
+<td><code>pe9</code></td>
+<td>C</td>
+<td><code>3.3.3.9</code></td>
+<td>Lo0</td>
+<td><code>10.3.255.9/32</code></td>
+<td>309 / 1309</td>
+<td style="text-align: right;"><code>17309</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nos DBRs, <code>Loopback0</code> é sempre a do primeiro domínio e <code>Loopback1</code> a do segundo:
+em <code>dbr-bc1</code>, <code>Loopback0</code> está no domínio B, não no A.</p>
+<table>
+<thead>
+<tr>
+<th>SID anycast</th>
+<th>Prefixo</th>
+<th>Anunciado por</th>
+<th>Processos</th>
+<th>Índice algo 0 / 128</th>
+<th style="text-align: right;">Label algo 128</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anycast AB</td>
+<td><code>10.255.12.12/32</code></td>
+<td><code>dbr-ab1</code>, <code>dbr-ab2</code></td>
+<td>100 e 200</td>
+<td>120 / 1120</td>
+<td style="text-align: right;"><code>17120</code></td>
+</tr>
+<tr>
+<td>Anycast BC</td>
+<td><code>10.255.23.23/32</code></td>
+<td><code>dbr-bc1</code>, <code>dbr-bc2</code></td>
+<td>200 e 300</td>
+<td>230 / 1230</td>
+<td style="text-align: right;"><code>17230</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="enlaces">Enlaces</h3>
+<p>Endereços em <code>/31</code>, um bloco <code>10.&lt;domínio&gt;.0.0/16</code> por domínio. Custos
+declarados nos dois lados.</p>
+<table>
+<thead>
+<tr>
+<th>Enlace</th>
+<th>Domínio</th>
+<th>Interfaces XR</th>
+<th>Prefixo</th>
+<th style="text-align: right;">Custo</th>
+<th>Afinidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pe1</code>-<code>p1</code></td>
+<td>A</td>
+<td>Gi0/0/0/0 / Gi0/0/0/0</td>
+<td><code>10.1.0.0/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>pe1</code>-<code>p2</code></td>
+<td>A</td>
+<td>Gi0/0/0/1 / Gi0/0/0/0</td>
+<td><code>10.1.0.2/31</code></td>
+<td style="text-align: right;">5</td>
+<td><code>red</code></td>
+</tr>
+<tr>
+<td><code>p1</code>-<code>p2</code></td>
+<td>A</td>
+<td>Gi0/0/0/1 / Gi0/0/0/1</td>
+<td><code>10.1.0.4/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>p1</code>-<code>dbr-ab1</code></td>
+<td>A</td>
+<td>Gi0/0/0/2 / Gi0/0/0/0</td>
+<td><code>10.1.0.6/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>p2</code>-<code>dbr-ab2</code></td>
+<td>A</td>
+<td>Gi0/0/0/2 / Gi0/0/0/0</td>
+<td><code>10.1.0.8/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code>-<code>dbr-bc1</code></td>
+<td>B</td>
+<td>Gi0/0/0/1 / Gi0/0/0/0</td>
+<td><code>10.2.0.0/31</code></td>
+<td style="text-align: right;">20</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code>-<code>dbr-bc2</code></td>
+<td>B</td>
+<td>Gi0/0/0/2 / Gi0/0/0/0</td>
+<td><code>10.2.0.2/31</code></td>
+<td style="text-align: right;">5</td>
+<td><code>red</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab2</code>-<code>dbr-bc1</code></td>
+<td>B</td>
+<td>Gi0/0/0/1 / Gi0/0/0/1</td>
+<td><code>10.2.0.4/31</code></td>
+<td style="text-align: right;">20</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-ab2</code>-<code>dbr-bc2</code></td>
+<td>B</td>
+<td>Gi0/0/0/2 / Gi0/0/0/1</td>
+<td><code>10.2.0.6/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code>-<code>dbr-ab2</code></td>
+<td>B</td>
+<td>Gi0/0/0/3 / Gi0/0/0/3</td>
+<td><code>10.2.0.8/31</code></td>
+<td style="text-align: right;">30</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-bc1</code>-<code>dbr-bc2</code></td>
+<td>B</td>
+<td>Gi0/0/0/2 / Gi0/0/0/2</td>
+<td><code>10.2.0.10/31</code></td>
+<td style="text-align: right;">30</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-bc1</code>-<code>p3</code></td>
+<td>C</td>
+<td>Gi0/0/0/3 / Gi0/0/0/0</td>
+<td><code>10.3.0.0/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>dbr-bc2</code>-<code>p4</code></td>
+<td>C</td>
+<td>Gi0/0/0/3 / Gi0/0/0/0</td>
+<td><code>10.3.0.2/31</code></td>
+<td style="text-align: right;">5</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>p3</code>-<code>p4</code></td>
+<td>C</td>
+<td>Gi0/0/0/1 / Gi0/0/0/1</td>
+<td><code>10.3.0.4/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>p3</code>-<code>pe9</code></td>
+<td>C</td>
+<td>Gi0/0/0/2 / Gi0/0/0/0</td>
+<td><code>10.3.0.6/31</code></td>
+<td style="text-align: right;">10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>p4</code>-<code>pe9</code></td>
+<td>C</td>
+<td>Gi0/0/0/2 / Gi0/0/0/1</td>
+<td><code>10.3.0.8/31</code></td>
+<td style="text-align: right;">5</td>
+<td><code>red</code></td>
+</tr>
+<tr>
+<td><code>dbr-bc1</code>-<code>dbr-bc2</code></td>
+<td>C</td>
+<td>Gi0/0/0/4 / Gi0/0/0/4</td>
+<td><code>10.3.0.10/31</code></td>
+<td style="text-align: right;">5</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>O lab não usa o <code>192.0.2.0/24</code> dos outros cenários porque precisa de um bloco
+por domínio: com <code>10.&lt;domínio&gt;.x.x</code>, o domínio de qualquer endereço fica legível
+direto na saída de um <code>traceroute</code>.</p>
+<h2 id="deploy"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg></span> <strong>Deploy</strong></h2>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/rnpbr/LabRedes-segmentrouting.git
+<span class="nb">cd</span><span class="w"> </span>LabRedes-segmentrouting
+<span class="nb">cd</span><span class="w"> </span>labs/cisco/sr-mpls/multidominio/flex-algo-anycast
+sudo<span class="w"> </span>clab<span class="w"> </span>deploy<span class="w"> </span>-t<span class="w"> </span>lab.clab.yml
+</code></pre></div>
+<p>Dez roteadores XRd: é o maior lab do repositório. Na execução de referência
+cada nó ocupou cerca de 2,2 GB de RAM, cerca de 22 GB no total; reserve 24 GB e
+oito CPUs. Gerência em <code>172.20.27.0/24</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Gerência</th>
+<th>Nó</th>
+<th>Gerência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pe1</code></td>
+<td><code>172.20.27.11</code></td>
+<td><code>dbr-bc1</code></td>
+<td><code>172.20.27.16</code></td>
+</tr>
+<tr>
+<td><code>p1</code></td>
+<td><code>172.20.27.12</code></td>
+<td><code>dbr-bc2</code></td>
+<td><code>172.20.27.17</code></td>
+</tr>
+<tr>
+<td><code>p2</code></td>
+<td><code>172.20.27.13</code></td>
+<td><code>p3</code></td>
+<td><code>172.20.27.18</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code></td>
+<td><code>172.20.27.14</code></td>
+<td><code>p4</code></td>
+<td><code>172.20.27.19</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab2</code></td>
+<td><code>172.20.27.15</code></td>
+<td><code>pe9</code></td>
+<td><code>172.20.27.20</code></td>
+</tr>
+</tbody>
+</table>
+<p>Acesso: <code>ssh clab@172.20.27.11</code>, senha <code>clab@123</code>. Ou:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>clab-multidominio-flex-algo-anycast-pe1<span class="w"> </span>/pkg/bin/xr_cli.sh
+</code></pre></div>
+<p>O boot do XR leva alguns minutos; container em <code>running</code> não significa CLI
+pronta. Na execução de referência, a policy de <code>pe1</code> ficou <code>up</code> cerca de três
+minutos depois do fim do <code>clab deploy</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Derrubar o lab</span>
+sudo<span class="w"> </span>clab<span class="w"> </span>destroy<span class="w"> </span>-t<span class="w"> </span>lab.clab.yml<span class="w"> </span>--cleanup
+</code></pre></div>
+<h3 id="diferencas-no-bloco-base">Diferenças no bloco base</h3>
+<p>Os <code>.cfg</code> seguem o <a href="../../01-preparacao-do-ambiente/#formato-dos-arquivos-cfg">formato do projeto</a>,
+com três diferenças deliberadas, comentadas no próprio arquivo:</p>
+<ul>
+<li><strong>Sem rota default pela gerência.</strong> Os outros labs instalam
+  <code>0.0.0.0/0 MgmtEth0/RP0/CPU0/0</code>. Aqui ela mascararia a prova de isolamento -
+  <code>pe1</code> teria "rota" para tudo - e mandaria para o host o tráfego do lab sem
+  destino.</li>
+<li><strong>Sem <code>grpc port 9339</code>.</strong> O XRd 7.10.2 só aceita portas <code>57344-57999</code> e
+  rejeitaria a linha no boot. O gRPC sobe na porta padrão. Sem essa linha,
+  <code>show configuration failed startup</code> volta limpo, como pede o estágio 1.</li>
+<li><strong>ACL <code>MGMT-NO-TRANSIT</code> na entrada da gerência.</strong> Não remova. O XRd aceita na
+  <code>MgmtEth</code> quadros endereçados a outros MACs e os roteia de volta para a mesma
+  rede. As provas do <a href="#estagio-3-sr-policy-explicita">estágio 3</a> usam o
+  endereço de gerência de <code>pe1</code> como origem, e <code>pe1</code> não transmite nada pela
+  gerência: 300 s depois a ponte esquece o MAC de <code>pe1</code> e passa a inundar as
+  respostas destinadas a ele. Sem a ACL, os outros nove nós reencaminham cada
+  cópia entre si e a tempestade se sustenta sozinha. Na validação deste lab, um
+  único <code>traceroute sr-mpls</code> nessa condição gerou mais de 200 mil pacotes por
+  segundo em cada nó, CPU acima de 100%, adjacências OSPF caindo e a policy
+  oscilando. A ACL descarta o que chega para outro endereço da gerência; o
+  endereço do próprio nó vem de <code>{{ .MgmtIPv4Address }}</code>.</li>
+</ul>
+<h2 id="arquivos-do-laboratorio">Arquivos do laboratório</h2>
+<p>Todos os arquivos estão no repositório, em <a target="_blank" href="https://github.com/rnpbr/LabRedes-segmentrouting/tree/main/labs/cisco/sr-mpls/multidominio/flex-algo-anycast"><code>labs/cisco/sr-mpls/multidominio/flex-algo-anycast</code></a>. Os blocos abaixo mostram o conteúdo completo de cada um para consulta rápida.</p>
+<details class="example">
+<summary>lab.clab.yml</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># Multidominio OSPF - Flex-Algo com SID anycast de borda</span>
+<span class="c1">#</span>
+<span class="c1"># Deploy:</span>
+<span class="c1">#   sudo clab deploy -t lab.clab.yml</span>
+<span class="c1">#</span>
+<span class="c1"># Cada no le seu arquivo de configuracao em configs/&lt;no&gt;.cfg, ao lado deste</span>
+<span class="c1"># arquivo. O containerlab entrega o .cfg ao XRd como first-boot.cfg.</span>
+<span class="c1">#</span>
+<span class="c1"># Repositorio: https://github.com/rnpbr/LabRedes-segmentrouting.git</span>
+<span class="c1">#</span>
+<span class="c1"># enforce-startup-config faz todo deploy reaplicar o .cfg, em vez de reusar a</span>
+<span class="c1"># config gravada por uma execucao anterior.</span>
+<span class="c1">#</span>
+<span class="c1"># Tres dominios OSPF independentes (processos 100, 200 e 300, todos em area 0).</span>
+<span class="c1"># Os DBRs pertencem a dois dominios e rodam um processo por dominio, sem</span>
+<span class="c1"># redistribuicao entre eles. Os enlaces "red" sao mais baratos que o caminho</span>
+<span class="c1"># limpo: o SPF default os escolhe e o Flex-Algo 128 os exclui.</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multidominio-flex-algo-anycast</span>
+
+<span class="nt">mgmt</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multidominio-flex-algo-anycast-mgmt</span>
+<span class="w">  </span><span class="nt">ipv4-subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.0/24</span>
+
+<span class="nt">topology</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">defaults</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_xrd</span>
+
+<span class="w">  </span><span class="nt">kinds</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cisco_xrd</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ios-xr/xrd-control-plane:7.10.2</span>
+<span class="w">      </span><span class="nt">enforce-startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">  </span><span class="nt">nodes</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># --- Dominio A / OSPF 100 ----------------------------------------------</span>
+<span class="w">    </span><span class="nt">pe1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.11</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/pe1.cfg</span>
+<span class="w">    </span><span class="nt">p1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.12</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/p1.cfg</span>
+<span class="w">    </span><span class="nt">p2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.13</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/p2.cfg</span>
+
+<span class="w">    </span><span class="c1"># --- Fronteira AB: OSPF 100 + OSPF 200 ---------------------------------</span>
+<span class="w">    </span><span class="nt">dbr-ab1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.14</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/dbr-ab1.cfg</span>
+<span class="w">    </span><span class="nt">dbr-ab2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.15</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/dbr-ab2.cfg</span>
+
+<span class="w">    </span><span class="c1"># --- Fronteira BC: OSPF 200 + OSPF 300 ---------------------------------</span>
+<span class="w">    </span><span class="nt">dbr-bc1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.16</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/dbr-bc1.cfg</span>
+<span class="w">    </span><span class="nt">dbr-bc2</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.17</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/dbr-bc2.cfg</span>
+
+<span class="w">    </span><span class="c1"># --- Dominio C / OSPF 300 ----------------------------------------------</span>
+<span class="w">    </span><span class="nt">p3</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.18</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/p3.cfg</span>
+<span class="w">    </span><span class="nt">p4</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.19</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/p4.cfg</span>
+<span class="w">    </span><span class="nt">pe9</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mgmt-ipv4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.20.27.20</span>
+<span class="w">      </span><span class="nt">startup-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configs/pe9.cfg</span>
+
+<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># --- Dominio A: 10.1.0.0/16 --------------------------------------------</span>
+<span class="w">    </span><span class="c1"># pe1-p1: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pe1:Gi0-0-0-0"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"p1:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># pe1-p2: red, custo 5</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pe1:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"p2:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># p1-p2: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"p1:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"p2:Gi0-0-0-1"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># p1-dbr-ab1: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"p1:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-ab1:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># p2-dbr-ab2: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"p2:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-ab2:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="c1"># --- Dominio B: 10.2.0.0/16 --------------------------------------------</span>
+<span class="w">    </span><span class="c1"># dbr-ab1-dbr-bc1: limpo, custo 20</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-ab1:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-bc1:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-ab1-dbr-bc2: red, custo 5</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-ab1:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-bc2:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-ab2-dbr-bc1: limpo, custo 20</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-ab2:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-bc1:Gi0-0-0-1"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-ab2-dbr-bc2: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-ab2:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-bc2:Gi0-0-0-1"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-ab1-dbr-ab2: limpo, custo 30</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-ab1:Gi0-0-0-3"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-ab2:Gi0-0-0-3"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-bc1-dbr-bc2: limpo, custo 30</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-bc1:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-bc2:Gi0-0-0-2"</span><span class="p p-Indicator">]</span>
+
+<span class="w">    </span><span class="c1"># --- Dominio C: 10.3.0.0/16 --------------------------------------------</span>
+<span class="w">    </span><span class="c1"># dbr-bc1-p3: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-bc1:Gi0-0-0-3"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"p3:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-bc2-p4: limpo, custo 5</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-bc2:Gi0-0-0-3"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"p4:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># dbr-bc1-dbr-bc2: limpo, custo 5 (segundo enlace entre os dois, agora no OSPF 300)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"dbr-bc1:Gi0-0-0-4"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"dbr-bc2:Gi0-0-0-4"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># p3-p4: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"p3:Gi0-0-0-1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"p4:Gi0-0-0-1"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># p3-pe9: limpo, custo 10</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"p3:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pe9:Gi0-0-0-0"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># p4-pe9: red, custo 5</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"p4:Gi0-0-0-2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pe9:Gi0-0-0-1"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/dbr-ab1.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no dbr-ab1
+! DBR da fronteira AB - dominios A (OSPF 100) e B (OSPF 200)
+! ==========================================================================
+!
+interface Loopback0
+ description dbr-ab1-domain-a-node
+ ipv4 address 10.1.255.11 255.255.255.255
+!
+interface Loopback1
+ description dbr-ab1-domain-b-node
+ ipv4 address 10.2.255.11 255.255.255.255
+!
+interface Loopback12
+ description anycast-dbr-ab
+ ipv4 address 10.255.12.12 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description dbr-ab1-to-p1 domain-a normal
+ ipv4 address 10.1.0.7 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description dbr-ab1-to-dbr-bc1 domain-b normal
+ ipv4 address 10.2.0.0 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description dbr-ab1-to-dbr-bc2 domain-b red-low-cost
+ ipv4 address 10.2.0.2 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/3
+ description dbr-ab1-to-dbr-ab2 domain-b normal
+ ipv4 address 10.2.0.8 255.255.255.254
+ no shutdown
+!
+router ospf 100
+ router-id 1.1.1.4
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 111
+   prefix-sid algorithm 128 index 1111
+  !
+  interface Loopback12
+   passive enable
+   prefix-sid index 120 n-flag-clear
+   prefix-sid algorithm 128 index 1120 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+router ospf 200
+ router-id 2.2.2.1
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback1
+   passive enable
+   prefix-sid index 201
+   prefix-sid algorithm 128 index 1201
+  !
+  interface Loopback12
+   passive enable
+   prefix-sid index 120 n-flag-clear
+   prefix-sid algorithm 128 index 1120 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 20
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 5
+   affinity flex-algo
+    red
+   !
+  !
+  interface GigabitEthernet0/0/0/3
+   network point-to-point
+   cost 30
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/dbr-ab2.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no dbr-ab2
+! DBR da fronteira AB - dominios A (OSPF 100) e B (OSPF 200)
+! ==========================================================================
+!
+interface Loopback0
+ description dbr-ab2-domain-a-node
+ ipv4 address 10.1.255.12 255.255.255.255
+!
+interface Loopback1
+ description dbr-ab2-domain-b-node
+ ipv4 address 10.2.255.12 255.255.255.255
+!
+interface Loopback12
+ description anycast-dbr-ab
+ ipv4 address 10.255.12.12 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description dbr-ab2-to-p2 domain-a normal
+ ipv4 address 10.1.0.9 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description dbr-ab2-to-dbr-bc1 domain-b normal
+ ipv4 address 10.2.0.4 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description dbr-ab2-to-dbr-bc2 domain-b normal
+ ipv4 address 10.2.0.6 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/3
+ description dbr-ab2-to-dbr-ab1 domain-b normal
+ ipv4 address 10.2.0.9 255.255.255.254
+ no shutdown
+!
+router ospf 100
+ router-id 1.1.1.5
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 112
+   prefix-sid algorithm 128 index 1112
+  !
+  interface Loopback12
+   passive enable
+   prefix-sid index 120 n-flag-clear
+   prefix-sid algorithm 128 index 1120 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+router ospf 200
+ router-id 2.2.2.2
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback1
+   passive enable
+   prefix-sid index 202
+   prefix-sid algorithm 128 index 1202
+  !
+  interface Loopback12
+   passive enable
+   prefix-sid index 120 n-flag-clear
+   prefix-sid algorithm 128 index 1120 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 20
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/3
+   network point-to-point
+   cost 30
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/dbr-bc1.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no dbr-bc1
+! DBR da fronteira BC - dominios B (OSPF 200) e C (OSPF 300)
+! ==========================================================================
+!
+interface Loopback0
+ description dbr-bc1-domain-b-node
+ ipv4 address 10.2.255.21 255.255.255.255
+!
+interface Loopback1
+ description dbr-bc1-domain-c-node
+ ipv4 address 10.3.255.21 255.255.255.255
+!
+interface Loopback23
+ description anycast-dbr-bc
+ ipv4 address 10.255.23.23 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description dbr-bc1-to-dbr-ab1 domain-b normal
+ ipv4 address 10.2.0.1 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description dbr-bc1-to-dbr-ab2 domain-b normal
+ ipv4 address 10.2.0.5 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description dbr-bc1-to-dbr-bc2 domain-b normal
+ ipv4 address 10.2.0.10 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/3
+ description dbr-bc1-to-p3 domain-c normal
+ ipv4 address 10.3.0.0 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/4
+ description dbr-bc1-to-dbr-bc2 domain-c normal
+ ipv4 address 10.3.0.10 255.255.255.254
+ no shutdown
+!
+router ospf 200
+ router-id 2.2.2.3
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 221
+   prefix-sid algorithm 128 index 1221
+  !
+  interface Loopback23
+   passive enable
+   prefix-sid index 230 n-flag-clear
+   prefix-sid algorithm 128 index 1230 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 20
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 20
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 30
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+router ospf 300
+ router-id 3.3.3.1
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback1
+   passive enable
+   prefix-sid index 321
+   prefix-sid algorithm 128 index 1321
+  !
+  interface Loopback23
+   passive enable
+   prefix-sid index 230 n-flag-clear
+   prefix-sid algorithm 128 index 1230 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/3
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/4
+   network point-to-point
+   cost 5
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/dbr-bc2.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no dbr-bc2
+! DBR da fronteira BC - dominios B (OSPF 200) e C (OSPF 300)
+! ==========================================================================
+!
+interface Loopback0
+ description dbr-bc2-domain-b-node
+ ipv4 address 10.2.255.22 255.255.255.255
+!
+interface Loopback1
+ description dbr-bc2-domain-c-node
+ ipv4 address 10.3.255.22 255.255.255.255
+!
+interface Loopback23
+ description anycast-dbr-bc
+ ipv4 address 10.255.23.23 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description dbr-bc2-to-dbr-ab1 domain-b red-low-cost
+ ipv4 address 10.2.0.3 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description dbr-bc2-to-dbr-ab2 domain-b normal
+ ipv4 address 10.2.0.7 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description dbr-bc2-to-dbr-bc1 domain-b normal
+ ipv4 address 10.2.0.11 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/3
+ description dbr-bc2-to-p4 domain-c normal
+ ipv4 address 10.3.0.2 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/4
+ description dbr-bc2-to-dbr-bc1 domain-c normal
+ ipv4 address 10.3.0.11 255.255.255.254
+ no shutdown
+!
+router ospf 200
+ router-id 2.2.2.4
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 222
+   prefix-sid algorithm 128 index 1222
+  !
+  interface Loopback23
+   passive enable
+   prefix-sid index 230 n-flag-clear
+   prefix-sid algorithm 128 index 1230 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 5
+   affinity flex-algo
+    red
+   !
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 30
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+router ospf 300
+ router-id 3.3.3.2
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback1
+   passive enable
+   prefix-sid index 322
+   prefix-sid algorithm 128 index 1322
+  !
+  interface Loopback23
+   passive enable
+   prefix-sid index 230 n-flag-clear
+   prefix-sid algorithm 128 index 1230 n-flag-clear
+  !
+  interface GigabitEthernet0/0/0/3
+   network point-to-point
+   cost 5
+  !
+  interface GigabitEthernet0/0/0/4
+   network point-to-point
+   cost 5
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/p1.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no p1
+! P, caminho limpo - dominio A / OSPF 100
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.1.255.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p1-to-pe1 domain-a normal
+ ipv4 address 10.1.0.1 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p1-to-p2 domain-a normal
+ ipv4 address 10.1.0.4 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description p1-to-dbr-ab1 domain-a normal
+ ipv4 address 10.1.0.6 255.255.255.254
+ no shutdown
+!
+router ospf 100
+ router-id 1.1.1.2
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 102
+   prefix-sid algorithm 128 index 1102
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 10
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/p2.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no p2
+! P, ponta do enlace red PE1-P2 - dominio A / OSPF 100
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.1.255.3 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p2-to-pe1 domain-a red-low-cost
+ ipv4 address 10.1.0.3 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p2-to-p1 domain-a normal
+ ipv4 address 10.1.0.5 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description p2-to-dbr-ab2 domain-a normal
+ ipv4 address 10.1.0.8 255.255.255.254
+ no shutdown
+!
+router ospf 100
+ router-id 1.1.1.3
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 103
+   prefix-sid algorithm 128 index 1103
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 5
+   affinity flex-algo
+    red
+   !
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 10
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/p3.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no p3
+! P, caminho limpo - dominio C / OSPF 300
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.3.255.3 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p3-to-dbr-bc1 domain-c normal
+ ipv4 address 10.3.0.1 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p3-to-p4 domain-c normal
+ ipv4 address 10.3.0.4 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description p3-to-pe9 domain-c normal
+ ipv4 address 10.3.0.6 255.255.255.254
+ no shutdown
+!
+router ospf 300
+ router-id 3.3.3.3
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 303
+   prefix-sid algorithm 128 index 1303
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 10
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/p4.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no p4
+! P, ponta do enlace red P4-PE9 - dominio C / OSPF 300
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.3.255.4 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description p4-to-dbr-bc2 domain-c normal
+ ipv4 address 10.3.0.3 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description p4-to-p3 domain-c normal
+ ipv4 address 10.3.0.5 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/2
+ description p4-to-pe9 domain-c red-low-cost
+ ipv4 address 10.3.0.8 255.255.255.254
+ no shutdown
+!
+router ospf 300
+ router-id 3.3.3.4
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 304
+   prefix-sid algorithm 128 index 1304
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 5
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+   cost 5
+   affinity flex-algo
+    red
+   !
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/pe1.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no pe1
+! PE de ingresso e headend da SR Policy - dominio A / OSPF 100
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.1.255.1 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description pe1-to-p1 domain-a normal
+ ipv4 address 10.1.0.0 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description pe1-to-p2 domain-a red-low-cost
+ ipv4 address 10.1.0.2 255.255.255.254
+ no shutdown
+!
+router ospf 100
+ router-id 1.1.1.1
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 101
+   prefix-sid algorithm 128 index 1101
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 5
+   affinity flex-algo
+    red
+   !
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+!
+!
+router static
+ address-family ipv4 unicast
+  10.3.255.9/32 sr-policy srte_c_128_ep_10.3.255.9
+ !
+!
+segment-routing
+ global-block 16000 23999
+ traffic-eng
+  logging
+   policy status
+  !
+  segment-list PE1-TO-PE9-FA128
+   index 10 mpls label 17120
+   index 20 mpls label 17230
+   index 30 mpls label 17309
+  !
+  policy PE1-TO-PE9-FA128
+   color 128 end-point ipv4 10.3.255.9
+   candidate-paths
+    preference 100
+     explicit segment-list PE1-TO-PE9-FA128
+    !
+   !
+  !
+ !
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<details class="example">
+<summary>configs/pe9.cfg</summary>
+<div class="highlight"><pre><span></span><code>!
+! ============================================================================
+! Bloco base do containerlab para o kind cisco_xrd.
+! Espelha nodes/xrd/xrd.cfg do containerlab: sem ele o no sobe sem hostname,
+! sem usuario clab e sem SSH. O hostname vem da variavel ShortName, resolvida
+! pelo containerlab em tempo de deploy.
+!
+! Tres diferencas deliberadas em relacao ao template do containerlab:
+! - sem "grpc port 9339": o XRd 7.10.2 so aceita portas 57344-57999 e
+!   rejeitaria a linha no boot; o gRPC sobe na porta padrao;
+! - sem rota default 0.0.0.0/0 via MgmtEth0/RP0/CPU0/0: o lab prova que
+!   nenhum dominio conhece prefixos dos outros, e uma default pela gerencia
+!   mascararia essa prova e mandaria trafego do lab para o host;
+! - ACL MGMT-NO-TRANSIT na entrada da gerencia: o XRd aceita quadros
+!   destinados a outros MACs na MgmtEth e os roteia de volta para a mesma
+!   rede. Quando a ponte de gerencia inunda uma resposta para pe1 (que nao
+!   transmite pela gerencia), os outros nove nos a reencaminham entre si e
+!   formam uma tempestade. A ACL descarta o que chega para outro endereco
+!   da gerencia. MgmtIPv4Address e resolvida pelo containerlab no deploy.
+! ============================================================================
+!
+hostname {{ .ShortName }}
+!
+username clab
+ group root-lr
+ group cisco-support
+ secret clab@123
+!
+grpc
+ no-tls
+ address-family dual
+!
+line default
+ transport input ssh
+!
+netconf-yang agent
+ ssh
+!
+ipv4 access-list MGMT-NO-TRANSIT
+ 10 permit ipv4 any host {{ .MgmtIPv4Address }}
+ 20 deny ipv4 any 172.20.27.0 0.0.0.255
+ 30 permit ipv4 any any
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 access-group MGMT-NO-TRANSIT ingress
+!
+ssh server v2
+ssh server netconf
+!
+!
+! ==========================================================================
+! Lab Multidominio OSPF - Flex-Algo com SID anycast de borda / no pe9
+! PE de saida, endpoint da SR Policy - dominio C / OSPF 300
+! ==========================================================================
+!
+interface Loopback0
+ ipv4 address 10.3.255.9 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ description pe9-to-p3 domain-c normal
+ ipv4 address 10.3.0.7 255.255.255.254
+ no shutdown
+!
+interface GigabitEthernet0/0/0/1
+ description pe9-to-p4 domain-c red-low-cost
+ ipv4 address 10.3.0.9 255.255.255.254
+ no shutdown
+!
+router ospf 300
+ router-id 3.3.3.9
+ affinity-map
+  red bit-position 10
+ !
+ segment-routing mpls
+ segment-routing sr-prefer
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 309
+   prefix-sid algorithm 128 index 1309
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   cost 10
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   cost 5
+   affinity flex-algo
+    red
+   !
+  !
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+!
+segment-routing
+ global-block 16000 23999
+mpls oam
+!
+end
+</code></pre></div>
+</details>
+<hr />
+<h2 id="o-mecanismo-central-em-detalhe"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span> <strong>O mecanismo central, em detalhe</strong></h2>
+<p>Trechos de <code>configs/pe1.cfg</code> e <code>configs/dbr-ab1.cfg</code>. O resto segue a
+<a href="../../02-base-sr-mpls/">base SR-MPLS no IOS-XR</a>.</p>
+<div class="highlight"><pre><span></span><code>! pe1 - headend
+router ospf 100
+ affinity-map
+  red bit-position 10
+ !
+ area 0
+  interface Loopback0
+   prefix-sid index 101
+   prefix-sid algorithm 128 index 1101
+  !
+  interface GigabitEthernet0/0/0/1
+   cost 5
+   affinity flex-algo
+    red
+ !
+ flex-algo 128
+  priority 200
+  advertise-definition
+  affinity exclude-any
+   red
+!
+router static
+ address-family ipv4 unicast
+  10.3.255.9/32 sr-policy srte_c_128_ep_10.3.255.9
+!
+segment-routing
+ traffic-eng
+  segment-list PE1-TO-PE9-FA128
+   index 10 mpls label 17120
+   index 20 mpls label 17230
+   index 30 mpls label 17309
+  !
+  policy PE1-TO-PE9-FA128
+   color 128 end-point ipv4 10.3.255.9
+   candidate-paths
+    preference 100
+     explicit segment-list PE1-TO-PE9-FA128
+
+! dbr-ab1 - mesma loopback anycast nos dois processos
+interface Loopback12
+ description anycast-dbr-ab
+ ipv4 address 10.255.12.12 255.255.255.255
+!
+router ospf 100
+ area 0
+  interface Loopback12
+   passive enable
+   prefix-sid index 120 n-flag-clear
+   prefix-sid algorithm 128 index 1120 n-flag-clear
+!
+router ospf 200
+ area 0
+  interface Loopback12
+   passive enable
+   prefix-sid index 120 n-flag-clear
+   prefix-sid algorithm 128 index 1120 n-flag-clear
+</code></pre></div>
+<p>Pacote IP para <code>10.3.255.9</code> saindo de <code>pe1</code>:</p>
+<ol>
+<li>A rota estática entrega o prefixo à policy; <code>pe1</code> impõe <code>{17120, 17230, 17309}</code>.</li>
+<li>No domínio A, <code>17120</code> segue o Algo 128 até o contribuidor anycast mais
+   próximo, <code>dbr-ab1</code>, evitando o enlace <code>red</code> <code>pe1</code>-<code>p2</code>. <code>p1</code> é o penúltimo
+   salto e faz PHP.</li>
+<li><code>dbr-ab1</code> recebe <code>17230</code> no topo. No processo 200, o Algo 128 evita o enlace
+   <code>red</code> <code>dbr-ab1</code>-<code>dbr-bc2</code> e escolhe <code>dbr-bc1</code>, que é o próprio anunciante:
+   <code>dbr-ab1</code> faz PHP.</li>
+<li><code>dbr-bc1</code> recebe <code>17309</code> no topo e o encaminha no processo 300 por <code>p3</code>,
+   evitando o caminho <code>red</code> via <code>p4</code>. <code>p3</code> faz PHP e <code>pe9</code> recebe IP.</li>
+</ol>
+<p><img alt="A pilha no fio: 17120, 17230 e 17309 saindo de pe1; 17230 e 17309 depois do PHP em p1; 17309 depois do PHP em dbr-ab1; 17309 de dbr-bc1 a p3; IP de p3 a pe9. Embaixo, o caso maligno: dbr-ab1 sem enlaces no domínio B recebe 17230 e não tem entrada na LFIB" src="../images/flex-algo-anycast/diagram-pilha-anycast.svg#only-light" />
+<img alt="A pilha no fio: 17120, 17230 e 17309 saindo de pe1; 17230 e 17309 depois do PHP em p1; 17309 depois do PHP em dbr-ab1; 17309 de dbr-bc1 a p3; IP de p3 a pe9. Embaixo, o caso maligno: dbr-ab1 sem enlaces no domínio B recebe 17230 e não tem entrada na LFIB" src="../images/flex-algo-anycast/diagram-pilha-anycast-escuro.svg#only-dark" /></p>
+<p>A troca de <code>17309</code> por <code>17309</code> em <code>dbr-bc1</code> não é coincidência: SRGB igual em
+todos os nós faz o mesmo índice resultar no mesmo label em todo o domínio C.</p>
+<h2 id="progressao-em-tres-estagios"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 5v4h-4v4H7v4H3v3h7v-4h4v-4h4V8h4V5z"/></svg></span> <strong>Progressão em três estágios</strong></h2>
+<p><code>configs/</code> é o estado final, com tudo ligado. Para percorrer o lab por partes,
+monte cada estágio retirando dos <code>.cfg</code> os blocos listados, ou suba o estado
+final e use os critérios abaixo como checklist. Cada estágio é cumulativo.</p>
+<h3 id="estagio-1-tres-dominios-ospfsr-com-flex-algo">Estágio 1 - três domínios OSPF/SR com Flex-Algo</h3>
+<p>Interfaces, loopbacks por domínio, os três processos OSPF, SR-MPLS, as
+afinidades <code>red</code>, a FAD do algoritmo 128 e os Prefix-SIDs dos dois algoritmos.
+Fora: <code>Loopback12</code>, <code>Loopback23</code>, a SR Policy e a rota estática de <code>pe1</code>.</p>
+<p>Em todos os nós:</p>
+<div class="highlight"><pre><span></span><code>show configuration failed startup
+</code></pre></div>
+<p>Aceite: só o cabeçalho com o horário; nenhuma linha rejeitada.</p>
+<div class="highlight"><pre><span></span><code>! pe1
+show ospf 100 neighbor
+! dbr-ab1
+show ospf 100 neighbor
+show ospf 200 neighbor
+! dbr-bc1
+show ospf 200 neighbor
+show ospf 300 neighbor
+! pe9
+show ospf 300 neighbor
+</code></pre></div>
+<p>Aceite: <code>pe1</code> com dois vizinhos <code>FULL</code>; <code>dbr-ab1</code> com um no OSPF 100 (<code>p1</code>) e
+três no OSPF 200 (<code>dbr-bc1</code>, <code>dbr-bc2</code>, <code>dbr-ab2</code>); <code>dbr-bc1</code> com três no
+OSPF 200 e dois no OSPF 300 (<code>p3</code>, <code>dbr-bc2</code>); <code>pe9</code> com dois.</p>
+<p>Isolamento entre domínios:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+show route 10.2.255.21/32
+show route 10.3.255.9/32
+! pe9
+show route 10.1.255.1/32
+show route 10.2.255.11/32
+</code></pre></div>
+<p>Aceite: <code>% Network not in table</code> nos quatro, no estágio 1. Ao fim do estágio 3,
+<code>10.3.255.9/32</code> passa a existir em <code>pe1</code> como rota <code>static</code>; os outros três
+continuam ausentes.</p>
+<p>Divergência entre o SPF default e o Algo 128, dentro do domínio A:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+show route 10.1.255.12/32
+show ospf routes flex-algo 128 10.1.255.12/32 detail
+</code></pre></div>
+<p>Aceite: para a loopback de <code>dbr-ab2</code>, o SPF default sai por <code>10.1.0.3</code> (<code>p2</code>,
+enlace <code>red</code>) e o Algo 128 sai por <code>10.1.0.1</code> (<code>p1</code>), com label <code>17112</code>.</p>
+<h3 id="estagio-2-sids-anycast-de-borda">Estágio 2 - SIDs anycast de borda</h3>
+<p>Entra: <code>Loopback12</code> nos dois DBRs AB e <code>Loopback23</code> nos dois DBRs BC, nos dois
+processos de cada um, com <code>n-flag-clear</code>.</p>
+<div class="highlight"><pre><span></span><code>! pe1
+show route 10.255.12.12/32
+show ospf routes flex-algo 128 10.255.12.12/32 detail
+show mpls forwarding labels 17120 detail
+</code></pre></div>
+<p>Aceite: o SPF default chega ao anycast AB por <code>10.1.0.3</code> (<code>p2</code>), com
+<code>dbr-ab2</code> (<code>from 1.1.1.5</code>) como anunciante, métrica 16. O Algo 128 chega por
+<code>10.1.0.1</code> (<code>p1</code>) com <code>dbr-ab1</code> (<code>From 1.1.1.4</code>) <code>Inuse</code>, métrica 21; <code>dbr-ab2</code>
+aparece como segundo contribuidor, métrica 31. A LFIB troca <code>17120</code> por <code>17120</code>
+via <code>Gi0/0/0/0</code>.</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+show route 10.255.23.23/32
+show ospf routes flex-algo 128 10.255.23.23/32 detail
+show mpls forwarding labels 17230 detail
+</code></pre></div>
+<p>Aceite: o SPF default chega ao anycast BC pelo enlace <code>red</code> até <code>dbr-bc2</code>
+(<code>10.2.0.3</code>), métrica 6. O Algo 128 escolhe <code>dbr-bc1</code> (<code>10.2.0.1</code>), métrica 21;
+<code>dbr-bc2</code> aparece com métrica 41, alcançável só via <code>dbr-ab2</code>. Como <code>dbr-bc1</code>
+é o próprio anunciante, o rótulo de saída é <code>Pop</code>: a LFIB tem a entrada local
+<code>17230</code>, com saída <code>Pop</code> por <code>Gi0/0/0/1</code>.</p>
+<div class="highlight"><pre><span></span><code>! dbr-bc1
+show route 10.3.255.9/32
+show ospf routes flex-algo 128 10.3.255.9/32 detail
+show mpls forwarding labels 17309 detail
+</code></pre></div>
+<p>Aceite: o SPF default chega a <code>pe9</code> por <code>dbr-bc2</code> (<code>10.3.0.11</code>) e pelo enlace
+<code>red</code> <code>p4</code>-<code>pe9</code>, métrica 16. O Algo 128 vai por <code>p3</code> (<code>10.3.0.1</code>), métrica 21,
+trocando <code>17309</code> por <code>17309</code>.</p>
+<p>Sinalização do anycast e da afinidade:</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+show ospf 100 database opaque-area self-originate | include "Extended Prefix|Flags|Prefix  |Algo|SID Index"
+show ospf 200 database opaque-area self-originate | include "Admin Group Val|Link ID"
+</code></pre></div>
+<p>Aceite, na primeira saída: a FAD do algoritmo 128 com prioridade 200; o Extended
+Prefix TLV de <code>10.1.255.11/32</code> com <code>Flags : 0x40</code> (N-flag ligada, prefixo de
+nó) e o de <code>10.255.12.12/32</code> com <code>Flags : 0x0</code>, efeito de <code>n-flag-clear</code>; os
+dois SIDs do anycast, índices <code>120</code> (algo 0) e <code>1120</code> (algo 128). Os flags do
+SID sub-TLV são <code>0x0</code> nos dois prefixos e não distinguem anycast de nó. Na
+segunda saída, o enlace para <code>2.2.2.4</code> (<code>dbr-bc2</code>) com admin group
+<code>0x00000400</code>, o bit 10 de <code>red</code>.</p>
+<h3 id="estagio-3-sr-policy-explicita">Estágio 3 - SR Policy explícita</h3>
+<p>Entra, só em <code>pe1</code>: a segment list, a policy de cor 128 e a rota estática
+<code>10.3.255.9/32 sr-policy srte_c_128_ep_10.3.255.9</code>.</p>
+<div class="highlight"><pre><span></span><code>! pe1
+show segment-routing traffic-eng policy color 128
+show route 10.3.255.9/32
+show cef 10.3.255.9/32 detail
+</code></pre></div>
+<p>Aceite: policy <code>Admin: up  Operational: up</code>; candidate path de preferência 100
+ativo, segment list <code>PE1-TO-PE9-FA128</code> <code>(valid)</code> com <code>17120</code>, <code>17230</code> e
+<code>17309</code>; Binding SID dinâmico. <code>10.3.255.9/32</code> conhecido via <code>static</code>, e o CEF
+apontando para <code>srte_c_128_ep_10.3.255.9</code>.</p>
+<p>Plano de dados. Com origem na loopback, o ping falha - de propósito:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+ping 10.3.255.9 source 10.1.255.1
+</code></pre></div>
+<p>Esperado: <code>Success rate is 0 percent</code>. A requisição chega a <code>pe9</code> pela policy,
+mas <code>pe9</code> não tem rota de volta para <code>10.1.255.1</code>.</p>
+<p>Para uma prova bidirecional, use como origem o endereço de gerência de <code>pe1</code>. O
+destino continua direcionado pela policy; só a resposta volta pela rede de
+gerência, onde <code>pe9</code> tem rota conectada. Esse atalho depende da ACL
+<code>MGMT-NO-TRANSIT</code> descrita em <a href="#diferencas-no-bloco-base">diferenças no bloco base</a>:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+ping 10.3.255.9 source 172.20.27.11
+traceroute 10.3.255.9 source 172.20.27.11
+</code></pre></div>
+<p>Esperado: <code>Success rate is 100 percent</code>, e o traceroute:</p>
+<div class="highlight"><pre><span></span><code> 1  10.1.0.1 [MPLS: Labels 17120/17230/17309 Exp 0]
+ 2  10.1.0.7 [MPLS: Labels 17230/17309 Exp 0]
+ 3  10.2.0.1 [MPLS: Label 17309 Exp 0]
+ 4  10.3.0.1 [MPLS: Label 17309 Exp 0]
+ 5  10.3.0.7
+</code></pre></div>
+<p>Os saltos são <code>p1</code>, <code>dbr-ab1</code>, <code>dbr-bc1</code>, <code>p3</code> e <code>pe9</code>. Cada linha mostra a
+pilha com que o pacote chegou àquele salto.</p>
+<p>A mesma pilha por MPLS OAM, que dispensa a rota estática:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+ping mpls nil-fec labels 17120,17230,17309 output interface GigabitEthernet0/0/0/0 nexthop 10.1.0.1 source 172.20.27.11
+traceroute sr-mpls policy name srte_c_128_ep_10.3.255.9 lsp-end-point 10.3.255.9 source 172.20.27.11 timeout 1
+</code></pre></div>
+<p>Esperado: <code>Success rate is 100 percent</code> no <code>ping mpls</code>, e:</p>
+<div class="highlight"><pre><span></span><code>  0 10.1.0.0 MRU 1500 [Labels: 17120/17230/17309 Exp: 0/0/0]
+L 1 10.1.0.1 MRU 1500 [Labels: implicit-null/17230/17309 Exp: 0/0/0]
+L 2 10.1.0.7 MRU 1500 [Labels: implicit-null/17309 Exp: 0/0]
+L 3 10.2.0.1 MRU 1500 [Labels: 17309 Exp: 0]
+L 4 10.3.0.1 MRU 1500 [Labels: implicit-null Exp: 0]
+! 5 10.3.0.7
+</code></pre></div>
+<p>O <code>implicit-null</code> é o PHP de cada segmento no penúltimo salto. A resposta MPLS
+echo também é IP comum e volta pela gerência, como o ping.</p>
+<p><code>ping mpls</code> e <code>traceroute sr-mpls</code> dependem de <code>mpls oam</code>, configurado em todos
+os nós deste lab. Sem ele não retornam nada útil - ver
+<a href="../../01-preparacao-do-ambiente/#problemas-comuns">problemas comuns</a>.</p>
+<h2 id="ensaio-1-falha-benigna"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></span> <strong>Ensaio 1 - falha benigna</strong></h2>
+<p><code>dbr-ab1</code> perde o enlace com o domínio A. Deixa de ser alcançável a partir de A,
+e o anycast deve passar para <code>dbr-ab2</code>.</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+configure terminal
+interface GigabitEthernet0/0/0/0
+ shutdown
+commit
+end
+</code></pre></div>
+<p>Aguarde um dead interval do OSPF (40 s) e verifique em <code>pe1</code>:</p>
+<div class="highlight"><pre><span></span><code>! pe1
+show ospf routes flex-algo 128 10.255.12.12/32 detail
+traceroute sr-mpls policy name srte_c_128_ep_10.3.255.9 lsp-end-point 10.3.255.9 source 172.20.27.11 timeout 1
+</code></pre></div>
+<p>Esperado: <code>dbr-ab2</code> (<code>From 1.1.1.5</code>) <code>Inuse</code>, métrica 31; o primeiro salto
+continua sendo <code>p1</code>, porque o Algo 128 ainda evita o enlace <code>red</code> direto
+<code>pe1</code>-<code>p2</code>. O traceroute volta a chegar a <code>pe9</code>, agora por <code>p1</code>, <code>p2</code>, <code>dbr-ab2</code>
+e <code>dbr-bc2</code>. Nenhuma configuração mudou em <code>pe1</code>: a mesma pilha passou a ser
+resolvida por outra borda.</p>
+<p>Na fronteira BC, <code>dbr-bc2</code> tem dois caminhos Algo 128 de custo 25 até <code>pe9</code>
+(via <code>p4</code>-<code>p3</code> e via <code>dbr-bc1</code>-<code>p3</code>). Por isso dois traceroutes podem mostrar
+saltos diferentes no domínio C.</p>
+<p>Por que esperar o dead interval: a única interface OSPF 100 de <code>dbr-ab1</code> é a
+que caiu, então ele não tem por onde inundar a mudança; <code>p1</code> só remove a
+adjacência quando o dead interval expira. Até lá, <code>pe1</code> continua mandando o
+tráfego para <code>dbr-ab1</code> e o traceroute para no segundo salto. Sem BFD, esse
+intervalo é o tempo de perda.</p>
+<p>Restaure:</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+configure terminal
+interface GigabitEthernet0/0/0/0
+ no shutdown
+commit
+end
+</code></pre></div>
+<p>Esperado após a reconvergência: <code>dbr-ab1</code> (<code>From 1.1.1.4</code>) volta a ser
+<code>Inuse</code>, métrica 21.</p>
+<h2 id="ensaio-2-o-risco-do-sid-anycast"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></span> <strong>Ensaio 2 - o risco do SID anycast</strong></h2>
+<p><code>dbr-ab1</code> perde <strong>todos</strong> os enlaces do domínio B, mas mantém a adjacência com
+<code>p1</code> no domínio A. Para o domínio A nada mudou: <code>dbr-ab1</code> continua sendo o
+contribuidor anycast mais próximo.</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+configure terminal
+interface GigabitEthernet0/0/0/1
+ shutdown
+interface GigabitEthernet0/0/0/2
+ shutdown
+interface GigabitEthernet0/0/0/3
+ shutdown
+commit
+end
+</code></pre></div>
+<p>Aguarde 40 s e verifique:</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+show ospf 100 neighbor
+show ospf 200 neighbor
+show route 10.255.23.23/32
+show ospf routes flex-algo 128 10.255.23.23/32 detail
+show mpls forwarding labels 17230 detail
+! pe1
+show ospf routes flex-algo 128 10.255.12.12/32 detail
+show segment-routing traffic-eng policy color 128
+traceroute sr-mpls policy name srte_c_128_ep_10.3.255.9 lsp-end-point 10.3.255.9 source 172.20.27.11 timeout 1
+ping 10.3.255.9 source 172.20.27.11
+</code></pre></div>
+<p>Esperado:</p>
+<ul>
+<li><code>dbr-ab1</code> mantém <code>p1</code> em <code>FULL</code> no OSPF 100 e fica sem vizinhos no OSPF 200;</li>
+<li><code>dbr-ab1</code> não tem rota para <code>10.255.23.23/32</code>; a entrada Algo 128 fica com
+  <code>Flags: NoContr, NoLbl, NoSID</code>, e <code>17230</code> some da LFIB;</li>
+<li><code>pe1</code> continua escolhendo <code>dbr-ab1</code> (<code>From 1.1.1.4</code>, métrica 21) para <code>17120</code>;</li>
+<li>a policy continua <code>Operational: up</code> e a segment list continua <code>(valid)</code>;</li>
+<li>o traceroute SR-MPLS para em <code>dbr-ab1</code>: <code>N 2 10.1.0.7 MRU 0 [No Label]</code>;</li>
+<li>o ping cai para <code>Success rate is 0 percent</code>.</li>
+</ul>
+<p>É o caveat clássico do SID anycast de borda. O anycast prova que a borda é
+alcançável a partir do domínio local; não prova que ela ainda alcança o próximo
+domínio. O domínio A não enxerga o OSPF 200, e o headend valida só o primeiro
+SID da lista explícita, que continua resolvido. Nenhum dos dois tem como
+perceber a falha. Ver <a href="../#o-risco-do-sid-anycast-de-borda">o risco do SID anycast de borda</a>.</p>
+<p>Restaure:</p>
+<div class="highlight"><pre><span></span><code>! dbr-ab1
+configure terminal
+interface GigabitEthernet0/0/0/1
+ no shutdown
+interface GigabitEthernet0/0/0/2
+ no shutdown
+interface GigabitEthernet0/0/0/3
+ no shutdown
+commit
+end
+</code></pre></div>
+<p>Esperado após a reconvergência: três vizinhos OSPF 200 em <code>dbr-ab1</code>, <code>17230</code>
+de volta à LFIB com saída <code>Pop</code> para <code>dbr-bc1</code>, e o traceroute SR-MPLS chegando
+de novo a <code>pe9</code>.</p>
+<h2 id="verificacao"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg></span> <strong>Verificação</strong></h2>
+<p>Cadeia mínima no estado final. Nenhuma saída isolada prova tudo.</p>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Comando</th>
+<th>O que confirmar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>todos</td>
+<td><code>show configuration failed startup</code></td>
+<td>só o cabeçalho, nenhuma linha rejeitada</td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code></td>
+<td><code>show ospf 100 neighbor</code> / <code>show ospf 200 neighbor</code></td>
+<td>1 e 3 vizinhos <code>FULL</code></td>
+</tr>
+<tr>
+<td><code>pe1</code></td>
+<td><code>show route 10.2.255.21/32</code></td>
+<td><code>% Network not in table</code>: o domínio B não vaza para A</td>
+</tr>
+<tr>
+<td><code>pe1</code></td>
+<td><code>show ospf routes flex-algo 128 10.255.12.12/32 detail</code></td>
+<td><code>dbr-ab1</code> <code>Inuse</code> via <code>p1</code>, label <code>17120</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code></td>
+<td><code>show mpls forwarding labels 17230 detail</code></td>
+<td>saída <code>Pop</code> para <code>dbr-bc1</code>, nunca pelo enlace <code>red</code></td>
+</tr>
+<tr>
+<td><code>dbr-bc1</code></td>
+<td><code>show mpls forwarding labels 17309 detail</code></td>
+<td>saída <code>17309</code> via <code>p3</code></td>
+</tr>
+<tr>
+<td><code>dbr-ab1</code></td>
+<td><code>show ospf 100 database opaque-area self-originate</code></td>
+<td>anycast com Extended Prefix <code>Flags : 0x0</code></td>
+</tr>
+<tr>
+<td><code>pe1</code></td>
+<td><code>show segment-routing traffic-eng policy color 128</code></td>
+<td>Admin/Oper <code>up</code>, três segmentos, <code>(valid)</code></td>
+</tr>
+<tr>
+<td><code>pe1</code></td>
+<td><code>traceroute sr-mpls policy name srte_c_128_ep_10.3.255.9 ...</code></td>
+<td><code>! 5 10.3.0.7</code></td>
+</tr>
+<tr>
+<td><code>pe1</code></td>
+<td><code>ping 10.3.255.9 source 172.20.27.11</code></td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>Cada pergunta tem sua evidência própria: <code>show route</code> responde o que o SPF
+default escolheu, <code>show ospf routes flex-algo 128</code> o que o algoritmo 128
+escolheu e por qual contribuidor anycast, <code>show mpls forwarding</code> o que a LFIB
+faz com cada label, e <code>traceroute sr-mpls</code> se a pilha inteira chega ao fim.
+Policy <code>up</code> não prova entrega - o ensaio 2 mostra exatamente isso.</p>
+<p>O que a execução de referência efetivamente observou está em
+<a href="../validacao/"><code>validacao.md</code></a>.</p>
+<h2 id="documentos-deste-lab"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4v18h16v2H4c-1.1 0-2-.9-2-2V4zm11 3h5.5L15 1.5zM8 0h8l6 6v12c0 1.11-.89 2-2 2H8a2 2 0 0 1-2-2V2c0-1.11.89-2 2-2m9 16v-2H8v2zm3-4v-2H8v2z"/></svg></span> <strong>Documentos deste lab</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Para que serve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../">Conceitos de multidomínio</a></td>
+<td>Costura entre domínios, Flex-Algo, SID anycast e seu risco</td>
+</tr>
+<tr>
+<td><a href="../validacao/"><code>validacao.md</code></a></td>
+<td>O que a execução de referência confirmou, e o que não</td>
+</tr>
+</tbody>
+</table>
+<h2 id="referencias"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg></span> <strong>Referências</strong></h2>
+<ul>
+<li>RFC 9350 - <em>IGP Flexible Algorithm</em>: <a href="https://www.rfc-editor.org/rfc/rfc9350.html">https://www.rfc-editor.org/rfc/rfc9350.html</a></li>
+<li>RFC 8402 - <em>Segment Routing Architecture</em>: <a href="https://www.rfc-editor.org/rfc/rfc8402.html">https://www.rfc-editor.org/rfc/rfc8402.html</a></li>
+<li>RFC 8665 - <em>OSPF Extensions for Segment Routing</em>: <a href="https://www.rfc-editor.org/rfc/rfc8665.html">https://www.rfc-editor.org/rfc/rfc8665.html</a></li>
+<li>RFC 7684 - <em>OSPFv2 Prefix/Link Attribute Advertisement</em>: <a href="https://www.rfc-editor.org/rfc/rfc7684.html">https://www.rfc-editor.org/rfc/rfc7684.html</a></li>
+<li>RFC 9256 - <em>Segment Routing Policy Architecture</em>: <a href="https://www.rfc-editor.org/rfc/rfc9256.html">https://www.rfc-editor.org/rfc/rfc9256.html</a></li>
+<li>Cisco IOS-XR 7.10.x - <em>Segment Routing Configuration Guide</em>: <a href="https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x.html">https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/segment-routing/710x/configuration/guide/b-segment-routing-cg-cisco8000-710x.html</a></li>
+<li><a href="https://containerlab.dev/manual/kinds/xrd/">Containerlab - Cisco XRd kind</a></li>
+</ul>
+<p>Lista completa das fontes no <a href="../#referencias">documento conceitual</a>.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Multidomínio - Flex-Algo e SID anycast entre domínios IGP">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Multidomínio - Flex-Algo e SID anycast entre domínios IGP
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../validacao/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Validação do lab flex-algo-anycast">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Validação do lab flex-algo-anycast
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tabs.link", "search.suggest", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.edit", "toc.follow", "content.tooltips", "navigation.indexes", "navigation.path", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../../../termynal.js"></script>
+      
+    
+  </body>
+</html>
