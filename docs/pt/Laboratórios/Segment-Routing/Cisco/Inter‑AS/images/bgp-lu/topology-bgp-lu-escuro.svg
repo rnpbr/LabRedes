@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="772" viewBox="0 0 1900 772" role="img" aria-labelledby="titulo descricao" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif">
+<title id="titulo">Topologia lógica do laboratório SR-MPLS inter-AS</title>
+<desc id="descricao">Domínio didático do PoP-PB em AS 65001, com dois caminhos internos, ligado por eBGP labeled-unicast a um recorte do backbone Rede Ipê em AS 1916, que também oferece dois caminhos, de PB até CE por RN ou BA.</desc>
+<rect width="1900" height="772" rx="18" fill="#0b1820" stroke="#1d3542"/>
+<text x="57" y="44" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6d8896" font-weight="700" letter-spacing="1.7">FIGURA 1 · SR-MPLS INTER-AS</text>
+<text x="57" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="25" fill="#e8f2f6" font-weight="700" letter-spacing="-0.4">Topologia lógica</text>
+<text x="1843" y="78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#9db4be" text-anchor="end">dois domínios · dois caminhos em cada um · uma fronteira</text>
+<rect x="236" y="112" width="672" height="484" rx="20" fill="#10222c" stroke="#254554" stroke-width="1.5" stroke-dasharray="8 7"/>
+<text x="572" y="158" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="17" fill="#e8f2f6" font-weight="700" text-anchor="middle">PoP-PB · domínio didático</text>
+<text x="572" y="182" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be" text-anchor="middle">topologia interna assumida</text>
+<rect x="271.75" y="101" width="112.5" height="22" rx="11" fill="#42cf9a" opacity="0.14"/>
+<text x="328" y="115.67" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#42cf9a" font-weight="700" text-anchor="middle">AS 65001 · privado</text>
+<text x="572" y="374" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be" font-weight="700" text-anchor="middle">OSPFv2 · área 0</text>
+<text x="572" y="394" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6d8896" text-anchor="middle">processo próprio · SPF prefere custo 10</text>
+<rect x="972" y="112" width="672" height="484" rx="20" fill="#10222c" stroke="#254554" stroke-width="1.5" stroke-dasharray="8 7"/>
+<text x="1308" y="158" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="17" fill="#e8f2f6" font-weight="700" text-anchor="middle">Backbone Rede Ipê</text>
+<text x="1308" y="182" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be" text-anchor="middle">recorte público PB–RN/BA–CE</text>
+<rect x="1034.58" y="101" width="58.84" height="22" rx="11" fill="#75b8e8" opacity="0.14"/>
+<text x="1064" y="115.67" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#75b8e8" font-weight="700" text-anchor="middle">AS 1916</text>
+<text x="1308" y="374" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be" font-weight="700" text-anchor="middle">OSPFv2 · área 0</text>
+<text x="1308" y="394" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#6d8896" text-anchor="middle">processo próprio · SPF prefere custo 10</text>
+<line x1="213" y1="380" x2="249" y2="380" stroke="#75b8e8" stroke-width="4.5" stroke-linecap="round" opacity="1"/>
+<line x1="408.62" y1="340" x2="499.38" y2="290" stroke="#42cf9a" stroke-width="4.5" stroke-linecap="round" opacity="1"/>
+<circle cx="454" cy="315" r="13.5" fill="#0b1820" stroke="#42cf9a" stroke-width="1.6"/>
+<text x="454" y="319" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#42cf9a" font-weight="700" text-anchor="middle">10</text>
+<line x1="644.62" y1="290" x2="735.38" y2="340" stroke="#42cf9a" stroke-width="4.5" stroke-linecap="round" opacity="1"/>
+<circle cx="690" cy="315" r="13.5" fill="#0b1820" stroke="#42cf9a" stroke-width="1.6"/>
+<text x="690" y="319" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#42cf9a" font-weight="700" text-anchor="middle">10</text>
+<line x1="408.62" y1="420" x2="499.38" y2="470" stroke="#f0b352" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7" opacity="1"/>
+<circle cx="454" cy="445" r="13.5" fill="#0b1820" stroke="#f0b352" stroke-width="1.6"/>
+<text x="454" y="449" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#f0b352" font-weight="700" text-anchor="middle">20</text>
+<line x1="644.62" y1="470" x2="735.38" y2="420" stroke="#f0b352" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7" opacity="1"/>
+<circle cx="690" cy="445" r="13.5" fill="#0b1820" stroke="#f0b352" stroke-width="1.6"/>
+<text x="690" y="449" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#f0b352" font-weight="700" text-anchor="middle">20</text>
+<line x1="895" y1="380" x2="985" y2="380" stroke="#ff7592" stroke-width="8" stroke-linecap="round" stroke-dasharray="11 8" opacity="1"/>
+<circle cx="895" cy="380" r="6" fill="#0b1820" stroke="#ff7592" stroke-width="2.4" opacity="1"/>
+<circle cx="985" cy="380" r="6" fill="#0b1820" stroke="#ff7592" stroke-width="2.4" opacity="1"/>
+<line x1="1144.62" y1="340" x2="1235.38" y2="290" stroke="#42cf9a" stroke-width="4.5" stroke-linecap="round" opacity="1"/>
+<circle cx="1190" cy="315" r="13.5" fill="#0b1820" stroke="#42cf9a" stroke-width="1.6"/>
+<text x="1190" y="319" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#42cf9a" font-weight="700" text-anchor="middle">10</text>
+<text x="1173.6" y="289.22" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9db4be" font-weight="600" text-anchor="middle">PB–RN 100G</text>
+<line x1="1380.62" y1="290" x2="1471.38" y2="340" stroke="#42cf9a" stroke-width="4.5" stroke-linecap="round" opacity="1"/>
+<circle cx="1426" cy="315" r="13.5" fill="#0b1820" stroke="#42cf9a" stroke-width="1.6"/>
+<text x="1426" y="319" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#42cf9a" font-weight="700" text-anchor="middle">10</text>
+<text x="1442.4" y="289.22" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9db4be" font-weight="600" text-anchor="middle">RN–CE 100G</text>
+<line x1="1144.62" y1="420" x2="1235.38" y2="470" stroke="#f0b352" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7" opacity="1"/>
+<circle cx="1190" cy="445" r="13.5" fill="#0b1820" stroke="#f0b352" stroke-width="1.6"/>
+<text x="1190" y="449" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#f0b352" font-weight="700" text-anchor="middle">20</text>
+<text x="1173.6" y="478.78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9db4be" font-weight="600" text-anchor="middle">PB–BA 40G</text>
+<line x1="1380.62" y1="470" x2="1471.38" y2="420" stroke="#f0b352" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="9 7" opacity="1"/>
+<circle cx="1426" cy="445" r="13.5" fill="#0b1820" stroke="#f0b352" stroke-width="1.6"/>
+<text x="1426" y="449" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#f0b352" font-weight="700" text-anchor="middle">20</text>
+<text x="1442.4" y="478.78" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9db4be" font-weight="600" text-anchor="middle">BA–CE 100G</text>
+<line x1="940" y1="104" x2="940" y2="604" stroke="#ff7592" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 8" opacity="0.5"/>
+<rect x="847.74" y="276.25" width="184.53" height="47.5" rx="10" fill="#0b1820" stroke="#2c4857" stroke-width="1"/>
+<text x="940" y="295" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#ff7592" font-weight="700" text-anchor="middle">eBGP IPv4 labeled-unicast</text>
+<text x="940" y="312" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#9db4be" text-anchor="middle">RFC 8277 · nenhum IGP cruza</text>
+<rect x="861.51" y="450.5" width="156.97" height="23" rx="7" fill="#0b1820" stroke="#2c4857" stroke-width="1"/>
+<text x="940" y="465.08" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#9db4be" font-weight="600" text-anchor="middle">não é aresta do Panorama</text>
+<g>
+<rect x="66" y="347" width="140" height="66" rx="13" fill="#14262f" stroke="#6d8896" stroke-width="1.4" stroke-dasharray="6 5" opacity="0.55"/>
+<text x="136" y="366" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#6d8896" font-weight="700" text-anchor="middle" letter-spacing="0.75">CLIENTE</text>
+<text x="136" y="386" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">instituicao-pb</text>
+<text x="136" y="403" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">198.51.100.10</text>
+</g>
+<g>
+<rect x="256" y="347" width="160" height="66" rx="13" fill="#14262f" stroke="#75b8e8" stroke-width="1.4" opacity="0.55"/>
+<text x="336" y="366" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#75b8e8" font-weight="700" text-anchor="middle" letter-spacing="0.75">PE · INGRESSO</text>
+<text x="336" y="386" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">pe-pop-pb</text>
+<text x="336" y="403" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.1 · SID 16001</text>
+</g>
+<g>
+<rect x="492" y="217" width="160" height="66" rx="13" fill="#14262f" stroke="#9db4be" stroke-width="1.4" opacity="0.55"/>
+<text x="572" y="236" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#9db4be" font-weight="700" text-anchor="middle" letter-spacing="0.75">P · RAMO PRIMÁRIO</text>
+<text x="572" y="256" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">p-pop-a</text>
+<text x="572" y="273" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.2 · SID 16002</text>
+</g>
+<g>
+<rect x="492" y="477" width="160" height="66" rx="13" fill="#14262f" stroke="#9db4be" stroke-width="1.4" opacity="0.55"/>
+<text x="572" y="496" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#9db4be" font-weight="700" text-anchor="middle" letter-spacing="0.75">P · RAMO ALTERNATIVO</text>
+<text x="572" y="516" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">p-pop-b</text>
+<text x="572" y="533" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.3 · SID 16003</text>
+</g>
+<g>
+<rect x="728" y="347" width="160" height="66" rx="13" fill="#14262f" stroke="#ff7592" stroke-width="1.4" opacity="0.55"/>
+<text x="808" y="366" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#ff7592" font-weight="700" text-anchor="middle" letter-spacing="0.75">ASBR · EPE</text>
+<text x="808" y="386" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">asbr-pop-pb</text>
+<text x="808" y="403" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.4 · SID 16004</text>
+</g>
+<g>
+<rect x="992" y="347" width="160" height="66" rx="13" fill="#14262f" stroke="#ff7592" stroke-width="1.4" opacity="0.55"/>
+<text x="1072" y="366" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#ff7592" font-weight="700" text-anchor="middle" letter-spacing="0.75">ASBR · VÉRTICE PB</text>
+<text x="1072" y="386" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">asbr-ipe-pb</text>
+<text x="1072" y="403" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.5 · SID 16005</text>
+</g>
+<g>
+<rect x="1228" y="217" width="160" height="66" rx="13" fill="#14262f" stroke="#9db4be" stroke-width="1.4" opacity="0.55"/>
+<text x="1308" y="236" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#9db4be" font-weight="700" text-anchor="middle" letter-spacing="0.75">P · VÉRTICE RN</text>
+<text x="1308" y="256" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">p-ipe-rn</text>
+<text x="1308" y="273" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.6 · SID 16006</text>
+</g>
+<g>
+<rect x="1228" y="477" width="160" height="66" rx="13" fill="#14262f" stroke="#9db4be" stroke-width="1.4" opacity="0.55"/>
+<text x="1308" y="496" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#9db4be" font-weight="700" text-anchor="middle" letter-spacing="0.75">P · VÉRTICE BA</text>
+<text x="1308" y="516" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">p-ipe-ba</text>
+<text x="1308" y="533" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.7 · SID 16007</text>
+</g>
+<g>
+<rect x="1464" y="347" width="160" height="66" rx="13" fill="#14262f" stroke="#75b8e8" stroke-width="1.4" opacity="0.55"/>
+<text x="1544" y="366" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#75b8e8" font-weight="700" text-anchor="middle" letter-spacing="0.75">PE · VÉRTICE CE</text>
+<text x="1544" y="386" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">pe-ipe-ce</text>
+<text x="1544" y="403" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">10.0.0.8 · SID 16008</text>
+</g>
+<g>
+<rect x="1694" y="347" width="140" height="66" rx="13" fill="#14262f" stroke="#6d8896" stroke-width="1.4" stroke-dasharray="6 5" opacity="0.55"/>
+<text x="1764" y="366" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9" fill="#6d8896" font-weight="700" text-anchor="middle" letter-spacing="0.75">CLIENTE</text>
+<text x="1764" y="386" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#e8f2f6" font-weight="700" text-anchor="middle">servico-ce</text>
+<text x="1764" y="403" font-family="'JetBrains Mono','DejaVu Sans Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9db4be" text-anchor="middle">203.0.113.10</text>
+</g>
+<text x="57" y="652" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6d8896" font-weight="700" letter-spacing="1.5">ENLACES</text>
+<line x1="141" y1="648" x2="175" y2="648" stroke="#42cf9a" stroke-width="4" stroke-linecap="round"/>
+<text x="185" y="652" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be">ramo primário</text>
+<line x1="297.6" y1="648" x2="331.6" y2="648" stroke="#f0b352" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 6"/>
+<text x="341.6" y="652" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be">ramo alternativo e reparo TI-LFA</text>
+<line x1="560.04" y1="648" x2="594.04" y2="648" stroke="#ff7592" stroke-width="5.5" stroke-linecap="round"/>
+<text x="604.04" y="652" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be">fronteira eBGP-LU e EPE</text>
+<line x1="775.32" y1="648" x2="809.32" y2="648" stroke="#75b8e8" stroke-width="4" stroke-linecap="round"/>
+<text x="819.32" y="652" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be">acesso do cliente</text>
+<circle cx="153" cy="686" r="13.5" fill="#0b1820" stroke="#6d8896" stroke-width="1.6"/>
+<text x="153" y="690" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#6d8896" font-weight="700" text-anchor="middle">10</text>
+<text x="57" y="690" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="9.5" fill="#6d8896" font-weight="700" letter-spacing="1.5">NÓS</text>
+<text x="175" y="690" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be">custo OSPF do enlace</text>
+<rect x="357" y="676.5" width="28.4" height="19" rx="9.5" fill="#75b8e8" opacity="0.14"/>
+<text x="371.2" y="689.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#75b8e8" font-weight="700" text-anchor="middle">PE</text>
+<rect x="405.4" y="676.5" width="22.2" height="19" rx="9.5" fill="#9db4be" opacity="0.14"/>
+<text x="416.5" y="689.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#9db4be" font-weight="700" text-anchor="middle">P</text>
+<rect x="447.6" y="676.5" width="40.8" height="19" rx="9.5" fill="#ff7592" opacity="0.14"/>
+<text x="468" y="689.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#ff7592" font-weight="700" text-anchor="middle">ASBR</text>
+<rect x="508.4" y="676.5" width="56.2" height="19" rx="9.5" fill="#6d8896" opacity="0.14"/>
+<text x="536.5" y="689.5" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="10" fill="#6d8896" font-weight="700" text-anchor="middle">CLIENTE</text>
+<text x="677" y="690" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="12" fill="#9db4be">cada nó traz loopback e Prefix-SID · SRGB 16000–23999 · SRLB 15000–15999</text>
+<line x1="57" y1="716" x2="1843" y2="716" stroke="#1c333f" stroke-width="1" stroke-linecap="butt"/>
+<text x="57" y="742" font-family="Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#9db4be">Do Panorama público (29/07/2026) vêm apenas os quatro enlaces PB–RN, RN–CE, PB–BA e BA–CE e suas capacidades. Custos OSPF, SIDs, ASBRs, a fronteira eBGP e toda a topologia do PoP-PB existem somente no laboratório.</text>
+</svg>
